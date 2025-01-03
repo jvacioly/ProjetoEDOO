@@ -1,0 +1,64 @@
+# Compiled object files
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Debug files
+*.dSYM/
+*.stackdump
+*.core
+
+# IDEs and editors
+# CLion
+.idea/
+cmake-build-*/
+*.iml
+*.ipr
+*.iws
+
+# Visual Studio
+.vscode/
+*.vcxproj*
+*.sln
+*.vcxproj.filters
+
+# macOS
+.DS_Store
+
+# CMake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles/
+Testing/
+cmake_install.cmake
+Makefile
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*.bak
+*.swo
+*.snt
+tags
+
+# Other system files
+Thumbs.db
+desktop.ini
