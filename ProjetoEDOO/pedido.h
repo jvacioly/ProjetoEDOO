@@ -22,6 +22,9 @@ class Pedido {
 
         //Get Methods
         int getID() const {return ID;}
+        const std::vector<std::pair<Prato, int>>& getItens() const {
+            return itens;
+        }
         double getValorTotal() const {return valorTotal;}
 
         //Outros Metodos
