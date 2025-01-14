@@ -5,8 +5,9 @@
 #ifndef RESTAURANTE_H
 #define RESTAURANTE_H
 #include "json.hpp"
-#include "pedido.h"
 #include "produto.h"
+#include "prato.h"
+#include "pedido.h"
 
 using namespace std;
 using json = nlohmann::json;
@@ -15,26 +16,24 @@ class Restaurante {
     private:
         json estoque;
         json pedidos;
-        unordered_map<string, float> menu;
+        vector<Prato> menu;
         float caixa;
     public:
         //Construtor e Destrutor
-        Restaurante(const unordered_map<string, float>& menuInicial, float caixa);
-        Restaurante(const unordered_map<string, float>& menuInicial);
+        Restaurante(const vector<Prato>& menuInicial, float caixa);
+        explicit Restaurante(const vector<Prato>& menuInicial);
         ~Restaurante();
 
-        // Métodos para carregar dados do JSON
-        void salvarDados() const;
-        void carregarDados();
-
         //Métodos do Estoque
+        void carregarEstoque();
+        void salvarEstoque() const;
         void addEstoque(const Produto& produto, int quantidade);
         bool removerEstoque(const string& nomeProduto, int quantidade);
         void mostrarEstoque() const;
 
 
         //Métodos dos Pedidos (EM DESENVOLVIMENTO)
-        bool registrarPedido(const Pedido& pedido);
+        //bool registrarPedido(const Pedido& pedido);
         /*bool removerPedido();
         void finalizarPedido();
         void mostrarPedidos() const;

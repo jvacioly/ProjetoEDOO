@@ -7,57 +7,74 @@
 #include "prato.h"
 
 //Construtor e Destrutor
-Restaurante::Restaurante(const unordered_map<string, float>& menuInicial, float caixa)
+Restaurante::Restaurante(const vector<Prato>& menuInicial, float caixa)
     : menu(menuInicial), caixa(caixa) {
-    carregarDados();
+    carregarEstoque();
 }
 
-Restaurante::Restaurante(const unordered_map<string, float> &menuInicial)
+Restaurante::Restaurante(const vector<Prato>& menuInicial)
     : Restaurante(menuInicial, 0) {}
 
 Restaurante::~Restaurante() {
-    salvarDados();
-}
-
-// Métodos para carregar dados do JSON
-void Restaurante::salvarDados() const {
-    ofstream estoqueFile("estoque.json");
-    estoqueFile << estoque.dump(4);
-    estoqueFile.close();
-
-    ofstream pedidosFile("pedidos.json");
-    pedidosFile << pedidos.dump(4);
-    pedidosFile.close();
-
-    cout << "Dados salvos nos arquivos JSON." << endl;
-}
-
-void Restaurante::carregarDados() {
-    ifstream estoqueFile("estoque.json");
-    if (estoqueFile.is_open()) {
-        estoqueFile >> estoque;
-        estoqueFile.close();
-    }
-
-    ifstream pedidosFile("pedidos.json");
-    if (pedidosFile.is_open()) {
-        pedidosFile >> pedidos;
-        pedidosFile.close();
-    }
-
-    cout << "Dados carregados nos arquivos JSON." << endl;
+    salvarEstoque();
 }
 
 //Métodos do Estoque
+void Restaurante::carregarEstoque() {
+    ifstream estoqueFile("D:/Victor/Faculdade/Projetos/ProjetoEDOO/banco_de_dados/estoque.json"); //COLOCAR O CAMINHO INTEIRO DO ARQUIVO
+    estoque = json::object();  // Inicializa como objeto vazio
+
+    if (estoqueFile.is_open()) {
+        try {
+            estoqueFile >> estoque;
+            if (!estoque.is_object()) {
+                cout << "Formato inválido no arquivo de estoque. Recriando estoque." << endl;
+                estoque = json::object();
+            } else {
+                if (estoque.contains("estoque") && estoque["estoque"].is_array()) {
+                    estoque.erase("estoque");
+                }
+            }
+        } catch (const json::parse_error& e) {
+            cout << "Erro ao carregar o estoque: " << e.what() << ". Criando novo estoque." << endl;
+            estoque = json::object();
+        }
+        estoqueFile.close();
+    } else {
+        cout << "Arquivo estoque.json não encontrado. Criando novo estoque." << endl;
+    }
+}
+
+void Restaurante::salvarEstoque() const {
+    ofstream estoqueFile("D:/Victor/Faculdade/Projetos/ProjetoEDOO/banco_de_dados/estoque.json");  // COLOCAR O CAMINHO INTEIRO DO ARQUIVO
+    if (estoqueFile.is_open()) {
+        estoqueFile << estoque.dump(4);  // Grava o conteúdo do JSON com formatação
+        estoqueFile.close();
+        cout << "Estoque salvo com sucesso." << endl;
+    } else {
+        cout << "Erro ao abrir o arquivo estoque.json para salvar os dados." << endl;
+    }
+}
+
 void Restaurante::addEstoque(const Produto &produto, int quantidade) {
-    string nome = produto.getNome();
-    if (estoque.contains(nome)) {
-        estoque[nome] += quantidade;
+    const string& nome = produto.getNome();
+    int codigo = produto.getCodigo();
+    double preco = produto.getPreco();
+
+    if (estoque.contains(nome) && estoque[nome].is_object()) {
+        estoque[nome]["quantidade"] = estoque[nome]["quantidade"].get<int>() + quantidade;
     }
     else {
-        estoque[nome] = quantidade;
+        estoque[nome] = {
+            {"codigo", codigo},
+            {"ingrediente_nome", nome},
+            {"quantidade", quantidade},
+            {"preco", preco}
+        };
     }
+
     cout << "Adicionado " << quantidade << " unidades do produto " << nome << " ao estoque." << endl;
+    salvarEstoque();
 }
 
 bool Restaurante::removerEstoque(const string &nomeProduto, int quantidade) {
@@ -79,7 +96,7 @@ void Restaurante::mostrarEstoque() const {
         cout << "- " << nome << ": " << info["quantidade"] << " unidades R$" << info["preco"] << " cada" << endl;
     }
 }
-
+/*
 //Métodos dos Pedidos (EM DESENVOLVIMENTO)
 bool Restaurante::registrarPedido(const Pedido &pedido) {
     float totalPedido = 0;
@@ -125,7 +142,7 @@ bool Restaurante::registrarPedido(const Pedido &pedido) {
     cout << "Pedido registrado com sucesso! Total R$" << totalPedido << endl;
     return true;
 }
-
+*/
 
 
 

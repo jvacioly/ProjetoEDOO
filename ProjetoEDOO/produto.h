@@ -20,9 +20,9 @@ class Produto {
       Produto(int codigo, const string& nome, double preco);
 
       //Get Methods
-      int getCodigo() const { return codigo; };
-      const string& getNome() const { return nome; };
-      double getPreco() const { return preco; };
+      [[nodiscard]] int getCodigo() const { return codigo; };
+      [[nodiscard]] const string& getNome() const { return nome; };
+      [[nodiscard]] double getPreco() const { return preco; };
 
       //Set Methods
       void setNome(const string& nome);

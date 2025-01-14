@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include "json.hpp"
 #include "produto.h"
@@ -7,48 +6,29 @@
 #include "restaurante.h"
 
 using namespace std;
-/*
-int main() {
-    // Criando um prato
-    Prato feijoada(1001, "Feijoada", 25.99, "Prato Principal", {"Arroz", "Feijao", "Carne"});
-
-    // Exibindo informações do prato
-    feijoada.print();
-    feijoada.setIngredientes({"Carne", "Feijao", "Arroz", "Linguica"});
-    feijoada.print();
-
-    return 0;
-}
-*/
 
 int main() {
-    // Criar menu inicial
-    unordered_map<std::string, float> menuInicial = {
-        {"Pizza", 35.50},
-        {"Hamburguer", 20.00},
-        {"Refrigerante", 5.50}
+    //Criando ingredientes
+    Produto farinha(1, "Farinha", 5);
+    Produto queijo(2, "Queijo", 10);
+    Produto tomate(3, "Tomate", 5.50);
+    Produto calabresa(4, "Calabresa", 15);
+
+
+    //Criando menu e pratos
+    vector<Prato> menu = {
+        Prato(1010, "Pizza Marguerita", 35.50, "prato principal", {farinha, queijo, tomate}),
+        Prato(1011, "Pizza Calabresa", 38.50, "prato principal", {farinha, queijo, calabresa})
     };
 
-    Restaurante restaurante(menuInicial);
+    //Inicializar o restaurante e o estoque
+    Restaurante restaurante(menu);
 
-    // Criar pratos
-    Prato pizza(1, "Pizza", 35.50, "prato principal", {"Tomate", "Queijo", "Farinha"});
-    Prato hamburguer(2, "Hamburguer", 20.00, "prato principal", {"Pao", "Tomate", "Queijo", "Alface", "Carne"});
-
-    // Adicionar itens ao estoque
-    restaurante.addEstoque(pizza, 10);
-    restaurante.addEstoque(hamburguer, 15);
-
-    // Criar pedido
-    Pedido pedido(1);
-    pedido.addPrato(pizza, 2);
-    pedido.addPrato(hamburguer, 1);
-
-    // Registrar pedido
-    restaurante.registrarPedido(pedido);
-
-    // Mostrar estoque atualizado
-    restaurante.mostrarEstoque();
+    //Adicionar Produtos ao Estoque
+    restaurante.addEstoque(farinha, 5);
+    /*restaurante.addEstoque(tomate, 30);
+    restaurante.addEstoque(queijo, 50);
+    restaurante.addEstoque(calabresa, 50);*/
 
     return 0;
 }

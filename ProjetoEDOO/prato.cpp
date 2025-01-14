@@ -6,7 +6,7 @@
 
 //Construtor e Destrutor
 Prato::Prato(int codigo, const string &nome, double preco, const string &categoria,
-    const vector<string> &ingredientes)
+    const vector<Produto> &ingredientes)
         : Produto(codigo, nome, preco), ingredientes(ingredientes), categoria(categoria) {}
 
 Prato::~Prato() {
@@ -14,7 +14,7 @@ Prato::~Prato() {
 }
 
 //Set Methods
-void Prato::setIngredientes(const vector<string> &novosIngredientes) {
+void Prato::setIngredientes(const vector<Produto> &novosIngredientes) {
     ingredientes = novosIngredientes;
 }
 
@@ -34,8 +34,11 @@ void Prato::print() const {
     cout.precision(2);
     cout << "Preco: R$" << fixed << getPreco() << endl;
     cout << "Ingredientes: ";
-    for (const auto& ingrediente : ingredientes) {
-        cout << ingrediente << ", ";
+    for (size_t i = 0; i < ingredientes.size(); ++i) {
+        cout << ingredientes[i].getNome();
+        if (i != ingredientes.size() - 1) {
+            cout << ", ";
+        }
     }
     cout << endl;
 }
