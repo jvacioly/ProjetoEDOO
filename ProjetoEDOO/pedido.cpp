@@ -3,18 +3,36 @@
 //
 
 #include "pedido.h"
+#include <chrono>
 
 
 //Construtor
-Pedido::Pedido(int id)
-    : ID(id), valorTotal(0) {}
+Pedido::Pedido(const vector<pair<Prato, int>> &itens, const string& observacao)
+    : ID(0), itens(itens), observacao(observacao), valorTotal(atualizarValorTotal()){
+    auto agora = chrono::system_clock::now();
+    time_t horaAtual = chrono::system_clock::to_time_t(agora);
+
+    tm horaLocal = *localtime(&horaAtual);
+    ostringstream oss;
+    oss << put_time(&horaLocal, "%H:%M:%S");
+
+    horarioPedido = oss.str();
+
+    //Cálculo do valor total
+
+}
+
+Pedido::Pedido(const vector<pair<Prato, int>>& itens)
+    : Pedido(itens, "") {}
 
 //Outros Metodos
-void Pedido::atualizarValorTotal() {
+double Pedido::atualizarValorTotal() {
     for (const auto& item : itens) {
         valorTotal += item.first.getPreco() * item.second;
     }
+    return valorTotal;
 }
+
 
 void Pedido::print() const {
     cout << "Pedido: " << ID << endl;

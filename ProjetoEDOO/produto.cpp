@@ -5,8 +5,11 @@
 #include "produto.h"
 
 //Construtor
+Produto::Produto(int codigo, const string& nome, double preco, const string& categoria, const string& descricao)
+    : codigo(codigo), nome(nome), preco(preco), categoria(categoria), descricao(descricao) {}
+
 Produto::Produto(int codigo, const string& nome, double preco)
-    : codigo(codigo), nome(nome), preco(preco) {}
+    : Produto(codigo, nome, preco, "", "") {}
 
 void Produto::setNome(const string &nome) {
     if (nome.empty()) {
@@ -23,6 +26,22 @@ void Produto::setPreco(double preco) {
         return;
     }
     this->preco = preco;
+}
+
+void Produto::setCategoria(const string &categoria) {
+    if (categoria.empty()) {
+        cout << "CATEGORIA INVALIDA" << endl;
+        return;
+    }
+    this->categoria = categoria;
+}
+
+void Produto::setDescricao(const string &descricao) {
+    if (descricao.empty()) {
+        cout << "CATEGORIA INVALIDA" << endl;
+        return;
+    }
+    this->descricao = descricao;
 }
 
 //Outros Metodos

@@ -16,9 +16,10 @@ int main() {
 
 
     //Criando menu e pratos
+    Prato pizzaMarguerita(1010, "Pizza Marguerita", 35.50, "prato principal", {farinha, queijo, tomate});
+    Prato pizzaCalabresa(1011, "Pizza Calabresa", 38.50, "prato principal", {farinha, queijo, calabresa});
     vector<Prato> menu = {
-        Prato(1010, "Pizza Marguerita", 35.50, "prato principal", {farinha, queijo, tomate}),
-        Prato(1011, "Pizza Calabresa", 38.50, "prato principal", {farinha, queijo, calabresa})
+        pizzaMarguerita, pizzaCalabresa
     };
 
     //Inicializar o restaurante e o estoque
@@ -26,9 +27,17 @@ int main() {
 
     //Adicionar Produtos ao Estoque
     restaurante.addEstoque(farinha, 5);
-    /*restaurante.addEstoque(tomate, 30);
+    restaurante.addEstoque(tomate, 10);
     restaurante.addEstoque(queijo, 50);
-    restaurante.addEstoque(calabresa, 50);*/
+    restaurante.addEstoque(calabresa, 50);
+
+    //Remover Produtos do Estoque
+    //restaurante.removerEstoque(tomate, 30);
+    //restaurante.apagarItem(farinha);
+
+    //Fazendo um Pedido
+    Pedido pedido1({{pizzaMarguerita, 2}, {pizzaCalabresa, 1}}, "embalado para viagem");
+    restaurante.registrarPedido(pedido1);
 
     return 0;
 }

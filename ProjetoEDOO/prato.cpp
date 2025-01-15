@@ -5,25 +5,16 @@
 #include "prato.h"
 
 //Construtor e Destrutor
-Prato::Prato(int codigo, const string &nome, double preco, const string &categoria,
-    const vector<Produto> &ingredientes)
-        : Produto(codigo, nome, preco), ingredientes(ingredientes), categoria(categoria) {}
+Prato::Prato(int codigo, const string &nome, double preco, const string &categoria, const vector<Produto> &ingredientes)
+    : Produto(codigo, nome, preco), ingredientes(ingredientes), categoria(categoria) {}
 
 Prato::~Prato() {
-    cout << "Prato " << getNome() << " removido do cardapio" << endl;
+    //cout << "Prato " << getNome() << " removido do cardapio" << endl;
 }
 
 //Set Methods
 void Prato::setIngredientes(const vector<Produto> &novosIngredientes) {
     ingredientes = novosIngredientes;
-}
-
-void Prato::setCategoria(const string &novaCategoria) {
-    if (novaCategoria.empty()) {
-        cout << "CATEGORIA INVALIDA" << endl;
-        return;
-    }
-    categoria = novaCategoria;
 }
 
 //Outros Metodos

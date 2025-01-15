@@ -14,20 +14,23 @@ class Pedido {
     private:
         int ID; //ID único do pedido
         vector<pair<Prato, int>> itens;
+        string observacao;
+        string horarioPedido;
         double valorTotal;
-        void atualizarValorTotal();
+        double atualizarValorTotal();
     public:
         //Construtor
-        explicit Pedido(int id);
+        Pedido(const vector<pair<Prato, int>>& itens, const string& observacao);
+        explicit Pedido(const vector<pair<Prato, int>>& itens);
 
         //Get Methods
         int getID() const {return ID;}
-        const std::vector<std::pair<Prato, int>>& getItens() const {
-            return itens;
-        }
+        const vector<pair<Prato, int>>& getItens() const {return itens;}
         double getValorTotal() const {return valorTotal;}
+        string getObservacao() const {return observacao;}
+        string getHorarioPedido() const {return horarioPedido;}
 
-        //Outros Metodos
+        //Outros Métodos
         void print() const;
         void addPrato(const Prato& prato, int quantidade);
         void removePrato(int codigoProduto);
