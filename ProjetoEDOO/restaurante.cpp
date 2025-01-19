@@ -116,8 +116,8 @@ bool Restaurante::apagarItem(const Produto &produto) {
 }
 
 bool Restaurante::checarEstoque(const Pedido &pedido) {
-    // NÃO ESTÁ 100% FUNCIONAL
-    // PRECISA DE UM METODO PARA IR RETIRANDO OS INGREDIENTES DO ESTOQUE E NO FINAL ADICIONAR DE NOVO
+    vector<pair<Produto, int>> ingredientesTotais;
+
     for (const auto &itemPedido : pedido.getItens()) {
         const Prato& prato = itemPedido.first;
         int quantidadePratos = itemPedido.second;
@@ -127,16 +127,32 @@ bool Restaurante::checarEstoque(const Pedido &pedido) {
             int quantidadeIngredientesPorPrato = ingredienteItem.second;
             int quantidadeIngredientesTotal = quantidadeIngredientesPorPrato * quantidadePratos;
 
-            if (!estoque.contains(ingrediente.getNome()) || !estoque[ingrediente.getNome()].is_object()) {
-                cout << "Ingrediente " << ingrediente.getNome() << " nao encontrado no estoque." << endl;
-                return false;
+            bool encontrado = false;
+            for (auto &itemTotal : ingredientesTotais) {
+                if (itemTotal.first.getNome() == ingrediente.getNome()) {
+                    itemTotal.second += quantidadeIngredientesTotal;
+                    encontrado = true;
+                    break;
+                }
             }
+            if (!encontrado) {
+                ingredientesTotais.emplace_back(ingrediente, quantidadeIngredientesTotal);
+            }
+        }
+    }
 
-            int quantidadeDisponivel = estoque[ingrediente.getNome()]["quantidade"];
-            if (quantidadeIngredientesTotal > quantidadeDisponivel) {
-                cout << "Quantidade insuficiente de " << ingrediente.getNome() << endl;
-                return false;
-            }
+    // Verificar no estoque a lista ingredientesTotais
+    for (const auto &ingredienteItem : ingredientesTotais) {
+        const Produto& ingrediente = ingredienteItem.first;
+        int quantidadeIngredientesTotal = ingredienteItem.second;
+        if (!estoque.contains(ingrediente.getNome()) || !estoque[ingrediente.getNome()].is_object()) {
+            cout << "Ingrediente " << ingrediente.getNome() << " nao encontrado no estoque." << endl;
+            return false;
+        }
+        int quantidadeDisponivel = estoque[ingrediente.getNome()]["quantidade"];
+        if (quantidadeIngredientesTotal > quantidadeDisponivel) {
+            cout << "Quantidade insuficiente de " << ingrediente.getNome() << endl;
+            return false;
         }
     }
     return true;
