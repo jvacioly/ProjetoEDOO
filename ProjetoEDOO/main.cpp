@@ -16,8 +16,8 @@ int main() {
 
 
     //Criando menu e pratos
-    Prato pizzaMarguerita(1010, "Pizza Marguerita", 35.50, "prato principal", {farinha, queijo, tomate});
-    Prato pizzaCalabresa(1011, "Pizza Calabresa", 38.50, "prato principal", {farinha, queijo, calabresa});
+    Prato pizzaMarguerita(1010, "Pizza Marguerita", 35.50, "prato principal", {{farinha, 2}, {queijo, 4}, {tomate, 1}});
+    Prato pizzaCalabresa(1011, "Pizza Calabresa", 38.50, "prato principal", {{farinha, 2}, {queijo, 4}, {calabresa, 1}});
     vector<Prato> menu = {
         pizzaMarguerita, pizzaCalabresa
     };
@@ -36,8 +36,9 @@ int main() {
     //restaurante.apagarItem(farinha);
 
     //Fazendo um Pedido
-    Pedido pedido1({{pizzaMarguerita, 2}, {pizzaCalabresa, 1}}, "embalado para viagem");
+    Pedido pedido1({{pizzaCalabresa, 1}}, "embalado para viagem");
     restaurante.registrarPedido(pedido1);
+    restaurante.finalizarPedido(pedido1);
 
     return 0;
 }

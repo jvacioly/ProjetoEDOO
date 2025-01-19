@@ -30,6 +30,7 @@ class Restaurante {
         void addEstoque(const Produto& produto, int quantidade);
         bool removerEstoque(const Produto& produto, int quantidade);
         bool apagarItem(const Produto& produto);
+        bool checarEstoque(const Pedido& pedido);
         void mostrarEstoque() const;
 
 
@@ -37,12 +38,12 @@ class Restaurante {
         void carregarPedidos();
         void salvarPedidos() const;
         void registrarPedido(const Pedido& pedido);
-        /*bool removerPedido();
-        void finalizarPedido();
-        void mostrarPedidos() const;
+        // bool removerPedido();
+        void finalizarPedido(Pedido& pedido);
+        // void mostrarPedidos() const;
 
         //Outros Métodos
-        void mostrarMenu() const;*/
+        // void mostrarMenu() const;
 
 
 };

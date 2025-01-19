@@ -17,6 +17,7 @@ class Pedido {
         string observacao;
         string horarioPedido;
         double valorTotal;
+        bool finalizado = false;
         double atualizarValorTotal();
     public:
         //Construtor
@@ -24,11 +25,20 @@ class Pedido {
         explicit Pedido(const vector<pair<Prato, int>>& itens);
 
         //Get Methods
-        int getID() const {return ID;}
-        const vector<pair<Prato, int>>& getItens() const {return itens;}
-        double getValorTotal() const {return valorTotal;}
-        string getObservacao() const {return observacao;}
-        string getHorarioPedido() const {return horarioPedido;}
+        [[nodiscard]] int getID() const {return ID;}
+        [[nodiscard]] const vector<pair<Prato, int>>& getItens() const {return itens;}
+        [[nodiscard]] double getValorTotal() const {return valorTotal;}
+        [[nodiscard]] string getObservacao() const {return observacao;}
+        [[nodiscard]] string getHorarioPedido() const {return horarioPedido;}
+        [[nodiscard]] string getStatus() const {
+            if (finalizado) {
+                return "Finalizado";
+            };
+            return "Nao finalizado";
+        }
+
+        //Set Methods
+        void setStatus(bool finalizado);
 
         //Outros Métodos
         void print() const;

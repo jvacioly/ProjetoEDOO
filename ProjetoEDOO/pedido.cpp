@@ -25,6 +25,16 @@ Pedido::Pedido(const vector<pair<Prato, int>> &itens, const string& observacao)
 Pedido::Pedido(const vector<pair<Prato, int>>& itens)
     : Pedido(itens, "") {}
 
+//Set Methods
+void Pedido::setStatus(bool finalizado) {
+    if (finalizado) {
+        this->finalizado = true;
+    }
+    else {
+        this->finalizado = false;
+    }
+}
+
 //Outros Metodos
 double Pedido::atualizarValorTotal() {
     for (const auto& item : itens) {
@@ -32,7 +42,6 @@ double Pedido::atualizarValorTotal() {
     }
     return valorTotal;
 }
-
 
 void Pedido::print() const {
     cout << "Pedido: " << ID << endl;
