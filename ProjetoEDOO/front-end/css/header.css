@@ -1,0 +1,45 @@
+header{
+    position: relative;
+    padding: 36px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.inativo{
+display: flex;
+justify-content: center;
+padding: 10px 0px;
+width: 185px;
+background-color: #777777;
+border: none;
+border-radius: 4px;
+color: white;
+font-weight: 500;
+transition: .2s ease;
+text-decoration: none;
+
+}
+
+.inativo:hover{
+background-color: white;
+color: rgb(41, 41, 41);
+
+}
+
+.ativo{
+background-color: white;
+color: rgb(41, 41, 41);
+
+}
+
+#x{
+    position: absolute;
+    right: 34px;
+}
+
+#x img{
+    
+    width: 16px;
+}
