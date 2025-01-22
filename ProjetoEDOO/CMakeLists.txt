@@ -10,6 +10,8 @@ add_executable(ProjetoEDOO main.cpp
         json.hpp
         restaurante.cpp
         restaurante.h
+        cliente.cpp
+        cliente.h
 )
 
 include(FetchContent)

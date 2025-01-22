@@ -7,14 +7,18 @@
 #include "prato.h"
 
 //Construtor e Destrutor
-Restaurante::Restaurante(const vector<Prato>& menuInicial, float caixa)
-    : menu(menuInicial), caixa(caixa) {
+Restaurante::Restaurante(const string &nome, const vector<string> &endereco, const string &contato, const string &descricao,
+    const vector<Prato> &menuInicial, float caixa)
+    : nome(nome), endereco(endereco), contato(contato), descricao(descricao), menu(menuInicial), caixa(caixa) {
     carregarEstoque();
     carregarPedidos();
 }
 
+Restaurante::Restaurante(const string& nome, const vector<Prato>& menuInicial)
+    : Restaurante(nome, {"", "", ""}, "", "", menuInicial, 0) {}
+
 Restaurante::Restaurante(const vector<Prato>& menuInicial)
-    : Restaurante(menuInicial, 0) {}
+    : Restaurante("", {"", "", ""}, "", "", menuInicial, 0) {}
 
 Restaurante::~Restaurante() {
     salvarEstoque();
@@ -91,9 +95,9 @@ bool Restaurante::removerEstoque(const Produto& produto, int quantidade) {
 
     if (estoque.contains(nome) && estoque[nome]["quantidade"].get<int>() >= quantidade) {
         estoque[nome]["quantidade"] = estoque[nome]["quantidade"].get<int>() - quantidade;
-        if (estoque[nome]["quantidade"] == 0) {
+        /*if (estoque[nome]["quantidade"] == 0) {
             estoque.erase(nome);
-        }
+        }*/
         cout << "Removido " << quantidade << " unidade(s) do produto " << nome << " retirado do estoque." << endl;
         salvarEstoque();
         return true;
@@ -258,6 +262,16 @@ void Restaurante::finalizarPedido(Pedido &pedido) {
     else {
         cout << "Pedido ID:" << id << " não encontrado." << endl;
     }
+}
+
+//Outros Métodos
+void Restaurante::mostrarMenu() const {
+    cout << "----------------------------" << endl;
+    cout << "MENU:" << endl;
+    for (const auto& item : menu) {
+        cout << item.getNome() << ": " << item.getPreco() << endl;
+    }
+    cout << "----------------------------" << endl;
 }
 
 

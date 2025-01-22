@@ -16,13 +16,21 @@ class Restaurante {
     private:
         json estoque;
         json pedidos;
+        string nome;
+        vector<string> endereco; // {"rua", "numero", "cep"}
+        string contato;
+        string descricao;
         vector<Prato> menu;
         float caixa;
     public:
         //Construtor e Destrutor
-        Restaurante(const vector<Prato>& menuInicial, float caixa);
+        Restaurante(const string& nome, const vector<string>& endereco, const string& contato, const string& descricao, const vector<Prato>& menuInicial, float caixa);
+        Restaurante(const string& nome, const vector<Prato>& menuInicial);
         explicit Restaurante(const vector<Prato>& menuInicial);
         ~Restaurante();
+
+        //Get Methods
+        string getNome() const {return nome;}
 
         //Métodos do Estoque
         void carregarEstoque();
@@ -33,7 +41,6 @@ class Restaurante {
         bool checarEstoque(const Pedido& pedido);
         void mostrarEstoque() const;
 
-
         //Métodos dos Pedidos (EM DESENVOLVIMENTO)
         void carregarPedidos();
         void salvarPedidos() const;
@@ -43,7 +50,7 @@ class Restaurante {
         // void mostrarPedidos() const;
 
         //Outros Métodos
-        // void mostrarMenu() const;
+        void mostrarMenu() const;
 
 
 };

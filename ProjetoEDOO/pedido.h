@@ -23,6 +23,7 @@ class Pedido {
         //Construtor
         Pedido(const vector<pair<Prato, int>>& itens, const string& observacao);
         explicit Pedido(const vector<pair<Prato, int>>& itens);
+        Pedido();
 
         //Get Methods
         [[nodiscard]] int getID() const {return ID;}
@@ -39,14 +40,15 @@ class Pedido {
 
         //Set Methods
         void setStatus(bool finalizado);
+        void setObs(const string& observacao);
 
         //Outros Métodos
         void print() const;
         void addPrato(const Prato& prato, int quantidade);
         void removePrato(int codigoProduto);
+        void addObservacao(const string& observacao);
 
 };
-
 
 
 #endif //PEDIDO_H

@@ -4,11 +4,46 @@
 
 #include "pedido.h"
 #include <chrono>
+#include <fstream>
+#include <random>
+#include "json.hpp"
 
+using json = nlohmann::json;
 
 //Construtor
 Pedido::Pedido(const vector<pair<Prato, int>> &itens, const string& observacao)
-    : ID(0), itens(itens), observacao(observacao), valorTotal(atualizarValorTotal()){
+    : itens(itens), observacao(observacao), valorTotal(atualizarValorTotal()){
+    // Gerar ID do pedido
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> distrib(10000000, 99999999);
+
+    int novoID;
+    bool IDUnico = false;
+
+    json pedidosExistentes;
+    ifstream pedidosFile("D:/Victor/Faculdade/Projetos/ProjetoEDOO/banco_de_dados/pedidos.json");
+    if (pedidosFile.is_open()) {
+        pedidosFile >> pedidosExistentes;
+        pedidosFile.close();
+    }
+    else {
+        pedidosExistentes = json::array();
+    }
+    do {
+        novoID = distrib(gen);
+        IDUnico = true;
+        for (const auto& pedido : pedidosExistentes) {
+            if (pedido.contains("ID") && pedido["ID"] == novoID) {
+                IDUnico = false;
+                break;
+            }
+        }
+    }while (!IDUnico);
+
+    ID = distrib(gen);
+
+    // Horário do Pedido
     auto agora = chrono::system_clock::now();
     time_t horaAtual = chrono::system_clock::to_time_t(agora);
 
@@ -17,13 +52,13 @@ Pedido::Pedido(const vector<pair<Prato, int>> &itens, const string& observacao)
     oss << put_time(&horaLocal, "%H:%M:%S");
 
     horarioPedido = oss.str();
-
-    //Cálculo do valor total
-
 }
 
 Pedido::Pedido(const vector<pair<Prato, int>>& itens)
     : Pedido(itens, "") {}
+
+Pedido::Pedido()
+    :Pedido({}, "") {}
 
 //Set Methods
 void Pedido::setStatus(bool finalizado) {
@@ -32,6 +67,12 @@ void Pedido::setStatus(bool finalizado) {
     }
     else {
         this->finalizado = false;
+    }
+}
+
+void Pedido::setObs(const string &observacao) {
+    if (!observacao.empty()) {
+        this->observacao = observacao;
     }
 }
 
@@ -44,6 +85,7 @@ double Pedido::atualizarValorTotal() {
 }
 
 void Pedido::print() const {
+    cout << "------------------------------------------" << endl;
     cout << "Pedido: " << ID << endl;
     cout.precision(2);
     cout << "Valor: R$" << fixed << valorTotal << endl;
@@ -51,6 +93,7 @@ void Pedido::print() const {
         cout << item.first.getNome() << ": " << item.second << " - R$" << fixed << item.first.getPreco()  << endl;
     }
     cout << "Total: R$" << fixed << valorTotal << endl;
+    cout << "------------------------------------------" << endl;
 }
 
 void Pedido::addPrato(const Prato& prato, int quantidade) {
@@ -78,6 +121,10 @@ void Pedido::removePrato(int codigoPrato) {
         }
     }
     cout << "PRATO NAO ENCONTRADO NO PEDIDO" << endl;
+}
+
+void Pedido::addObservacao(const string &observacao) {
+    this->observacao = this->observacao + " - " + observacao;
 }
 
 
