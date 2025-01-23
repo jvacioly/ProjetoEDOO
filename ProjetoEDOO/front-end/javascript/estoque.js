@@ -52,7 +52,7 @@ function verificarOpcao() {
 
     }
 }
-//Eventlisteners
+//Eventlisteners Popups
 
 //popup ADD
 botaoAdicionar.addEventListener("click", abrirPopupADD)
@@ -69,7 +69,15 @@ adicionarItembtn.addEventListener("click", function() {
     }
     let formData = new FormData(formAdcionar)
 
-    console.log(Object.fromEntries(formData.entries()));
+    let formObject = Object.fromEntries(formData.entries())
+
+    formObject["acao"] = "adicionar"
+
+    console.log(formObject);
+
+    const jsonData = JSON.stringify(formObject)
+
+    socket.send(jsonData)
 
     fecharPopupADD()
 })
@@ -97,7 +105,7 @@ radioAdd.addEventListener("change", verificarOpcao);
 radioRem.addEventListener("change", verificarOpcao);
 
 
-//Script de recarregar o estoque
+//Script de Recarregar o Estoque e Criar Conexão
 
 // Criando a conexão WebSocket com o servidor C++
 const socket = new WebSocket('ws://localhost:8000/ws');
@@ -151,3 +159,6 @@ socket.onopen = function() {
     // Não é necessário enviar nada no momento, mas pode ser feito para solicitar dados
     socket.send('Solicitar Estoque');  // Exemplo de uma requisição
 };
+
+
+
