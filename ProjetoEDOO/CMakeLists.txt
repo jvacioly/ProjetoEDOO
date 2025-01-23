@@ -11,7 +11,6 @@ add_executable(ProjetoEDOO main.cpp
         restaurante.cpp
         restaurante.h
         cliente.cpp
-        cliente.h
 )
 
 include(FetchContent)
@@ -24,7 +23,12 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(json)
 
-# CivetWeb
+
+target_link_libraries(ProjetoEDOO PRIVATE nlohmann_json::nlohmann_json)
+
+# =======================
+# Adicionando CivetWeb
+# =======================
 FetchContent_Declare(
         civetweb
         GIT_REPOSITORY https://github.com/civetweb/civetweb.git
@@ -33,4 +37,19 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(civetweb)
 
-target_link_libraries(ProjetoEDOO PRIVATE nlohmann_json::nlohmann_json civetweb)
+# Adicionar CivetWeb como uma biblioteca estática
+add_library(civetweb STATIC
+        ${civetweb_SOURCE_DIR}/src/civetweb.c
+)
+
+# Definir flags de compilação para desativar funcionalidades não usadas e ativar WebSockets
+target_compile_definitions(civetweb PRIVATE -DNO_CGI -DNO_SSL -DUSE_WEBSOCKET)
+
+# Incluir diretórios do CivetWeb
+target_include_directories(civetweb PUBLIC ${civetweb_SOURCE_DIR}/include)
+
+# Linkar CivetWeb ao projeto principal
+target_link_libraries(ProjetoEDOO PRIVATE civetweb ws2_32)
+
+# Mensagem de depuração
+message(STATUS "CivetWeb foi baixado para: ${civetweb_SOURCE_DIR}")

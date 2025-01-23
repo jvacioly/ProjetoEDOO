@@ -100,3 +100,46 @@ salvaralteracoesbtn.addEventListener("click", function() {
 //eventos de mudança nos radios
 radioAdd.addEventListener("change", verificarOpcao);
 radioRem.addEventListener("change", verificarOpcao);
+
+
+//script de recarregar o estoque
+
+// Criando a conexão WebSocket com o servidor C++
+const socket = new WebSocket('ws://localhost:8000/ws');
+
+// Função para tratar mensagens recebidas do servidor (JSON com dados do estoque)
+socket.onmessage = function(event) {
+    // Convertendo a string JSON para um objeto JavaScript
+    const dados = JSON.parse(event.data);
+
+    console.log(dados)
+
+    /*
+    // Selecionando o container para exibir o estoque
+    const container = document.querySelector('.itens');
+    container.innerHTML = '';  // Limpar o conteúdo existente
+
+    // Iterando sobre os dados e exibindo-os
+    dados.forEach(produto => {
+        const divProduto = document.createElement('div');
+        divProduto.classList.add('item');
+        divProduto.innerHTML = `
+                    <p class="nome">Nome</p>
+                    <p class="quant">Quant</p>
+                    <p class="status">Status</p>
+                    <p class="entrada">Entrada</p>
+                    <p class="saida">Saída</p>
+                    <p class="balanco">Balanço</p>
+                    <p class="categoria">Categoria</p>
+                    <img src="imagens/settings.svg" alt="" class="ajustes">
+                `;
+        container.appendChild(divProduto);
+    }); */
+};
+
+// Função para quando a conexão for aberta
+socket.onopen = function() {
+    console.log("Conexão WebSocket estabelecida");
+    // Não é necessário enviar nada no momento, mas pode ser feito para solicitar dados
+    socket.send('Solicitar Estoque');  // Exemplo de uma requisição
+};
