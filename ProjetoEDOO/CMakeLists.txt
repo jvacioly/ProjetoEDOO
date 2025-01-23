@@ -24,4 +24,13 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(json)
 
-target_link_libraries(ProjetoEDOO PRIVATE nlohmann_json::nlohmann_json)
+# CivetWeb
+FetchContent_Declare(
+        civetweb
+        GIT_REPOSITORY https://github.com/civetweb/civetweb.git
+        GIT_TAG v1.16
+)
+
+FetchContent_MakeAvailable(civetweb)
+
+target_link_libraries(ProjetoEDOO PRIVATE nlohmann_json::nlohmann_json civetweb)
