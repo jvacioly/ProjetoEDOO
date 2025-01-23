@@ -1,5 +1,4 @@
 
-
 // Popups
 
 //inicializando variaveis
@@ -12,7 +11,6 @@ let formAdcionar = document.querySelector("#adicionar form")
 let formEditar = document.querySelector("#editar form")
 let xADD = document.querySelector("#xADD")
 let xEDIT = document.querySelector("#xEDIT")
-let ajustesbtn = document.querySelectorAll("img.ajustes")
 let radioAdd = document.getElementById("radioAdd");
 let radioRem = document.getElementById("radioRem");
 let campoAdicionar = document.querySelector(".text.campoAdd");
@@ -77,9 +75,6 @@ adicionarItembtn.addEventListener("click", function() {
 })
 
 //popup EDIT
-ajustesbtn.forEach(element => {element.addEventListener("click", abrirPopupEDIT)
-    
-});
 
 overlayEDIT.addEventListener("click", function (event) {
     if (event.target === overlayEDIT) { 
@@ -102,7 +97,7 @@ radioAdd.addEventListener("change", verificarOpcao);
 radioRem.addEventListener("change", verificarOpcao);
 
 
-//script de recarregar o estoque
+//Script de recarregar o estoque
 
 // Criando a conexão WebSocket com o servidor C++
 const socket = new WebSocket('ws://localhost:8000/ws');
@@ -114,28 +109,41 @@ socket.onmessage = function(event) {
 
     console.log(dados)
 
-    /*
+    const estoqueArray = Object.keys(dados).map(key => {
+        return { nome: key, ...dados[key] };
+    });
+
+    console.log(estoqueArray);
+
+
     // Selecionando o container para exibir o estoque
     const container = document.querySelector('.itens');
     container.innerHTML = '';  // Limpar o conteúdo existente
 
     // Iterando sobre os dados e exibindo-os
-    dados.forEach(produto => {
-        const divProduto = document.createElement('div');
-        divProduto.classList.add('item');
-        divProduto.innerHTML = `
-                    <p class="nome">Nome</p>
-                    <p class="quant">Quant</p>
-                    <p class="status">Status</p>
-                    <p class="entrada">Entrada</p>
-                    <p class="saida">Saída</p>
-                    <p class="balanco">Balanço</p>
-                    <p class="categoria">Categoria</p>
+    estoqueArray.forEach(item => {
+            const divItem = document.createElement('div');
+            divItem.classList.add('item');
+            divItem.innerHTML = `
+                    <p class="nome">${item.nome}</p>
+                    <p class="quant">${item.quantidade}</p>
+                    <p class="status">R$ ${item.preco}</p>
+                    <p class="entrada">${item.categoria}</p>
+                    <p class="saida">Status</p>
+                    <p class="balanco">Entrada</p>
+                    <p class="categoria">Saida</p>
                     <img src="imagens/settings.svg" alt="" class="ajustes">
                 `;
-        container.appendChild(divProduto);
-    }); */
-};
+            container.appendChild(divItem);
+
+            let ajustesbtn = divItem.querySelector("img.ajustes")
+            ajustesbtn.addEventListener("click", abrirPopupEDIT)
+
+        })
+
+    }
+
+
 
 // Função para quando a conexão for aberta
 socket.onopen = function() {
