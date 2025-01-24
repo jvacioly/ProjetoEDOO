@@ -16,10 +16,10 @@ class Produto {
         string nome;
         double preco;
         string categoria;
-        string descricao;
+        string medida;
     public:
         //Construtor
-        Produto(int codigo, const string& nome, double preco, const string& categoria, const string& descricao);
+        Produto(int codigo, const string& nome, double preco, const string& categoria, const string& medida);
         Produto(int codigo, const string& nome, double preco);
 
         //Get Methods
@@ -27,13 +27,13 @@ class Produto {
         [[nodiscard]] const string& getNome() const { return nome; };
         [[nodiscard]] double getPreco() const { return preco; };
         [[nodiscard]] const string& getCategoria() const { return categoria; };
-        [[nodiscard]] const string& getDescricao() const { return descricao; };
+        [[nodiscard]] const string& getMedida() const { return medida; };
 
         //Set Methods
         void setNome(const string& nome);
         void setPreco(double preco);
         void setCategoria(const string& categoria);
-        void setDescricao(const string& descricao);
+        void setMedida(const string& medida);
 
         void print() const;
 };

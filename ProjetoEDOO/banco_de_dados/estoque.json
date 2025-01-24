@@ -48,6 +48,13 @@
         "preco": 10.0,
         "quantidade": 748
     },
+    "Peperoni": {
+        "categoria": "Carnes",
+        "codigo": 0,
+        "descricao": "Kg",
+        "preco": 25.0,
+        "quantidade": 100
+    },
     "Queijo": {
         "categoria": "",
         "codigo": 2,
@@ -61,5 +68,12 @@
         "descricao": "",
         "preco": 5.5,
         "quantidade": 792
+    },
+    "morango": {
+        "categoria": "Frutas",
+        "codigo": 0,
+        "descricao": "Un",
+        "preco": 2.0,
+        "quantidade": 50
     }
 }

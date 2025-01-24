@@ -73,8 +73,8 @@ void Restaurante::addEstoque(const Produto &produto, int quantidade) {
     int codigo = produto.getCodigo();
     double preco = produto.getPreco();
     const string& categoria = produto.getCategoria();
-    const string& descricao = produto.getDescricao();
-    float valorTotal = quantidade * preco;
+    const string& descricao = produto.getMedida();
+    double valorTotal = quantidade * preco;
 
     if (estoque.contains(nome) && estoque[nome].is_object()) {
         estoque[nome]["quantidade"] = estoque[nome]["quantidade"].get<int>() + quantidade;
@@ -94,6 +94,7 @@ void Restaurante::addEstoque(const Produto &produto, int quantidade) {
     if (compraPossivel) {
         salvarEstoque();
     }
+    salvarEstoque();
 }
 
 bool Restaurante::removerEstoque(const Produto& produto, int quantidade) {

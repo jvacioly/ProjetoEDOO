@@ -11,6 +11,7 @@ add_executable(ProjetoEDOO main.cpp
         restaurante.cpp
         restaurante.h
         cliente.cpp
+        globals.h
 )
 
 include(FetchContent)
