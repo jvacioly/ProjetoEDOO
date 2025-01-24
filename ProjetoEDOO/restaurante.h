@@ -16,6 +16,7 @@ class Restaurante {
     private:
         json estoque;
         json pedidos;
+        json fluxo;
         string nome;
         vector<string> endereco; // {"rua", "numero", "cep"}
         string contato;
@@ -30,7 +31,7 @@ class Restaurante {
         ~Restaurante();
 
         //Get Methods
-        string getNome() const {return nome;}
+        [[nodiscard]] string getNome() const {return nome;}
 
         //Métodos do Estoque
         void carregarEstoque();
@@ -48,6 +49,13 @@ class Restaurante {
         // bool removerPedido();
         void finalizarPedido(Pedido& pedido);
         // void mostrarPedidos() const;
+
+        //Métodos do Fluxo
+        void carregarFluxo();
+        void salvarFluxo() const;
+        bool registrarCompra(double valor);
+        void registrarVenda(double valor);
+        // void mostrarRanking() const;
 
         //Outros Métodos
         void mostrarMenu() const;

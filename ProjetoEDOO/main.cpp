@@ -115,7 +115,7 @@ int main() {
             cout << "Quantidade: "; cin >> quantidade;
             optional<Prato> pratoOpt = encontrarPrato(menu, nomePrato);
             if (pratoOpt) {
-                Prato prato = pratoOpt.value();
+                const Prato& prato = pratoOpt.value();
                 string observacao;
 
                 cout << "Alguma observacao? (s/n): "; cin >> input;
@@ -161,7 +161,7 @@ int main() {
                     cout << "Quantidade: "; cin >> quantidade;
                     optional<Prato> pratoOpt2 = encontrarPrato(menu, nomePrato);
                     if (pratoOpt2) {
-                        Prato prato = pratoOpt2.value();
+                        const Prato& prato = pratoOpt2.value();
                         string observacao;
 
                         cout << "Alguma observacao? (s/n): "; cin >> input;
