@@ -71,6 +71,20 @@ adicionarItembtn.addEventListener("click", function() {
 
     let formObject = Object.fromEntries(formData.entries())
 
+
+    const elementosP = document.querySelectorAll('.nome');
+
+    const nomes = Array.from(elementosP).map(p => p.textContent);
+
+    console.log(nomes);
+    
+    const itemEncontrado = nomes.find(item => formObject.nome === item);
+    if (itemEncontrado) {
+        alert(`Item ${formObject.nome} já existe!`);
+        return
+    }
+
+
     formObject["acao"] = "adicionar"
 
     console.log(formObject);
@@ -78,8 +92,16 @@ adicionarItembtn.addEventListener("click", function() {
     const jsonData = JSON.stringify(formObject)
 
     socket.send(jsonData)
+    console.log("enviado")
 
     fecharPopupADD()
+
+        
+            
+    
+    
+
+    
 })
 
 //popup EDIT
@@ -130,14 +152,15 @@ socket.onmessage = function(event) {
 
     // Iterando sobre os dados e exibindo-os
     estoqueArray.forEach(item => {
+            let valorTotal = (parseFloat(item.preco, 10) * parseFloat(item.quantidade, 10))
             const divItem = document.createElement('div');
             divItem.classList.add('item');
             divItem.innerHTML = `
                     <p class="nome">${item.nome}</p>
                     <p class="quant">${item.quantidade} (${item.descricao})</p>
-                    <p class="status">R$ ${item.preco}</p>
-                    <p class="entrada">${item.categoria}</p>
-                    <p class="saida">Status</p>
+                    <p class="valor">R$ ${item.preco}</p>
+                    <p class="categoria">${item.categoria}</p>
+                    <p class="saida">R$ ${valorTotal}</p>
                     <p class="balanco">Entrada</p>
                     <p class="categoria">Saida</p>
                     <img src="imagens/settings.svg" alt="" class="ajustes">

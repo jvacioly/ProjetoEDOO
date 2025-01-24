@@ -154,7 +154,7 @@ main{
     overflow: hidden;
 }
 
-.status{
+.valor{
     width: 83px;
     text-overflow: ellipsis;
     overflow: hidden;
