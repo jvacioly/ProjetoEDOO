@@ -29,7 +29,7 @@ Restaurante::~Restaurante() {
 
 //Métodos do Estoque
 void Restaurante::carregarEstoque() {
-    ifstream estoqueFile("D:/Victor/Faculdade/Projetos/ProjetoEDOO/banco_de_dados/estoque.json"); //COLOCAR O CAMINHO INTEIRO DO ARQUIVO
+    ifstream estoqueFile("C:/Users/kddu4/ProjetoEDOO/ProjetoEDOO/banco_de_dados/estoque.json"); //COLOCAR O CAMINHO INTEIRO DO ARQUIVO
     estoque = json::object();  // Inicializa como objeto vazio
 
     if (estoqueFile.is_open()) {
@@ -57,7 +57,7 @@ void Restaurante::carregarEstoque() {
 }
 
 void Restaurante::salvarEstoque() const {
-    ofstream estoqueFile("D:/Victor/Faculdade/Projetos/ProjetoEDOO/banco_de_dados/estoque.json");  // COLOCAR O CAMINHO INTEIRO DO ARQUIVO
+    ofstream estoqueFile("C:/Users/kddu4/ProjetoEDOO/ProjetoEDOO/banco_de_dados/estoque.json");  // COLOCAR O CAMINHO INTEIRO DO ARQUIVO
     if (estoqueFile.is_open()) {
         estoqueFile << estoque.dump(4);  // Grava o conteúdo do JSON com formatação
         estoqueFile.close();

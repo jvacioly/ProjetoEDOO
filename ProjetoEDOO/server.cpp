@@ -12,7 +12,7 @@ using namespace std;
 
 // Função que envia os dados de estoque em formato JSON
 void send_estoque_json(struct mg_connection *conn) {
-    ifstream file("D:/Victor/Faculdade/Projetos/ProjetoEDOO/banco_de_dados/estoque.json");
+    ifstream file("C:/Users/kddu4/ProjetoEDOO/ProjetoEDOO/banco_de_dados/estoque.json");
     json estoque;
     file >> estoque;
 
