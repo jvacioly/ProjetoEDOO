@@ -1,0 +1,516 @@
+body{
+    overflow-y: hidden;
+}
+
+.fluxoCaixa{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin-top: 24px;
+    gap: 20px;
+}
+
+.caixa{
+    background-color: white;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    position: relative;
+    width: 288.5px;
+    height: 108px;
+    border-radius: 4px;
+    box-shadow: 0px 9px 20.4px 2px rgba(0, 16, 37, 0.10);
+    padding: 16px;
+    gap: 2px;
+}
+
+
+.caixa h2{
+    font-size: 20px;
+    color: black;
+    opacity: .6;
+}
+
+.valores{
+    font-size: 20px;
+    font-weight: 800;
+    color: #333333;
+}
+
+.icone{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+}
+.icone p{
+    font-size: 12px;
+    padding-top: 2px;
+    opacity: .9;
+}
+
+
+
+
+
+main{
+    margin-top: 36px;
+    padding: 0px 33px;
+    display: flex;
+    align-items: start;
+    gap: 20px;
+    
+}
+
+.container1{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    width: 185px;
+}
+.container1 button{
+    background-color: #388CFF;
+    width: 185px;
+    padding: 10px 0px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 8px;
+    transition: .2s ease;
+    cursor: pointer;
+
+}
+
+.container1 button:hover{
+    background-color: #569cfd;
+}
+
+.filtro{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    width: 185px;
+    border-radius: 4px;
+    box-shadow: 0px 9px 20.4px 2px rgba(0, 16, 37, 0.10);
+}
+
+.filtro h3{
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 0px;
+    width: 100%;
+    border-bottom: 2px solid #E9ECF2;
+}
+.filtro form{
+    display: flex;
+    flex-direction: column;
+    padding: 16px 4px;
+    gap: 8px;
+}
+
+.filtro form label{
+    font-size: 12px;
+}
+
+
+.container2{
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 288px);
+
+}
+
+
+.cabecalho{
+    display: flex;
+    padding: 11px 12px;
+    gap: 20px;
+}
+
+.cabecalho p{
+    font-size: 14px;
+    font-weight: 500;
+    
+}
+
+.nome {
+    width: 174px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.quant{
+    width: 83px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.status{
+    width: 83px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.categoria{
+    width: 83px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.entrada{
+    width: 83px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.saida{
+    width: 83px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.balanco{
+    width: 83px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.ajustes{
+    margin-left: 111px;
+    width: 24px;
+    cursor: pointer;
+}
+
+
+.itens{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100%;
+    gap: 8px;
+    flex-wrap: nowrap;
+    margin-top: 7px;
+    padding-right: 18px;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.item p{
+    font-size: 12px;
+}
+
+
+
+#adicionar{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: white;
+    z-index: 10;
+    padding: 16px;
+    row-gap: 16px;
+    border-radius: 4px;
+
+}
+
+#adicionar h3{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#adicionar img{
+    width: 16px;
+    position: absolute;
+    right: 16px;
+    cursor: pointer;
+}
+
+#adicionar form{
+    display: flex;
+    width: 404px;
+    flex-wrap: wrap;
+    column-gap: 12px;
+    row-gap: 8px;
+}
+
+#adicionar label{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    row-gap: 4px;
+
+}
+
+#adicionar input{
+    padding: 6px 4px;
+    font-size: 14px;
+    background-color: #eaeaea;
+    border: none;
+    border-radius: 4px;
+}
+
+#adicionar input:focus{
+    outline: none;
+}
+
+#adicionar button{
+    background-color: #388CFF;
+    width: 185px;
+    padding: 10px 0px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 8px;
+    transition: .2s ease;
+    cursor: pointer;
+
+}
+
+#adicionar button:hover{
+    background-color: #569cfd;
+}
+
+#adicionar label:nth-child(1) input{
+    width: 162px;
+}
+
+#adicionar label:nth-child(4) input{
+    width: 104px;
+}
+#adicionar label:nth-child(5) input{
+    width: 104px;
+}
+
+
+#categoria{
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: #EAEAEA;
+    padding: 5px 0px;
+    width: 162px;
+}
+
+#categoria:focus {
+    outline: none;
+}
+
+#categoria option{
+    font-size: 12px;
+    background-color: white;
+    
+}
+
+
+#medida{
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: #EAEAEA;
+    padding: 5px 0px;
+    width: 56px;
+}
+
+#medida:focus {
+    outline: none;
+}
+
+#medida option{
+    font-size: 12px;
+    background-color: white;
+    
+}
+
+.overlay {
+    position: absolute;  /* Fixa no viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Preto com 60% de opacidade */
+    display: none; /* Inicialmente escondido */
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay.add{
+    display: none;
+}
+
+.overlay.edit{
+    display: none;
+}
+
+#editar{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: white;
+    z-index: 10;
+    padding: 16px;
+    row-gap: 16px;
+    border-radius: 4px;
+    width: 596px;
+
+}
+
+#editar h3{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#editar img{
+    width: 16px;
+    position: absolute;
+    right: 16px;
+    cursor: pointer;
+}
+
+#editar form{
+    display: flex;
+    width: 404px;
+    flex-wrap: wrap;
+    column-gap: 12px;
+    row-gap: 8px;
+}
+
+#editar label{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    row-gap: 4px;
+
+}
+
+#editar input{
+    padding: 6px 4px;
+    font-size: 14px;
+    background-color: #eaeaea;
+    border: none;
+    border-radius: 4px;
+}
+
+#editar input:focus{
+    outline: none;
+}
+
+#buttondiv{
+    display: flex;
+    column-gap: 12px;
+}
+
+#salvaralteracoesBotao{
+    background-color: #388CFF;
+    width: 185px;
+    padding: 10px 0px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 8px;
+    transition: .2s ease;
+    cursor: pointer;
+
+}
+
+#salvaralteracoesBotao:hover{
+    background-color: #569cfd;
+}
+
+#editar label:nth-child(1) input{
+    width: 162px;
+}
+
+#editar label:nth-child(4) input{
+    width: 104px;
+}
+#editar label:nth-child(5) input{
+    width: 104px;
+}
+
+#removerBotao{
+    background-color: #DE6264;
+    width: 185px;
+    padding: 10px 0px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 8px;
+    transition: .2s ease;
+    cursor: pointer;
+
+}
+
+#removerBotao:hover{
+    background-color: #f16668;
+}
+
+#quant{
+    position: absolute;
+    right: 48px;
+    top: 16px;
+
+}
+
+#quant h3{
+    margin-bottom: 16px;
+    width: 104px;
+}
+
+#editar label.radio{
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    row-gap: 0px;
+    margin-bottom: 0px;
+    margin-top: 12px;
+
+
+}
+
+#editar label.radio input{
+    width: 16px;
+    margin-left: 4px;
+
+}
+#editar label.radio:last-child input{
+    margin-left: 7px;
+}
+
+#editar label.text{
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+
+}
+#editar label.text input{
+    display: flex;
+    flex-direction: column;
+    width: 104px;
+}
+
+#editar label.text.campoAdd{
+    display: none;
+}
+
+#editar label.text.campoRem{
+    display: none;
+}

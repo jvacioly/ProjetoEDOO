@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/fonte.css">
+    <link rel="stylesheet" href="css/restaurante.css">
+
+
+</head>
+<body>
+    <header>
+        <a href="retaurante.html" class="inativo ativo">
+            Restaurante
+        </a>
+        <a href="pedidos.html" class="inativo">
+            Pedidos
+        </a>
+        <a href="estoque.html" class="inativo">
+            Estoque
+        </a>
+
+        <a href="login.html" id="x"><img src="imagens/x.svg" alt="" ></a>
+    </header>
+
+    <main>
+        <h2>Configuração do Restaurante</h2>
+        <div id="restaurante">
+            <div class="container info">
+                <form action="">
+                    <label name="configuracao">Nome<input type="text"></label>
+                    <label name="configuracao">Email<input type="email"></label>
+                    <label name="configuracao">Número de Contato<input type="tel"></label>
+                    <label name="configuracao">Senha<input type="password"></label>
+                    <label name="configuracao">Endereço<input type="text"></label>
+                    <label name="configuracao">Número<input type="number"></label>
+                    <label name="configuracao">CEP<input type="text"></label>
+                    <label name="configuracao">Tempo de Preparo<input type="text"></label>
+                </form>
+
+            </div>
+            <div class="container funcionamento">
+                <h2>Horários de Funcionamento</h2>
+                <form action="">
+                    <div> <label for="dias"><h3>Dias</h3></label>
+        
+                        <label><input type="checkbox" name="dias" value="segunda"> Seg</label>
+                        <label><input type="checkbox" name="dias" value="terca"> Ter</label>
+                        <label><input type="checkbox" name="dias" value="quarta"> Qua</label>
+                        <label><input type="checkbox" name="dias" value="quinta"> Qui</label>
+                        <label><input type="checkbox" name="dias" value="sexta"> Sex</label>
+                        <label><input type="checkbox" name="dias" value="sabado"> Sáb</label>
+                        <label><input type="checkbox" name="dias" value="domingo"> Dom</label>
+                          
+                    </div>
+                    
+                    <div>
+                        <label for="horarios"><h3>Horários:</h3></label>
+                        <div id="horarios">
+                            
+                            <label for="inicio">Início:<input type="time" id="inicio" name="inicio"></label>
+                            
+                            
+                            
+                            <label for="fim">Fim:<input type="time" id="fim" name="fim"></label>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                </form>
+
+            </div>
+            <div class="container imagens">
+                <form action="">
+                    <label for="">Logo<input type="file" name="logo" accept="image/*"></label>
+                    <label for="">Foto<input type="file" name="foto" accept="image/*"></label>
+                    <label for="">Descrição <textarea name="descricacao" rows="30" placeholder="Digite a descrição do restaurante"></textarea></label>
+                </form>
+
+            </div>
+            <button>Salvar Alterações</button>
+
+        </div>
+        <h2>Editar Cardápio</h2>
+        <button id="addCategoria">Adicionar Categoria</button>   
+
+        <div id="cardapio">
+            
+            <div class="categoria">
+                <div class="cabecalho">
+                    <label for=""><input type="text">Ordem</label>
+                    <p>Categoria X</p>
+                    <img src="imagens/settings.svg" alt="">
+                </div>
+                <button>Adicionar Prato</button>
+                <div id="scroll">
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="categoria">
+                <div class="cabecalho">
+                    <label for=""><input type="text">Ordem</label>
+                    <p>Categoria X</p>
+                    <img src="imagens/settings.svg" alt="">
+                </div>
+                <button>Adicionar Prato</button>
+                <div id="scroll">
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="categoria">
+                <div class="cabecalho">
+                    <label for=""><input type="text">Ordem</label>
+                    <p>Categoria X</p>
+                    <img src="imagens/settings.svg" alt="">
+                </div>
+                <button>Adicionar Prato</button>
+                <div id="scroll">
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="categoria">
+                <div class="cabecalho">
+                    <label for=""><input type="text">Ordem</label>
+                    <p>Categoria X</p>
+                    <img src="imagens/settings.svg" alt="">
+                </div>
+                <button>Adicionar Prato</button>
+                <div id="scroll">
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="categoria">
+                <div class="cabecalho">
+                    <label for=""><input type="text">Ordem</label>
+                    <p>Categoria X</p>
+                    <img src="imagens/settings.svg" alt="">
+                </div>
+                <button>Adicionar Prato</button>
+                <div id="scroll">
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                    <div class="prato">
+                    <p>Prato X</p>  
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </main>
+    
+
+    
+    
+</body>
+</html>

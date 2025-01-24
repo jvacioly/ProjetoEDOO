@@ -1,0 +1,100 @@
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+#restaurante{
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background-color: #8895A1;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    transition: .1s ease;
+    cursor: pointer;
+
+}
+#restaurante:hover{
+    background-color: #a4b2c0;
+    font-size: 14px;
+    font-weight: 500;
+}
+#prestaurante{
+    color: white;
+}
+div {
+    height: 480px;
+    width: 380px;
+    padding: 64px 64px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    
+}
+h2{
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+label{
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    align-self: baseline;
+}
+
+input{
+    padding: 16px 8px;
+    width: 100%;
+    background-color: #EAEAEA;
+    border: none;
+    border-radius: 4px;
+}
+input:focus{
+    outline: none;
+    
+}
+
+form a{
+    width: 100%;
+}
+
+form button{
+    width: 100%;
+    margin-top: 48px;
+    padding: 16px 0px;
+    background-color: #388CFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    letter-spacing: .6px;
+    cursor: pointer;
+    transition: .1s ease;
+
+}
+
+form button:hover{
+    background-color: #569cfd;
+
+}

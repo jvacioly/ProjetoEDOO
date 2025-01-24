@@ -1,3 +1,4 @@
+
 #include <string>
 #include "json.hpp"
 #include "produto.h"
@@ -5,9 +6,17 @@
 #include "pedido.h"
 #include "restaurante.h"
 #include "cliente.h"
+#include "server.cpp"
 
 using namespace std;
 
+
+int main() {
+    setup_websocket_server();
+    return 0;
+}
+
+/*
 optional<Prato> encontrarPrato(const vector<Prato>& menu, const string& nomePrato) {
     for (const auto& prato : menu) {
         if (prato.getNome() == nomePrato) {
@@ -186,3 +195,4 @@ int main() {
     }
     return 0;
 }
+*/

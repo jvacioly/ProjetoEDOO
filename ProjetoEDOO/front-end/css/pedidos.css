@@ -1,0 +1,95 @@
+#pedidos{
+    display: flex;
+    width: 100%;
+    column-gap: 20px;
+    flex-wrap: wrap;
+    padding: 24px 33px 0px 33px;
+    
+}
+.aba{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    width: 288.5px;
+    min-width: 288.5px;
+    height: calc(100vh - 136px);
+    box-shadow: 0px 9px 20.4px 2px rgba(0, 16, 37, 0.10);
+    padding-bottom: 8px;
+}
+
+.cabecalho{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0px;
+    position: relative;
+    border-bottom: 2px #E9ECF2 solid;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.cabecalho p{
+    position: absolute;
+    font-size: 16px;
+    font-weight: 500;
+    left: 50%;
+    transform: translate(-50%);
+    width: max-content;
+    
+}
+
+
+.pedido{
+    background-color: #777777;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 241px;
+    padding: 16px 12px;
+    border-radius: 4px;
+    transition: .2s ease;
+    
+}
+
+.pedido:hover{
+    background-color: #9f9f9f;
+}
+
+.pedido p{
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+
+}
+
+#scroll{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 8px;
+    overflow-y: scroll;
+    padding-right: 8px;
+    margin-right: -17px;
+}
+
+
+#scroll::-webkit-scrollbar{
+    width: 9px;
+
+}
+#scroll::-webkit-scrollbar-thumb{
+    background-color: #777777;
+    width: 9px;
+    border-radius: 16px;
+    border: none;
+
+}
+
+#scroll::-webkit-scrollbar-track{
+    background: none;
+
+}

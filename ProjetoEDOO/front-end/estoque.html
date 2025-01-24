@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/estoque.css">
+    <link rel="stylesheet" href="css/fonte.css">
+    <script src="javascript/estoque.js" defer></script>
+</head>
+<body>
+    <header>
+        <a href="retaurante.html" class="inativo">
+            Restaurante
+        </a>
+        <a href="pedidos.html" class="inativo">
+            Pedidos
+        </a>
+        <a href="estoque.html" class="inativo ativo">
+            Estoque
+        </a>
+
+        <a href="login.html" id="x"><img src="imagens/x.svg" alt="" ></a>
+    </header>
+
+    <div class="fluxoCaixa">
+        <div class="caixa">
+            <p class="valores">R$11.451,00</p>
+            <h2>Receita</h2>
+        </div>
+        <div class="caixa">
+            <p class="valores">R$11.451,00</p>
+            <h2>Despesa de Custos</h2>
+        </div>
+        <div class="caixa">
+            <p class="valores">R$11.451,00</p>
+            <h2>Lucros</h2>
+        </div>
+        <div class="caixa">
+            <h2>Métricas</h2>
+            <div class="icone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 48 48" fill="none">
+                    <rect width="48" height="48" rx="4" fill="#333333"/>
+                    <path d="M19.082 29.1602V19.082M19.082 19.082H29.1602M19.082 19.082L30 30" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M40 36V12C40 9.79086 38.2091 8 36 8H12C9.79086 8 8 9.79086 8 12V36C8 38.2091 9.79086 40 12 40H36C38.2091 40 40 38.2091 40 36Z" stroke="white" stroke-width="2"/>
+                    </svg>
+                <p>Visualizar</p>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        
+        <div class="overlay add"><div id="adicionar">
+            <img src="imagens/x.svg" alt="sair" id="xADD" >
+            <h3>Adicionar Item</h3>
+        <form>
+            <label for="nome">Nome <input type="text" name="nome" id="nome" required></label>
+            <label for="categoria">Categoria <select name="categoria" id="categoria" required>
+                <option value="" disabled selected>Selecione</option>
+                <option value="Carnes">Carnes</option>
+                <option value="Frutas">Frutas</option>
+                <option value="Legumes e Verduras">Legumes e Verduras</option>
+                <option value="Laticínios">Laticínios</option>
+                <option value="Pães e Massas Frescas">Pães e Massas Frescas</option>
+                <option value="Grãos">Grãos</option>
+                <option value="Massas Secas">Massas Secas</option>
+                <option value="Enlatados e Conservas">Enlatados e Conservas</option>
+                <option value="Farinhas e Açúcares">Farinhas e Açúcares</option>
+                <option value="Temperos e Especiarias">Temperos e Especiarias</option>
+                <option value="Bebidas Alcoólicas">Bebidas Alcoólicas</option>
+                <option value="Bebidas Não alcoólicas">Bebidas Não alcoólicas</option>
+                <option value="Ingredientes para drinks">Ingredientes para drinks</option>
+            </select></label>
+            <label for="medida">Medida <select name="medida" id="medida" required>
+                <option value="" selected disabled>(xx)</option>
+                <option value="Kg">(Kg)</option>
+                <option value="L">(L)</option>
+                <option value="Un">(Un)</option>
+            </select></label>
+            <label for="preco">Preço por Medida <input type="number" name="preco" id="preco" required></label>
+            <label for="quantM">Quant Mínima<input type="number" name="quantM" id="quantM" required></label>
+        </form>
+            <button id="adicionaritemBotao">Adicionar</button>
+
+        </div></div>
+
+        <div class="overlay edit"><div id="editar">
+            <img src="imagens/x.svg" alt="sair" id = "xEDIT" >
+            <h3>Editar Item</h3>
+        <form>
+            <label for="nome">Nome <input type="text" name="nome" id="nome"></label>
+            <label for="categoria">Categoria <select name="categoria" id="categoria">
+                <option value="" disabled selected>Selecione</option>
+                <option value="Carnes">Carnes</option>
+                <option value="Frutas">Frutas</option>
+                <option value="Legumes e Verduras">Legumes e Verduras</option>
+                <option value="Laticínios">Laticínios</option>
+                <option value="Pães e Massas Frescas">Pães e Massas Frescas</option>
+                <option value="Grãos">Grãos</option>
+                <option value="Massas Secas">Massas Secas</option>
+                <option value="Enlatados e Conservas">Enlatados e Conservas</option>
+                <option value="Farinhas e Açúcares">Farinhas e Açúcares</option>
+                <option value="Temperos e Especiarias">Temperos e Especiarias</option>
+                <option value="Bebidas Alcoólicas">Bebidas Alcoólicas</option>
+                <option value="Bebidas Não alcoólicas">Bebidas Não alcoólicas</option>
+                <option value="Ingredientes para drinks">Ingredientes para drinks</option>
+            </select></label>
+            <label for="medida">Medida <select name="medida" id="medida" >
+                <option value="" selected disabled>(xx)</option>
+                <option value="Kg">(Kg)</option>
+                <option value="L">(L)</option>
+                <option value="Un">(Un)</option>
+            </select></label>
+            <label for="preco">Preço de Custo <input type="number" name="preco" id="preco" ></label>
+            <label for="quantM">Quant Mínima<input type="number" name="quantM" id="quantM" ></label>
+            <div id="quant">
+                <h3>Quantidade</h3>
+                <div>
+                    <label for="adicionar" class="radio">Adicionar<input type="radio" name="adicionar/remover" id="radioAdd" value="add"></label>
+                    <label for="remover" class="radio">Remover<input type="radio" name="adicionar/remover" id="radioRem" value="remove"></label>
+                </div>
+                <label for="quantAdicionada" class="text campoAdd">Adicionar <input type="number" name="quantAdicionada"></label>
+                <label for="quantRemover" class="text campoRem">Remover <input type="number" name="quantRemover"></label>
+            </div>
+        </form>
+            <div id="buttondiv"><button id="salvaralteracoesBotao">Salvar Alterações</button><button id="removerBotao">Remover</button></div>
+
+        </div></div>
+
+        <div class="container1">
+            <button id="adicionarBotao">Adicionar</button>
+            <div class="filtro">
+                <h3>Filtros</h3>
+                <form action="">
+                    <label><input type="checkbox" name="filtro" value="Carnes"> Carnes</label>
+                    <label><input type="checkbox" name="filtro" value="Frutas"> Frutas</label>
+                    <label><input type="checkbox" name="filtro" value="Legumes e Verduras"> Legumes e Verduras</label>
+                    <label><input type="checkbox" name="filtro" value="Laticínios"> Laticínios</label>
+                    <label><input type="checkbox" name="filtro" value="Pães e Massas Frescas"> Pães e Massas Frescas</label>
+                    <label><input type="checkbox" name="filtro" value="Grãos"> Grãos</label>
+                    <label><input type="checkbox" name="filtro" value="Massas Secas"> Massas Secas</label>
+                    <label><input type="checkbox" name="filtro" value="Enlatados e Conservas"> Enlatados e Conservas</label>
+                    <label><input type="checkbox" name="filtro" value="Farinhas e Açúcares"> Farinhas e Açúcares</label>
+                    <label><input type="checkbox" name="filtro" value="Temperos e Especiarias"> Temperos e Especiarias</label>
+                    <label><input type="checkbox" name="filtro" value="Bebidas Alcoólicas"> Bebidas Alcoólicas</label>
+                    <label><input type="checkbox" name="filtro" value="Bebidas Não alcoólicas"> Bebidas Não Alcoólicas</label>
+                    <label><input type="checkbox" name="filtro" value="Ingredientes para drinks"> Ingredientes para Drinks</label>
+                    
+                </form>
+                
+                
+            </div>
+        </div>
+
+        <div class="container2">
+            <div class="cabecalho">
+                <p class="nome">Nome</p>
+                <p class="quant">Quant</p>
+                <p class="status">Preço</p>
+                <p class="entrada">Categoria</p>
+                <p class="saida">Status</p>
+                <p class="balanco">Entrada</p>
+                <p class="categoria">Saida</p>
+            </div>
+            <div class="itens">
+                <div class="item">
+                    <p class="nome">Nome</p>
+                    <p class="quant">Quant</p>
+                    <p class="status">Status</p>
+                    <p class="entrada">Entrada</p>
+                    <p class="saida">Saída</p>
+                    <p class="balanco">Balanço</p>
+                    <p class="categoria">Categoria</p>
+                    <img src="imagens/settings.svg" alt="" class="ajustes">
+
+                </div>
+
+                <div class="item"><p class="nome">Nome</p><p class="quant">Quant</p><p class="status">Status</p><p class="categoria">Categoria</p><p class="entrada">Entrada</p><p class="saida">Saída</p><p class="balanco">Balanço</p><img src="imagens/settings.svg" alt="" class="ajustes">
+
+                </div>
+
+                <div class="item"><p class="nome">Nome</p><p class="quant">Quant</p><p class="status">Status</p><p class="categoria">Categoria</p><p class="entrada">Entrada</p><p class="saida">Saída</p><p class="balanco">Balanço</p><img src="imagens/settings.svg" alt="" class="ajustes">
+
+                </div>
+
+                <div class="item"><p class="nome">Nome</p><p class="quant">Quant</p><p class="status">Status</p><p class="categoria">Categoria</p><p class="entrada">Entrada</p><p class="saida">Saída</p><p class="balanco">Balanço</p><img src="imagens/settings.svg" alt="" class="ajustes">
+
+                </div>
+
+                <div class="item"><p class="nome">Nome</p><p class="quant">Quant</p><p class="status">Status</p><p class="categoria">Categoria</p><p class="entrada">Entrada</p><p class="saida">Saída</p><p class="balanco">Balanço</p><img src="imagens/settings.svg" alt="" class="ajustes">
+
+                </div>
+
+                <div class="item"><p class="nome">Nome</p><p class="quant">Quant</p><p class="status">Status</p><p class="categoria">Categoria</p><p class="entrada">Entrada</p><p class="saida">Saída</p><p class="balanco">Balanço</p><img src="imagens/settings.svg" alt="" class="ajustes">
+
+                </div>
+
+                <div class="item"><p class="nome">Nome</p><p class="quant">Quant</p><p class="status">Status</p><p class="categoria">Categoria</p><p class="entrada">Entrada</p><p class="saida">Saída</p><p class="balanco">Balanço</p><img src="imagens/settings.svg" alt="" class="ajustes">
+
+                </div>
+
+                <div class="item"><p class="nome">Nome</p><p class="quant">Quant</p><p class="status">Status</p><p class="categoria">Categoria</p><p class="entrada">Entrada</p><p class="saida">Saída</p><p class="balanco">Balanço</p><img src="imagens/settings.svg" alt="" class="ajustes">
+
+                </div>
+
+                <div class="item"><p class="nome">Nome</p><p class="quant">Quant</p><p class="status">Status</p><p class="categoria">Categoria</p><p class="entrada">Entrada</p><p class="saida">Saída</p><p class="balanco">Balanço</p><img src="imagens/settings.svg" alt="" class="ajustes">
+
+                </div>
+
+                <div class="item"><p class="nome">Nome</p><p class="quant">Quant</p><p class="status">Status</p><p class="categoria">Categoria</p><p class="entrada">Entrada</p><p class="saida">Saída</p><p class="balanco">Balanço</p><img src="imagens/settings.svg" alt="" class="ajustes">
+
+                </div>
+
+                <div class="item"><p class="nome">Nome</p><p class="quant">Quant</p><p class="status">Status</p><p class="categoria">Categoria</p><p class="entrada">Entrada</p><p class="saida">Saída</p><p class="balanco">Balanço</p><img src="imagens/settings.svg" alt="" class="ajustes">
+
+                </div>
+
+                <div class="item"><p class="nome">Nome</p><p class="quant">Quant</p><p class="status">Status</p><p class="categoria">Categoria</p><p class="entrada">Entrada</p><p class="saida">Saída</p><p class="balanco">Balanço</p><img src="imagens/settings.svg" alt="" class="ajustes">
+
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+    
+</body>
+</html>
