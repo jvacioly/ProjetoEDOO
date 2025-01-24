@@ -36,9 +36,10 @@ int websocket_data_handler(struct mg_connection *conn, int bits, char *data, siz
         if (request == "Solicitar Estoque") {
             // Envia os dados do estoque para o cliente
             send_estoque_json(conn);
-        } else if (request.find("acao") != std::string::npos) {
+        } else if (request.find("adicionar") != std::string::npos) {
+            cout << "adicionar recebido" << std::endl;
 
-        }
+        } else if (request.find("editar") != std::string::npos) {})
     }
     return 1;  // Retorna 1 para continuar a comunicação
 }
