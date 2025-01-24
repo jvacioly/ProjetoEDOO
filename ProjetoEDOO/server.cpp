@@ -10,7 +10,7 @@ using json = nlohmann::json;
 
 // Função que envia os dados de estoque em formato JSON
 void send_estoque_json(struct mg_connection *conn) {
-    std::ifstream file("C:/Users/kddu4/ProjetoEDOO/ProjetoEDOO/banco_de_dados/estoque.json");
+    std::ifstream file("D:/Victor/Faculdade/Projetos/ProjetoEDOO/banco_de_dados/estoque.json");
     json estoque;
     file >> estoque;
 
@@ -39,7 +39,7 @@ int websocket_data_handler(struct mg_connection *conn, int bits, char *data, siz
         } else if (request.find("adicionar") != std::string::npos) {
             cout << "adicionar recebido" << std::endl;
 
-        } else if (request.find("editar") != std::string::npos) {})
+        } else if (request.find("editar") != std::string::npos) {}
     }
     return 1;  // Retorna 1 para continuar a comunicação
 }
