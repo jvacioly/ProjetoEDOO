@@ -38,11 +38,8 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
         string request(data, data_len);
         if (request == "Solicitar Estoque") {
             // Envia os dados do estoque para o cliente
-            cout << "1" << request << endl;
             send_estoque_json(conn);
         } else if (request.find("adicionar") != string::npos) {
-            cout << "adicionar recebido" << endl;
-            cout << "2" << request << endl;
             json jsonInfos = json::parse(request);
 
             string nome = jsonInfos.value("nome", "");
@@ -56,7 +53,7 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
                 return 0;
             }
 
-            Produto produto(0, nome, preco, categoria, medida);
+            Produto produto(nome, preco, categoria, medida);
             restaurante->addEstoque(produto, quantidade);
             send_estoque_json(conn);
             

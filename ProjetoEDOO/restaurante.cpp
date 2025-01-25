@@ -99,7 +99,6 @@ void Restaurante::addEstoque(const Produto &produto, int quantidade) {
     if (compraPossivel) {
         salvarEstoque();
     }
-    salvarEstoque();
 }
 
 bool Restaurante::removerEstoque(const Produto& produto, int quantidade) {
@@ -275,7 +274,7 @@ void Restaurante::finalizarPedido(Pedido &pedido) {
         pedidos[id]["status"] = "Finalizado";
         salvarPedidos();
         cout << "Pedido ID: " << id << " finalizado com sucesso!" << endl;
-        registrarCompra(pedido.getValorTotal());
+        registrarVenda(pedido.getValorTotal());
     }
     else {
         cout << "Pedido ID:" << id << " não encontrado." << endl;
@@ -340,7 +339,7 @@ bool Restaurante::registrarCompra(double valor) {
             fluxo["Caixa"] = caixaAtual - valor;
             cout.precision(2);
             cout << "Compra de R$" << fixed << valor << " registrada." << endl;
-            cout << "Caixa atualizado: R$" << fixed << caixaAtual << endl;
+            cout << "Caixa atualizado: R$" << fixed << fluxo["Caixa"] << endl;
             salvarFluxo();
             return true;
         }

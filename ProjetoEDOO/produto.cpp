@@ -3,13 +3,50 @@
 //
 
 #include "produto.h"
+#include <random>
+#include <fstream>
+#include "globals.h"
+#include "json.hpp"
+
+using json = nlohmann::json;
 
 //Construtor
-Produto::Produto(int codigo, const string& nome, double preco, const string& categoria, const string& medida)
-    : codigo(codigo), nome(nome), preco(preco), categoria(categoria), medida(medida) {}
+Produto::Produto(const string& nome, double preco, const string& categoria, const string& medida)
+    : nome(nome), preco(preco), categoria(categoria), medida(medida) {
+    // Gerar codigo do pedido
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> distrib(1000, 9999);
 
-Produto::Produto(int codigo, const string& nome, double preco)
-    : Produto(codigo, nome, preco, "", "") {}
+    int novoCodigo;
+    bool codigoUnico = false;
+
+    json pedidosExistentes;
+    string caminhoArquivo = BASE_DIR + "estoque.json";
+    ifstream pedidosFile(caminhoArquivo);
+    if (pedidosFile.is_open()) {
+        pedidosFile >> pedidosExistentes;
+        pedidosFile.close();
+    }
+    else {
+        pedidosExistentes = json::array();
+    }
+    do {
+        novoCodigo = distrib(gen);
+        codigoUnico = true;
+        for (const auto& pedido : pedidosExistentes) {
+            if (pedido.contains("ID") && pedido["ID"] == novoCodigo) {
+                codigoUnico = false;
+                break;
+            }
+        }
+    }while (!codigoUnico);
+
+    codigo = distrib(gen);
+}
+
+Produto::Produto(const string& nome, double preco)
+    : Produto(nome, preco, "", "") {}
 
 void Produto::setNome(const string &nome) {
     if (nome.empty()) {

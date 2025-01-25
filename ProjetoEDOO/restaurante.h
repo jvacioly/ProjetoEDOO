@@ -22,7 +22,7 @@ class Restaurante {
         string contato;
         string descricao;
         vector<Prato> menu;
-        float caixa;
+        double caixa;
     public:
         //Construtor e Destrutor
         Restaurante(const string& nome, const vector<string>& endereco, const string& contato, const string& descricao, const vector<Prato>& menuInicial);

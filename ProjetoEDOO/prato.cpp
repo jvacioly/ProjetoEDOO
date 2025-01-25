@@ -5,8 +5,8 @@
 #include "prato.h"
 
 //Construtor e Destrutor
-Prato::Prato(int codigo, const string &nome, double preco, const string &categoria, const vector<pair<Produto, int>> &ingredientes)
-    : Produto(codigo, nome, preco), ingredientes(ingredientes), categoria(categoria) {}
+Prato::Prato(const string &nome, double preco, const string &categoria, const vector<pair<Produto, int>> &ingredientes)
+    : Produto(nome, preco), ingredientes(ingredientes), categoria(categoria) {}
 
 Prato::~Prato() {
     //cout << "Prato " << getNome() << " removido do cardapio" << endl;

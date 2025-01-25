@@ -19,8 +19,8 @@ class Produto {
         string medida;
     public:
         //Construtor
-        Produto(int codigo, const string& nome, double preco, const string& categoria, const string& medida);
-        Produto(int codigo, const string& nome, double preco);
+        Produto(const string& nome, double preco, const string& categoria, const string& medida);
+        Produto(const string& nome, double preco);
 
         //Get Methods
         [[nodiscard]] int getCodigo() const { return codigo; };

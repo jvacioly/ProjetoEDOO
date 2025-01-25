@@ -7,6 +7,7 @@
 #include <fstream>
 #include <random>
 #include "json.hpp"
+#include "globals.h"
 
 using json = nlohmann::json;
 
@@ -22,7 +23,8 @@ Pedido::Pedido(const vector<pair<Prato, int>> &itens, const string& observacao)
     bool IDUnico = false;
 
     json pedidosExistentes;
-    ifstream pedidosFile("D:/Victor/Faculdade/Projetos/ProjetoEDOO/banco_de_dados/pedidos.json");
+    string caminhoArquivo = BASE_DIR + "estoque.json";
+    ifstream pedidosFile(caminhoArquivo);
     if (pedidosFile.is_open()) {
         pedidosFile >> pedidosExistentes;
         pedidosFile.close();
