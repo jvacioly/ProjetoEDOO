@@ -157,7 +157,7 @@ socket.onmessage = function(event) {
             divItem.classList.add('item');
             divItem.innerHTML = `
                     <p class="nome">${item.nome}</p>
-                    <p class="quant">${item.quantidade} (${item.descricao})</p>
+                    <p class="quant">${item.quantidade} (${item.medida})</p>
                     <p class="valor">R$ ${item.preco}</p>
                     <p class="categoria">${item.categoria}</p>
                     <p class="saida">R$ ${valorTotal}</p>
