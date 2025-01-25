@@ -12,7 +12,8 @@ using namespace std;
 
 // Função que envia os dados de estoque em formato JSON
 void send_estoque_json(struct mg_connection *conn) {
-    ifstream file("C:/Users/kddu4/ProjetoEDOO/ProjetoEDOO/banco_de_dados/estoque.json");
+    string caminho_arquivo = BASE_DIR + "estoque.json";
+    ifstream file(caminho_arquivo);
     json estoque;
     file >> estoque;
 

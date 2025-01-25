@@ -2,24 +2,26 @@
 // Created by victo on 13/01/2025.
 //
 
-#include "restaurante.h"
 #include <fstream>
+#include "restaurante.h"
 #include "prato.h"
+#include "globals.h"
 
 //Construtor e Destrutor
 Restaurante::Restaurante(const string &nome, const vector<string> &endereco, const string &contato, const string &descricao,
-    const vector<Prato> &menuInicial, float caixa)
-    : nome(nome), endereco(endereco), contato(contato), descricao(descricao), menu(menuInicial), caixa(caixa) {
+    const vector<Prato> &menuInicial)
+    : nome(nome), endereco(endereco), contato(contato), descricao(descricao), menu(menuInicial) {
     carregarEstoque();
     carregarPedidos();
-    carregarEstoque();
+    carregarFluxo();
+    caixa = 0;
 }
 
 Restaurante::Restaurante(const string& nome, const vector<Prato>& menuInicial)
-    : Restaurante(nome, {"", "", ""}, "", "", menuInicial, 0) {}
+    : Restaurante(nome, {"", "", ""}, "", "", menuInicial) {}
 
 Restaurante::Restaurante(const vector<Prato>& menuInicial)
-    : Restaurante("", {"", "", ""}, "", "", menuInicial, 0) {}
+    : Restaurante("", {"", "", ""}, "", "", menuInicial) {}
 
 Restaurante::~Restaurante() {
     salvarEstoque();
@@ -29,7 +31,8 @@ Restaurante::~Restaurante() {
 
 //Métodos do Estoque
 void Restaurante::carregarEstoque() {
-    ifstream estoqueFile("C:/Users/kddu4/ProjetoEDOO/ProjetoEDOO/banco_de_dados/estoque.json"); //COLOCAR O CAMINHO INTEIRO DO ARQUIVO
+    string caminho_estoque = BASE_DIR + "estoque.json";
+    ifstream estoqueFile(caminho_estoque);
     estoque = json::object();  // Inicializa como objeto vazio
 
     if (estoqueFile.is_open()) {
@@ -48,6 +51,7 @@ void Restaurante::carregarEstoque() {
         catch (const json::parse_error& e) {
             cout << "Erro ao carregar o estoque: " << e.what() << ". Criando novo estoque." << endl;
             estoque = json::object();
+            salvarEstoque(); // Correção do erro de parse
         }
         estoqueFile.close();
     }
@@ -57,7 +61,8 @@ void Restaurante::carregarEstoque() {
 }
 
 void Restaurante::salvarEstoque() const {
-    ofstream estoqueFile("C:/Users/kddu4/ProjetoEDOO/ProjetoEDOO/banco_de_dados/estoque.json");  // COLOCAR O CAMINHO INTEIRO DO ARQUIVO
+    string caminho_estoque = BASE_DIR + "estoque.json";
+    ofstream estoqueFile(caminho_estoque);
     if (estoqueFile.is_open()) {
         estoqueFile << estoque.dump(4);  // Grava o conteúdo do JSON com formatação
         estoqueFile.close();
@@ -73,7 +78,7 @@ void Restaurante::addEstoque(const Produto &produto, int quantidade) {
     int codigo = produto.getCodigo();
     double preco = produto.getPreco();
     const string& categoria = produto.getCategoria();
-    const string& descricao = produto.getMedida();
+    const string& medida = produto.getMedida();
     double valorTotal = quantidade * preco;
 
     if (estoque.contains(nome) && estoque[nome].is_object()) {
@@ -85,7 +90,7 @@ void Restaurante::addEstoque(const Produto &produto, int quantidade) {
             {"quantidade", quantidade},
             {"preco", preco},
             {"categoria", categoria},
-            {"descricao", descricao}
+            {"medida", medida}
         };
     }
 
@@ -177,7 +182,8 @@ void Restaurante::mostrarEstoque() const {
 }
 
 void Restaurante::carregarPedidos() {
-    ifstream pedidosFile("D:/Victor/Faculdade/Projetos/ProjetoEDOO/banco_de_dados/pedidos.json"); //COLOCAR O CAMINHO INTEIRO DO ARQUIVO
+    string caminho_arquivo = BASE_DIR + "pedidos.json";
+    ifstream pedidosFile(caminho_arquivo);
     pedidos = json::object();  // Inicializa como objeto vazio
 
     if (pedidosFile.is_open()) {
@@ -196,6 +202,7 @@ void Restaurante::carregarPedidos() {
         catch (const json::parse_error& e) {
             cout << "Erro ao carregar o banco de pedidos: " << e.what() << ". Criando novo banco." << endl;
             pedidos = json::object();
+            salvarPedidos(); // Correção do parse error
         }
         pedidosFile.close();
     }
@@ -205,7 +212,8 @@ void Restaurante::carregarPedidos() {
 }
 
 void Restaurante::salvarPedidos() const {
-    ofstream pedidosFile("D:/Victor/Faculdade/Projetos/ProjetoEDOO/banco_de_dados/pedidos.json");  // COLOCAR O CAMINHO INTEIRO DO ARQUIVO
+    string caminho_arquivo = BASE_DIR + "pedidos.json";
+    ofstream pedidosFile(caminho_arquivo);
     if (pedidosFile.is_open()) {
         pedidosFile << pedidos.dump(4);  // Grava o conteúdo do JSON com formatação
         pedidosFile.close();
@@ -276,14 +284,15 @@ void Restaurante::finalizarPedido(Pedido &pedido) {
 
 //Métodos do Fluxo
 void Restaurante::carregarFluxo() {
-    ifstream fluxoFile("D:/Victor/Faculdade/Projetos/ProjetoEDOO/banco_de_dados/fluxo.json"); //COLOCAR O CAMINHO INTEIRO DO ARQUIVO
+    string caminho_arquivo = BASE_DIR + "fluxo.json";
+    ifstream fluxoFile(caminho_arquivo);
     fluxo = json::object();  // Inicializa como objeto vazio
 
     if (fluxoFile.is_open()) {
         try {
             fluxoFile >> fluxo;
             if (!fluxo.is_object()) {
-                cout << "Formato inválido no arquivo de pedidos. Recriando banco de fluxo." << endl;
+                cout << "Formato inválido no arquivo de fluxo. Recriando banco de fluxo." << endl;
                 fluxo = json::object();
             }
             else { // ALTERAR
@@ -300,6 +309,7 @@ void Restaurante::carregarFluxo() {
             fluxo = json::object();
             fluxo["Caixa"] = 0.0;
             fluxo["Ranking de Pedidos"] = json::object();
+            salvarFluxo(); // Correção do parse error
         }
         fluxoFile.close();
     }
@@ -311,7 +321,8 @@ void Restaurante::carregarFluxo() {
 }
 
 void Restaurante::salvarFluxo() const {
-    ofstream fluxoFile("D:/Victor/Faculdade/Projetos/ProjetoEDOO/banco_de_dados/fluxo.json");  // COLOCAR O CAMINHO INTEIRO DO ARQUIVO
+    string caminho_arquivo = BASE_DIR + "fluxo.json";
+    ofstream fluxoFile(caminho_arquivo);
     if (fluxoFile.is_open()) {
         fluxoFile << fluxo.dump(4);  // Grava o conteúdo do JSON com formatação
         fluxoFile.close();
@@ -351,6 +362,16 @@ void Restaurante::registrarVenda(double valor) {
     else {
         cout << "Erro: o campo 'Caixa' nao esta corretamente inicializado no banco de dados." << endl;
     }
+}
+
+void Restaurante::adicionarCaixa(double valor) {
+    if (!fluxo.contains("Caixa") || !fluxo["Caixa"].is_number()) {
+        fluxo["Caixa"] = valor;
+    }
+    else {
+        fluxo["Caixa"] = fluxo["Caixa"].get<double>() + valor;
+    }
+    salvarFluxo();
 }
 
 //Outros Métodos

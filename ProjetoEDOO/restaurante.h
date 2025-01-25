@@ -25,7 +25,7 @@ class Restaurante {
         float caixa;
     public:
         //Construtor e Destrutor
-        Restaurante(const string& nome, const vector<string>& endereco, const string& contato, const string& descricao, const vector<Prato>& menuInicial, float caixa);
+        Restaurante(const string& nome, const vector<string>& endereco, const string& contato, const string& descricao, const vector<Prato>& menuInicial);
         Restaurante(const string& nome, const vector<Prato>& menuInicial);
         explicit Restaurante(const vector<Prato>& menuInicial);
         ~Restaurante();
@@ -55,6 +55,7 @@ class Restaurante {
         void salvarFluxo() const;
         bool registrarCompra(double valor);
         void registrarVenda(double valor);
+        void adicionarCaixa(double valor);
         // void mostrarRanking() const;
 
         //Outros Métodos
