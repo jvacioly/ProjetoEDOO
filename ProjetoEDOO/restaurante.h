@@ -22,7 +22,9 @@ class Restaurante {
         string contato;
         string descricao;
         vector<Prato> menu;
-        double caixa;
+        /*double receita;
+        double despesas;
+        double lucro;*/ // Não estão sendo necessarios
     public:
         //Construtor e Destrutor
         Restaurante(const string& nome, const vector<string>& endereco, const string& contato, const string& descricao, const vector<Prato>& menuInicial);
@@ -53,7 +55,7 @@ class Restaurante {
         //Métodos do Fluxo
         void carregarFluxo();
         void salvarFluxo() const;
-        bool registrarCompra(double valor);
+        void registrarCompra(double valor);
         void registrarVenda(double valor);
         void adicionarCaixa(double valor);
         // void mostrarRanking() const;

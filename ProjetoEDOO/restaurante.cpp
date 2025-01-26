@@ -14,7 +14,6 @@ Restaurante::Restaurante(const string &nome, const vector<string> &endereco, con
     carregarEstoque();
     carregarPedidos();
     carregarFluxo();
-    caixa = 0;
 }
 
 Restaurante::Restaurante(const string& nome, const vector<Prato>& menuInicial)
@@ -95,10 +94,8 @@ void Restaurante::addEstoque(const Produto &produto, int quantidade) {
     }
 
     cout << "Adicionado " << quantidade << " unidade(s) do produto " << nome << " ao estoque." << endl;
-    bool compraPossivel = registrarCompra(valorTotal);
-    if (compraPossivel) {
-        salvarEstoque();
-    }
+    salvarEstoque();
+    registrarCompra(valorTotal);
 }
 
 bool Restaurante::removerEstoque(const Produto& produto, int quantidade) {
@@ -295,8 +292,14 @@ void Restaurante::carregarFluxo() {
                 fluxo = json::object();
             }
             else { // ALTERAR
-                if (!fluxo.contains("Caixa")) {
-                    fluxo["Caixa"] = 0.0;
+                if (!fluxo.contains("Despesas")) {
+                    fluxo["Despesas"] = 0.0;
+                }
+                if (!fluxo.contains("Receita")) {
+                    fluxo["Receita"] = 0.0;
+                }
+                if (!fluxo.contains("Lucro")) {
+                    fluxo["Lucro"] = 0.0;
                 }
                 if (!fluxo.contains("Ranking de Pedidos")) {
                     fluxo["Ranking de Pedidos"] = json::object();
@@ -306,7 +309,9 @@ void Restaurante::carregarFluxo() {
         catch (const json::parse_error& e) {
             cout << "Erro ao carregar os dados de fluxo: " << e.what() << ". Criando novo banco." << endl;
             fluxo = json::object();
-            fluxo["Caixa"] = 0.0;
+            fluxo["Despesas"] = 0.0;
+            fluxo["Receita"] = 0.0;
+            fluxo["Lucro"] = 0.0;
             fluxo["Ranking de Pedidos"] = json::object();
             salvarFluxo(); // Correção do parse error
         }
@@ -314,7 +319,9 @@ void Restaurante::carregarFluxo() {
     }
     else {
         cout << "Arquivo fluxo.json não encontrado. Criando novo banco de pedidos." << endl;
-        fluxo["Caixa"] = 0.0;
+        fluxo["Despesas"] = 0.0;
+        fluxo["Receita"] = 0.0;
+        fluxo["Lucro"] = 0.0;
         fluxo["Ranking de Pedidos"] = json::object();
     }
 }
@@ -332,34 +339,31 @@ void Restaurante::salvarFluxo() const {
     }
 }
 
-bool Restaurante::registrarCompra(double valor) {
-    if (fluxo.contains("Caixa") && fluxo["Caixa"].is_number()) {
-        double caixaAtual = fluxo["Caixa"].get<double>();
-        if (caixaAtual >= valor) {
-            fluxo["Caixa"] = caixaAtual - valor;
-            cout.precision(2);
-            cout << "Compra de R$" << fixed << valor << " registrada." << endl;
-            cout << "Caixa atualizado: R$" << fixed << fluxo["Caixa"] << endl;
-            salvarFluxo();
-            return true;
-        }
-        cout << "Erro: Saldo insuficiente para a compra." << endl;
-        return false;
+void Restaurante::registrarCompra(double valor) {
+    if (fluxo.contains("Despesas") && fluxo["Despesas"].is_number()) {
+        double despesasAtual = fluxo["Despesas"].get<double>();
+
+        fluxo["Despesas"] = despesasAtual + valor;
+        fluxo["Lucro"] = fluxo["Receita"].get<double>() - fluxo["Despesas"].get<double>();
+        cout.precision(2);
+        cout << "Compra de R$" << fixed << valor << " registrada." << endl;
+        cout << "Valor de despesas atualizado: R$" << fixed << fluxo["Despesas"] << endl;
+        salvarFluxo();
     }
-    cout << "Erro: o campo 'Caixa' nao esta corretamente inicializado no banco de dados." << endl;
-    return false;
+    cout << "Erro: o campo 'Despesas' nao esta corretamente inicializado no banco de dados." << endl;
 }
 
 void Restaurante::registrarVenda(double valor) {
-    if (fluxo.contains("Caixa") && fluxo["Caixa"].is_number()) {
-        double caixaAtual = fluxo["Caixa"].get<double>();
-        fluxo["Caixa"] = valor + caixaAtual;
+    if (fluxo.contains("Receita") && fluxo["Receita"].is_number()) {
+        double receitaAtual = fluxo["Receita"].get<double>();
+        fluxo["Receita"] = valor + receitaAtual;
+        fluxo["Lucro"] = fluxo["Receita"].get<double>() - fluxo["Despesas"].get<double>();
         cout.precision(2);
-        cout << "Valor de R$" << fixed << valor << " registrado no caixa." << endl;
+        cout << "Valor de receita atualizado: R$" << fixed << fluxo["Receita"] << endl;
         salvarFluxo();
     }
     else {
-        cout << "Erro: o campo 'Caixa' nao esta corretamente inicializado no banco de dados." << endl;
+        cout << "Erro: o campo 'Receita' nao esta corretamente inicializado no banco de dados." << endl;
     }
 }
 

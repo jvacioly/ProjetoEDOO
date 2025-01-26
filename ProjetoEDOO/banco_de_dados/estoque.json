@@ -1,23 +1,9 @@
 {
-    "Azeitona": {
-        "categoria": "Frutas",
-        "codigo": 6343,
-        "medida": "Un",
-        "preco": 1.0,
-        "quantidade": 24
-    },
-    "Picanha": {
+    "Calabresa": {
         "categoria": "Carnes",
-        "codigo": 8212,
+        "codigo": 1138,
         "medida": "Kg",
-        "preco": 20.0,
-        "quantidade": 5
-    },
-    "banana": {
-        "categoria": "Frutas",
-        "codigo": 7688,
-        "medida": "Un",
-        "preco": 2.0,
-        "quantidade": 5
+        "preco": 50.0,
+        "quantidade": 10
     }
 }
