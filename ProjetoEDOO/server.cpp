@@ -50,13 +50,27 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
         if (request == "Solicitar Estoque") {
             // Envia os dados do estoque para o cliente
             send_estoque_json(conn);
-        } else if (request == "Solicitar Fluxo") {
+        }
+        else if (request == "Solicitar Fluxo") {
             // Envia os dados do fluxo para o cliente
             send_fluxo_json(conn);
-        }else if (request.find("editar") != string::npos) {
-            //codgigo do editar
-
-        } else if (request.find("adicionar") != string::npos) {
+        }
+        else if (request.find("editar") != string::npos) {
+            json jsonInfos = json::parse(request);
+            string acao = jsonInfos.value("add/rem", "");
+            int codigoProduto = jsonInfos.contains("codigo") ? stoi(jsonInfos["codigo"].get<string>()) : 0;
+            if (acao == "adicionar") {
+                double quantidade =  jsonInfos.contains("quantAdicionada") ? stod(jsonInfos["quantAdicionada"].get<string>()) : 0.0;
+                restaurante->editEstoque(codigoProduto, quantidade);
+            }
+            else {
+                double quantidade =  jsonInfos.contains("quantRemover") ? stod(jsonInfos["quantRemover"].get<string>()) : 0.0;
+                restaurante->removerEstoque(codigoProduto, quantidade);
+            }
+            send_estoque_json(conn);
+            send_fluxo_json(conn);
+        }
+        else if (request.find("adicionar") != string::npos) {
             json jsonInfos = json::parse(request);
 
             string nome = jsonInfos.value("nome", "");
@@ -74,9 +88,11 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
             restaurante->addEstoque(produto, quantidade);
             send_estoque_json(conn);
             send_fluxo_json(conn);
+        }
+        else if (request.find("remover") != string::npos) {
+            json jsonInfos = json::parse(request);
 
-        }else if (request.find("remover") != string::npos) {
-            //codigo do remover
+            send_estoque_json(conn);
         }
     }
     return 1;  // Retorna 1 para continuar a comunicação

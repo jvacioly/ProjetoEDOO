@@ -39,7 +39,8 @@ class Restaurante {
         void carregarEstoque();
         void salvarEstoque() const;
         void addEstoque(const Produto& produto, int quantidade);
-        bool removerEstoque(const Produto& produto, int quantidade);
+        void removerEstoque(int codigoProduto, double quantidade);
+        void editEstoque(int codigoProduto, double quantidade);
         bool apagarItem(const Produto& produto);
         bool checarEstoque(const Pedido& pedido);
         void mostrarEstoque() const;

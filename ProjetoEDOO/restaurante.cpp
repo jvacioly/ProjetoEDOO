@@ -98,20 +98,35 @@ void Restaurante::addEstoque(const Produto &produto, int quantidade) {
     registrarCompra(valorTotal);
 }
 
-bool Restaurante::removerEstoque(const Produto& produto, int quantidade) {
-    const string& nome = produto.getNome();
+void Restaurante::removerEstoque(int codigoProduto, double quantidade) {
+    for (auto& [produto, dados] : estoque.items()) {
+        if (dados["codigo"] == codigoProduto) {
+            double quantidadeAtual = dados.value("quantidade", 0.0);
 
-    if (estoque.contains(nome) && estoque[nome]["quantidade"].get<int>() >= quantidade) {
-        estoque[nome]["quantidade"] = estoque[nome]["quantidade"].get<int>() - quantidade;
-        /*if (estoque[nome]["quantidade"] == 0) {
-            estoque.erase(nome);
-        }*/
-        cout << "Removido " << quantidade << " unidade(s) do produto " << nome << " retirado do estoque." << endl;
-        salvarEstoque();
-        return true;
+            dados["quantidade"] = quantidadeAtual - quantidade;
+
+            salvarEstoque();
+            break;
+        }
     }
-    cout << "ERRO: Produto não encontrado ou quantidade insuficiente no estoque." << endl;
-    return false;
+}
+
+void Restaurante::editEstoque(int codigoProduto, double quantidade) {
+    for (auto& [produto, dados] : estoque.items()) {
+        if (dados["codigo"] == codigoProduto) {
+            double quantidadeAtual = dados.value("quantidade", 0.0);
+            double preco = dados.value("preco", 0.0);
+
+            dados["quantidade"] = quantidadeAtual + quantidade;
+
+            fluxo["Despesas"] = fluxo["Despesas"].get<double>() + (preco * quantidade);
+            fluxo["Lucro"] = fluxo["Receita"].get<double>() - fluxo["Despesas"].get<double>();
+
+            salvarEstoque();
+            salvarFluxo();
+            break;
+        }
+    }
 }
 
 bool Restaurante::apagarItem(const Produto &produto) {
@@ -241,7 +256,7 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
             for (const auto& ingredienteItem : prato.getIngredientes()) {
                 const Produto& ingrediente = ingredienteItem.first;
                 int quantidadeNecessaria = ingredienteItem.second * quantidadePrato;
-                removerEstoque(ingrediente, quantidadeNecessaria);
+                removerEstoque(ingrediente.getCodigo(), quantidadeNecessaria);
             }
         }
         const json novoPedido = {
@@ -386,15 +401,3 @@ void Restaurante::mostrarMenu() const {
     }
     cout << "----------------------------" << endl;
 }
-
-
-
-
-
-
-
-
-
-
-
-

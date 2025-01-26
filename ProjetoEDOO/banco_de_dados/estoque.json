@@ -1,30 +1,9 @@
 {
-    "Azeitona": {
-        "categoria": "Frutas",
-        "codigo": 7150,
-        "medida": "Un",
-        "preco": 2.0,
-        "quantidade": 20
-    },
     "Calabresa": {
         "categoria": "Carnes",
-        "codigo": 1138,
+        "codigo": 9951,
         "medida": "Kg",
-        "preco": 50.0,
-        "quantidade": 10
-    },
-    "farinha": {
-        "categoria": "Farinhas e Açúcares",
-        "codigo": 1247,
-        "medida": "Kg",
-        "preco": 12.0,
-        "quantidade": 2
-    },
-    "maça": {
-        "categoria": "Frutas",
-        "codigo": 2894,
-        "medida": "Un",
-        "preco": 2.0,
-        "quantidade": 50
+        "preco": 55.0,
+        "quantidade": 40.0
     }
 }
