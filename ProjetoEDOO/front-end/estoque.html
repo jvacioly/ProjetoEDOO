@@ -82,14 +82,14 @@
                 <option value="ml">(ml)</option>
                 <option value="Un">(Un)</option>
             </select></label>
-            <label for="preco">Preço por Medida <input type="number" name="preco" id="preco" required></label>
+            <label for="preco">Preço/Medida <input type="number" name="preco" id="preco" required></label>
             <label for="quantM">Quantidade<input type="number" name="quantM" id="quantM" required></label>
         </form>
             <button id="adicionaritemBotao">Adicionar</button>
 
         </div></div>
 
-        <div class="overlay edit"><div id="editar">
+        <div class="overlay edit"><div id="editar" data-id="" >
             <img src="imagens/x.svg" alt="sair" id = "xEDIT" >
             <h3>Editar Item</h3>
         <form>
@@ -113,16 +113,18 @@
             <label for="medida">Medida <select name="medida" id="medida" >
                 <option value="" selected disabled>(xx)</option>
                 <option value="Kg">(Kg)</option>
+                <option value="g">(g)</option>
                 <option value="L">(L)</option>
+                <option value="ml">(ml)</option>
                 <option value="Un">(Un)</option>
             </select></label>
-            <label for="preco">Preço de Custo <input type="number" name="preco" id="preco" ></label>
-            <label for="quantM">Quant Mínima<input type="number" name="quantM" id="quantM" ></label>
+            <label for="preco">Preço/Medida <input type="number" name="preco" id="preco" ></label>
             <div id="quant">
-                <h3>Quantidade</h3>
-                <div>
-                    <label for="adicionar" class="radio">Adicionar<input type="radio" name="adicionar/remover" id="radioAdd" value="add"></label>
-                    <label for="remover" class="radio">Remover<input type="radio" name="adicionar/remover" id="radioRem" value="remove"></label>
+                
+                <div id="divRadio">
+                    <h3>Quantidade</h3>
+                    <label for="adicionar" class="radio">Adicionar<input type="radio" name="adicionar/remover" id="radioAdd" value="adicionar"></label>
+                    <label for="remover" class="radio">Remover<input type="radio" name="adicionar/remover" id="radioRem" value="remover"></label>
                 </div>
                 <label for="quantAdicionada" class="text campoAdd">Adicionar <input type="number" name="quantAdicionada"></label>
                 <label for="quantRemover" class="text campoRem">Remover <input type="number" name="quantRemover"></label>

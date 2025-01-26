@@ -7,6 +7,7 @@ let overlayADD = document.querySelector(".overlay.add")
 let overlayEDIT = document.querySelector(".overlay.edit")
 let adicionarItembtn = document.getElementById("adicionaritemBotao")
 let salvaralteracoesbtn = document.getElementById("salvaralteracoesBotao")
+let removerbtn = document.getElementById("removerBotao")
 let formAdcionar = document.querySelector("#adicionar form")
 let formEditar = document.querySelector("#editar form")
 let xADD = document.querySelector("#xADD")
@@ -15,6 +16,11 @@ let radioAdd = document.getElementById("radioAdd");
 let radioRem = document.getElementById("radioRem");
 let campoAdicionar = document.querySelector(".text.campoAdd");
 let campoRemover = document.querySelector(".text.campoRem");
+let editarPopup = document.querySelector("#editar")
+let inputNome = document.querySelector("#editar form #nome")
+let inputPreco = document.querySelector("#editar form #preco")
+let inputCategoria = document.querySelector("#editar form #categoria")
+let inputMedida = document.querySelector("#editar form #medida")
 
 
 //funçoes
@@ -27,8 +33,13 @@ function fecharPopupADD() {
     overlayADD.style.display = "none"
     formAdcionar.reset();
 }
-function abrirPopupEDIT() {
+function abrirPopupEDIT(codigo, nome, categoria, medida, preco) {
     overlayEDIT.style.display = "flex"
+    editarPopup.dataset.id = codigo
+    inputNome.placeholder = nome
+    inputPreco.placeholder = preco
+    inputCategoria.value = categoria
+    inputMedida.value = medida
     verificarOpcao()
     
 
@@ -76,7 +87,6 @@ adicionarItembtn.addEventListener("click", function() {
 
     const nomes = Array.from(elementosP).map(p => p.textContent);
 
-    console.log(nomes);
     
     const itemEncontrado = nomes.find(item => formObject.nome === item);
     if (itemEncontrado) {
@@ -87,18 +97,14 @@ adicionarItembtn.addEventListener("click", function() {
 
     formObject["acao"] = "adicionar"
 
-    console.log(formObject);
-
     const jsonData = JSON.stringify(formObject)
 
     socket.send(jsonData)
-    console.log("enviado")
+    console.log("add enviado:")
+    console.log(formObject);
 
     fecharPopupADD()
-
-        
-            
-    
+  
     
 
     
@@ -112,14 +118,55 @@ overlayEDIT.addEventListener("click", function (event) {
     }
 })
 xEDIT.addEventListener("click", fecharPopupEDIT)
+
 salvaralteracoesbtn.addEventListener("click", function() {
+
+    if (!inputNome.value) inputNome.value = inputNome.placeholder;
+    if (!inputPreco.value) inputPreco.value = inputPreco.placeholder;
+
     let formData = new FormData(formEditar)
 
-    console.log(Object.fromEntries(formData.entries()));
+    let formObject = Object.fromEntries(formData.entries())
 
-    formEditar.reset(); //ou botar funçao de fechar
+    formObject["acao"] = "editar"
+    formObject["codigo"] = editarPopup.dataset.id
+
+    const jsonData = JSON.stringify(formObject)
+
+    socket.send(jsonData)
+    console.log("Edit enviado:")
+    console.log(formObject);
+
+    fecharPopupEDIT()
     
 })
+
+removerbtn.addEventListener("click", function() {
+
+    if (confirm("Tem certeza que deseja excluir este item?")) {
+        console.log("Usuário confirmou remover.");
+        let removerObject = new Object();
+
+        removerObject["acao"] = "remover"
+        removerObject["codigo"] = editarPopup.dataset.id
+
+        const jsonData = JSON.stringify(removerObject)
+
+        socket.send(jsonData)
+        console.log("Remove enviado:")
+        console.log(removerObject)
+
+        fecharPopupEDIT()
+
+    } else {
+        console.log("Usuário cancelou remover.");
+    }
+
+    
+    
+})
+
+
 
 
 //eventos de mudança nos radios
@@ -137,13 +184,14 @@ socket.onmessage = function(event) {
     // Convertendo a string JSON para um objeto JavaScript
     const dados = JSON.parse(event.data);
 
+    console.log("Estoque Atualizado:")
     console.log(dados)
 
     const estoqueArray = Object.keys(dados).map(key => {
         return { nome: key, ...dados[key] };
     });
 
-    console.log(estoqueArray);
+
 
 
     // Selecionando o container para exibir o estoque
@@ -168,7 +216,7 @@ socket.onmessage = function(event) {
             container.appendChild(divItem);
 
             let ajustesbtn = divItem.querySelector("img.ajustes")
-            ajustesbtn.addEventListener("click", abrirPopupEDIT)
+            ajustesbtn.addEventListener("click", () => abrirPopupEDIT(item.codigo, item.nome, item.categoria, item.medida, item.preco))
 
         })
 
