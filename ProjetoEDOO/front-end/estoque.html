@@ -82,8 +82,8 @@
                 <option value="ml">(ml)</option>
                 <option value="Un">(Un)</option>
             </select></label>
-            <label for="preco">Preço/Medida <input type="number" name="preco" id="preco" required></label>
-            <label for="quantM">Quantidade<input type="number" name="quantM" id="quantM" required></label>
+            <label for="preco">Preço/Medida <input type="number" name="preco" id="preco" required min="0" step="0.01"></label>
+            <label for="quantM">Quantidade<input type="number" name="quantM" id="quantM" required min="0" step="1"></label>
         </form>
             <button id="adicionaritemBotao">Adicionar</button>
 
@@ -118,7 +118,7 @@
                 <option value="ml">(ml)</option>
                 <option value="Un">(Un)</option>
             </select></label>
-            <label for="preco">Preço/Medida <input type="number" name="preco" id="preco" ></label>
+            <label for="preco">Preço/Medida <input type="number" name="preco" id="preco" min="0" step="0.01" disabled></label>
             <div id="quant">
                 
                 <div id="divRadio">
@@ -126,11 +126,11 @@
                     <label for="radioAdd" class="radio">Adicionar<input type="radio" name="add/rem" id="radioAdd" value="adicionar"></label>
                     <label for="radioRem" class="radio">Remover<input type="radio" name="add/rem" id="radioRem" value="remover"></label>
                 </div>
-                <label class="text campoAdd">Adicionar <input type="number" name="quantAdicionada"></label>
-                <label class="text campoRem">Remover <input type="number" name="quantRemover"></label>
+                <label class="text campoAdd">Adicionar <input type="number" name="quantAdicionada" min="0" step="1"></label>
+                <label class="text campoRem">Remover <input type="number" name="quantRemover" min="0" step="1"></label>
             </div>
         </form>
-            <div id="buttondiv"><button id="salvaralteracoesBotao">Salvar Alterações</button><button id="removerBotao">Remover</button></div>
+            <div id="buttondiv"><button id="salvaralteracoesBotao">Salvar Alterações</button><button id="removerBotao">Remover Item</button></div>
 
         </div></div>
 
@@ -164,10 +164,8 @@
                 <p class="nome">Nome</p>
                 <p class="quant">Quant</p>
                 <p class="valor">Preço</p>
+                <p class="valorTotal">Valor Total</p>
                 <p class="categoria">Categoria</p>
-                <p class="saida">Valor Total</p>
-                <p class="balanco">Entrada</p>
-                <p class="categoria">Saida</p>
             </div>
             <div class="itens">
                <!-- <div class="item">

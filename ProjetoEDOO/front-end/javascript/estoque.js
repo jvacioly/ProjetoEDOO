@@ -37,7 +37,7 @@ function abrirPopupEDIT(codigo, nome, categoria, medida, preco) {
     overlayEDIT.style.display = "flex"
     editarPopup.dataset.id = codigo
     inputNome.placeholder = nome
-    inputPreco.placeholder = preco
+    inputPreco.placeholder = "R$" + preco
     inputCategoria.value = categoria
     inputMedida.value = medida
     verificarOpcao()
@@ -67,7 +67,7 @@ function verificarOpcao() {
 
 //popup ADD
 botaoAdicionar.addEventListener("click", abrirPopupADD)
-overlayADD.addEventListener("click", function (event) {
+overlayADD.addEventListener("mousedown", function (event) {
     if (event.target === overlayADD) { 
         fecharPopupADD()
     }
@@ -112,7 +112,7 @@ adicionarItembtn.addEventListener("click", function() {
 
 //popup EDIT
 
-overlayEDIT.addEventListener("click", function (event) {
+overlayEDIT.addEventListener("mousedown", function (event) {
     if (event.target === overlayEDIT) { 
         fecharPopupEDIT()
     }
@@ -143,7 +143,7 @@ salvaralteracoesbtn.addEventListener("click", function() {
 
 removerbtn.addEventListener("click", function() {
 
-    if (confirm("Tem certeza que deseja excluir este item?")) {
+    if (confirm("Tem certeza que deseja excluir este item do estoque?")) {
         console.log("Usuário confirmou remover.");
         let removerObject = new Object();
 
@@ -201,11 +201,9 @@ function processarEstoque(dados) {
         divItem.innerHTML = `
                     <p class="nome">${item.nome}</p>
                     <p class="quant">${item.quantidade} (${item.medida})</p>
-                    <p class="valor">R$ ${item.preco}</p>
+                    <p class="valor">R$ ${item.preco.toFixed(2)}</p>
+                    <p class="valorTotal">R$ ${valorTotal.toFixed(2)}</p>
                     <p class="categoria">${item.categoria}</p>
-                    <p class="saida">R$ ${valorTotal}</p>
-                    <p class="balanco">Entrada</p>
-                    <p class="categoria">Saida</p>
                     <img src="imagens/settings.svg" alt="" class="ajustes">
                 `;
         container.appendChild(divItem);
@@ -222,9 +220,9 @@ function processarFluxo(dados) {
     console.log("Fluxo Atualizado:")
     console.log(dados)
 
-    document.querySelector("p.valores.receita").innerHTML = "R$" + dados.Receita
-    document.querySelector("p.valores.custos").innerHTML = "R$" + dados.Despesas
-    document.querySelector("p.valores.lucros").innerHTML = "R$" + dados.Lucro
+    document.querySelector("p.valores.receita").innerHTML = "R$" + dados.Receita.toFixed(2)
+    document.querySelector("p.valores.custos").innerHTML = "R$" + dados.Despesas.toFixed(2)
+    document.querySelector("p.valores.lucros").innerHTML = "R$" + dados.Lucro.toFixed(2)
 
 }
 
@@ -256,6 +254,48 @@ socket.onopen = function() {
     socket.send('Solicitar Estoque');
     socket.send('Solicitar Fluxo');
 };
+
+
+
+//Filtros 
+
+function filtrarItens() {
+    const checkboxes = document.querySelectorAll('.filtro form input');
+    const itens = document.querySelectorAll('.item');
+
+    // Obtendo checkboxes selecionados
+    const categoriasSelecionadas = Array.from(checkboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+
+    // Se nenhum checkbox estiver selecionado, mostrar todos os itens
+    if (categoriasSelecionadas.length === 0) {
+        itens.forEach(item => {
+            item.style.display = '';  // Mostrar tudo
+        });
+        return;  // Sai da função para evitar filtro adicional
+    }
+
+    // Iterando pelos elementos e mostrando ou escondendo
+    itens.forEach(item => {
+        const categoria = item.querySelector("p.categoria");
+        if (categoriasSelecionadas.includes(categoria.textContent)) {
+            item.style.display = '';  // Mostra o item
+        } else {
+            item.style.display = 'none';  // Oculta o item
+        }
+    });
+}
+
+// Adicionar event listener a todos os checkboxes para atualizar em tempo real
+document.querySelectorAll('.filtro-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', filtrarItens);
+});
+
+// Aplicar filtro ao selecionar
+
+document.querySelector(".filtro form").addEventListener("change", filtrarItens)
+
 
 
 

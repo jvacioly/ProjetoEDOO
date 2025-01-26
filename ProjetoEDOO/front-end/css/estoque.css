@@ -146,6 +146,7 @@ main{
 }
 
 .nome {
+    margin-left: 20px;
     width: 174px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -158,38 +159,31 @@ main{
 }
 
 .valor{
+    margin-left: 20px;
     width: 83px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
 .categoria{
-    width: 83px;
+    margin-left: 20px;
+    width: 147px;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
+
 }
 
-.entrada{
-    width: 83px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
 
-.saida{
+.valorTotal{
+    margin-left: 20px;
     width: 83px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
-.balanco{
-    width: 83px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
 
 .ajustes{
-    margin-left: 111px;
+    margin-left: 173px;
     width: 24px;
     cursor: pointer;
 }
@@ -528,4 +522,8 @@ main{
 
 #editar label.text.campoRem{
     display: none;
+}
+
+#preco:disabled {
+    opacity: .4;
 }
