@@ -10,6 +10,17 @@
 using json = nlohmann::json;
 using namespace std;
 
+// Função que envia os dados de fluxo em formato JSON
+void send_fluxo_json(struct mg_connection *conn) {
+    string caminho_arquivo = BASE_DIR + "fluxo.json";
+    ifstream file(caminho_arquivo);
+    json fluxo;
+    file >> fluxo;
+
+    string json_data = fluxo.dump();
+    mg_websocket_write(conn, MG_WEBSOCKET_OPCODE_TEXT, json_data.c_str(), json_data.size());
+}
+
 // Função que envia os dados de estoque em formato JSON
 void send_estoque_json(struct mg_connection *conn) {
     string caminho_arquivo = BASE_DIR + "estoque.json";
@@ -39,6 +50,12 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
         if (request == "Solicitar Estoque") {
             // Envia os dados do estoque para o cliente
             send_estoque_json(conn);
+        } else if (request == "Solicitar Fluxo") {
+            // Envia os dados do fluxo para o cliente
+            send_fluxo_json(conn);
+        }else if (request.find("editar") != string::npos) {
+            //codgigo do editar
+
         } else if (request.find("adicionar") != string::npos) {
             json jsonInfos = json::parse(request);
 
@@ -56,8 +73,11 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
             Produto produto(nome, preco, categoria, medida);
             restaurante->addEstoque(produto, quantidade);
             send_estoque_json(conn);
-            
-        } else if (request.find("editar") != string::npos) {}
+            send_fluxo_json(conn);
+
+        }else if (request.find("remover") != string::npos) {
+            //codigo do remover
+        }
     }
     return 1;  // Retorna 1 para continuar a comunicação
 }

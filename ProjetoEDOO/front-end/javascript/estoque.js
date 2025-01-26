@@ -176,13 +176,11 @@ radioRem.addEventListener("change", verificarOpcao);
 
 //Script de Recarregar o Estoque e Criar Conexão
 
-// Criando a conexão WebSocket com o servidor C++
-const socket = new WebSocket('ws://localhost:8000/ws');
 
-// Função para tratar mensagens recebidas do servidor (JSON com dados do estoque)
-socket.onmessage = function(event) {
-    // Convertendo a string JSON para um objeto JavaScript
-    const dados = JSON.parse(event.data);
+//Funções
+
+//função estoque
+function processarEstoque(dados) {
 
     console.log("Estoque Atualizado:")
     console.log(dados)
@@ -191,19 +189,16 @@ socket.onmessage = function(event) {
         return { nome: key, ...dados[key] };
     });
 
-
-
-
     // Selecionando o container para exibir o estoque
     const container = document.querySelector('.itens');
     container.innerHTML = '';  // Limpar o conteúdo existente
 
     // Iterando sobre os dados e exibindo-os
     estoqueArray.forEach(item => {
-            let valorTotal = (parseFloat(item.preco, 10) * parseFloat(item.quantidade, 10))
-            const divItem = document.createElement('div');
-            divItem.classList.add('item');
-            divItem.innerHTML = `
+        let valorTotal = (parseFloat(item.preco, 10) * parseFloat(item.quantidade, 10))
+        const divItem = document.createElement('div');
+        divItem.classList.add('item');
+        divItem.innerHTML = `
                     <p class="nome">${item.nome}</p>
                     <p class="quant">${item.quantidade} (${item.medida})</p>
                     <p class="valor">R$ ${item.preco}</p>
@@ -213,12 +208,42 @@ socket.onmessage = function(event) {
                     <p class="categoria">Saida</p>
                     <img src="imagens/settings.svg" alt="" class="ajustes">
                 `;
-            container.appendChild(divItem);
+        container.appendChild(divItem);
 
-            let ajustesbtn = divItem.querySelector("img.ajustes")
-            ajustesbtn.addEventListener("click", () => abrirPopupEDIT(item.codigo, item.nome, item.categoria, item.medida, item.preco))
+        let ajustesbtn = divItem.querySelector("img.ajustes")
+        ajustesbtn.addEventListener("click", () => abrirPopupEDIT(item.codigo, item.nome, item.categoria, item.medida, item.preco))
 
-        })
+    })
+
+}
+
+//função fluxo
+function processarFluxo(dados) {
+    console.log("Fluxo Atualizado:")
+    console.log(dados)
+
+    document.querySelector("p.valores.receita").innerHTML = "R$" + dados.Receita
+    document.querySelector("p.valores.custos").innerHTML = "R$" + dados.Despesas
+    document.querySelector("p.valores.lucros").innerHTML = "R$" + dados.Lucro
+
+}
+
+
+
+// Criando a conexão WebSocket com o servidor C++
+const socket = new WebSocket('ws://localhost:8000/ws');
+
+// Função para tratar mensagens recebidas do servidor (JSON com dados do estoque)
+socket.onmessage = function(event) {
+    // Convertendo a string JSON para um objeto JavaScript
+    const dados = JSON.parse(event.data);
+
+    if (dados.hasOwnProperty("Despesas")) {
+        processarFluxo(dados)
+    } else {
+        processarEstoque(dados)
+    }
+
 
     }
 
@@ -228,7 +253,8 @@ socket.onmessage = function(event) {
 socket.onopen = function() {
     console.log("Conexão WebSocket estabelecida");
     // Não é necessário enviar nada no momento, mas pode ser feito para solicitar dados
-    socket.send('Solicitar Estoque');  // Exemplo de uma requisição
+    socket.send('Solicitar Estoque');
+    socket.send('Solicitar Fluxo');
 };
 
 

@@ -35,6 +35,9 @@ body{
     font-size: 20px;
     font-weight: 800;
     color: #333333;
+    opacity: 0;
+    animation: fadeIn 1.2s linear forwards;
+    animation-delay: 500ms;
 }
 
 .icone{

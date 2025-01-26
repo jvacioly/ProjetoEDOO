@@ -27,16 +27,16 @@
 
     <div class="fluxoCaixa">
         <div class="caixa">
-            <p class="valores">R$11.451,00</p>
+            <p class="valores receita"></p>
             <h2>Receita</h2>
         </div>
         <div class="caixa">
-            <p class="valores">R$11.451,00</p>
+            <p class="valores custos"></p>
             <h2>Despesa de Custos</h2>
         </div>
         <div class="caixa">
-            <p class="valores">R$11.451,00</p>
-            <h2>Lucros</h2>
+            <p class="valores lucros"></p>
+            <h2>Lucro</h2>
         </div>
         <div class="caixa">
             <h2>Métricas</h2>
@@ -123,11 +123,11 @@
                 
                 <div id="divRadio">
                     <h3>Quantidade</h3>
-                    <label for="adicionar" class="radio">Adicionar<input type="radio" name="adicionar/remover" id="radioAdd" value="adicionar"></label>
-                    <label for="remover" class="radio">Remover<input type="radio" name="adicionar/remover" id="radioRem" value="remover"></label>
+                    <label for="radioAdd" class="radio">Adicionar<input type="radio" name="add/rem" id="radioAdd" value="adicionar"></label>
+                    <label for="radioRem" class="radio">Remover<input type="radio" name="add/rem" id="radioRem" value="remover"></label>
                 </div>
-                <label for="quantAdicionada" class="text campoAdd">Adicionar <input type="number" name="quantAdicionada"></label>
-                <label for="quantRemover" class="text campoRem">Remover <input type="number" name="quantRemover"></label>
+                <label class="text campoAdd">Adicionar <input type="number" name="quantAdicionada"></label>
+                <label class="text campoRem">Remover <input type="number" name="quantRemover"></label>
             </div>
         </form>
             <div id="buttondiv"><button id="salvaralteracoesBotao">Salvar Alterações</button><button id="removerBotao">Remover</button></div>
@@ -184,7 +184,7 @@
 
                 
             </div>
-        </div>
+
 
     </main>
     
