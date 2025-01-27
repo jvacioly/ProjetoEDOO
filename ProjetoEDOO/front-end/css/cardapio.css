@@ -3,6 +3,9 @@ body{
     overflow-x: hidden;
 }
 
+
+
+
 main {
     transform: translate(10px);
     display: flex;
@@ -155,4 +158,215 @@ h2{
 #textos p:nth-child(3){
     font-weight: 600;
        
+}
+
+#overlayPopup{
+    position: fixed;  /* Fixa no viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Preto com 60% de opacidade */
+    display: none; /* Inicialmente escondido */
+    justify-content: center;
+    align-items: center;
+    z-index: 15;
+    animation: fadeIn .1s linear forwards;
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+    } to{
+        opacity: 1;
+    }
+    
+}
+
+#pratoPopup{
+    display: flex;
+    background-color: white;
+    border-radius: 4px;
+    position: relative;
+}
+
+#textosPopup{
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    padding: 32px;
+    gap: 16px;
+}
+
+#textosPopup h3{
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+#textosPopup label{
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    font-weight: 500;
+    gap: 4px;
+    margin-top: 16px;
+}
+
+#observacao{
+    background-color: #eaeaea;
+    border: none;
+    border-radius: 4px;
+    resize: none;
+    padding: 8px;
+
+}
+
+#observacao:focus{
+    outline: none;
+}
+
+
+#pratoPopup img{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    width: 420px;
+    height: 420px;
+}
+
+#x{
+    width: 20px !important;
+    height: 20px !important;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 20;
+    cursor: pointer;
+}
+
+#adicionar{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#adicionar p{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#adicionar input{
+    background-color: #eaeaea;
+    border: none;
+    width: 80px;
+    border-radius: 4px;
+    height: 39px;
+    text-align: center;
+    padding-left: 14px;
+}
+
+#adicionar input:focus{
+    outline: none;
+}
+
+#adicionar button{
+    background-color: #388CFF;
+    width: 185px;
+    padding: 10px 0px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 500;
+    transition: .2s ease;
+    cursor: pointer;
+
+}
+
+#adicionar button:hover{
+    background-color: #569cfd;
+}
+
+#carrinho{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 20;
+    height: 100vh;
+    width: 324px;
+    background-color: white;
+    box-shadow: 6px 4px 26.4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+#carrinhoPratos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    height: 400px;
+}
+#carrinhoPratos h2{
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+#scroll{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 8px;
+    overflow-y: scroll;
+    padding-right: 8px;
+    margin-right: -17px;
+}
+
+#scroll::-webkit-scrollbar{
+    width: 9px;
+
+}
+#scroll::-webkit-scrollbar-thumb{
+    background-color: #777777;
+    width: 9px;
+    border-radius: 16px;
+    border: none;
+
+}
+
+#scroll::-webkit-scrollbar-track{
+    background: none;
+
+}
+
+
+.cardPrato{
+    display: flex;
+    background-color: #777777;
+    padding: 12px 12px;
+    width: 249px;
+    height: fit-content;
+    border: none;
+    border-radius: 4px;
+    transition: .2s ease;
+    position: relative;
+    justify-content: center;
+
+}
+
+.cardPrato:hover{
+    background-color: #868686;
+}
+
+.cardPrato p{
+    color: white;
+}
+.cardPrato img{
+    position: absolute;
+    right: 12px;
+    top: 16px;
+    cursor: pointer;
+    width: 12px;
 }

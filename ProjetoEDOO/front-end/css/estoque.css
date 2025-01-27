@@ -357,6 +357,7 @@ main{
     justify-content: center;
     align-items: center;
     z-index: 9;
+    animation: fadeIn .1s linear forwards;
 }
 
 .overlay.add{
@@ -524,6 +525,20 @@ main{
     display: none;
 }
 
+
+#adicionar input#preco{
+    padding-left: 24px;
+}
+
+
 #preco:disabled {
     opacity: .4;
+}
+
+#R{
+    position: absolute;
+    font-size: 14px;
+    font-weight: 400;
+    top: 139px;
+    left: 20px;
 }

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/headerCliente.css">
     <link rel="stylesheet" href="css/cardapio.css">
     <link rel="stylesheet" href="css/fonte.css">
+    <script src="javascript/cardapio.js" defer></script>
 </head>
 <body>
     <header>
@@ -15,7 +16,7 @@
         <div>
             <a href=""><img src="imagens/Home.svg" alt="home"></a>
             <a href=""><img src="imagens/Pedidos.svg" alt="pedidos"></a>
-            <img src="imagens/Carrinho de Compras.svg" alt="carrinho">
+            <img src="imagens/Carrinho de Compras.svg" alt="carrinho" id="carrinhoIcon">
             <a href=""><img src="imagens/Usuário.svg" alt="usuário"></a>
         </div>
         
@@ -29,7 +30,64 @@
         <button>Bebidas</button>
     </div>
 
+    <div id="overlayPopup">
+            <div id="pratoPopup">
+                <div id="textosPopup">
+                    <h3>Prato Nome</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum beatae ducimus, possimus quaerat ratione culpa provident eos alias tempore aperiam cumque dolore, itaque nesciunt odio. Ullam doloribus quibusdam illum porro.</p>
+                    <label for="adicionar">Alguma observação? <textarea name="" id="observacao" rows="5" placeholder="Ex: tirar a cebola, maionese à parte etc."></textarea></label>
+                    <div id="adicionar">
+                        <p>A partir de R$ 29,99</p>
+                        <input type="number" min="0"> <button>Adicionar</button>
+                    </div>
+
+                </div>
+                <img src="imagens/Pizza.jpg" alt="Prato">
+                <img id="x" src="imagens/xwhite.svg" alt="x">
+            </div>
+
+    </div>
+
+    <div id="carrinho">
+        <div id="carrinhoPratos">
+            <h2>Carrinho</h2>
+            <div id="scroll">
+                <div class="cardPrato">
+                    <p>Prato</p>
+                    <img src="imagens/xwhite.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <form action="">
+            <div id="pagamento">
+                <h3>Forma de Pagamento</h3>
+                <div id="radio">
+                    <label for="">Dinheiro<input type="radio" name="pagamento" value="Dinheiro"></label>
+                    <label for="">Pix<input type="radio" name="pagamento" value="Pix"></label>
+                    <label for="">Crédito/Débito<input type="radio" name="pagamento" value="Cartao"></label>
+                </div>
+
+            </div>
+            <div id="endereco">
+                <h3>Endereço</h3>
+                <div>
+                    <label for="">Endereço <input type="text" name="endereco" id="end"></label>
+                    <label for="">Número <input type="text" name="numero" id="num"></label>
+                    <label for="">CEP <input type="text" name="CEP" id="cep"></label>
+                    <label for="">Residencial <input type="radio" name="local" id="res"></label>
+                    <label for="">Comercial <input type="radio" name="local" id="com"></label>
+                </div>
+
+            </div>
+            <button>Pedir</button>
+
+        </form>
+        
+    </div>
+
     <main>
+
+        
         <div id="restaurante">
             <img src="imagens/Restaurante.jpg" alt="">
 
