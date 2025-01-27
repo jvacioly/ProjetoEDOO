@@ -3,7 +3,7 @@ let overlay = document.getElementById("overlayPopup")
 let pratos = document.querySelectorAll(".prato")
 let x = document.getElementById("x")
 let carrinhobtn = document.getElementById("carrinhoIcon")
-let carrinho = document.getElementById("carrinho")
+let carrinho = document.querySelector(".carrinho")
 let overlayCarrinho = document.getElementById("overlayCarrinho")
 
 
@@ -21,14 +21,21 @@ function abrirPopup() {
 }
 
 function fecharCarrinhoFora(event) {
+    console.log(event.target)
     if (!carrinho.contains(event.target)) {
-        overlayCarrinho.style.display = "none";
+        carrinho.classList.add("fadeout")
+        setTimeout(() => {
+            overlayCarrinho.style.display = "none"
+            carrinho.classList.remove("fadeout")
+        }, 400)
+
+        
 
     }
 }
 
 
-function abrirfecharCarrinho() {
+function abrirCarrinho() {
     
     overlayCarrinho.style.display = "flex"
     
@@ -55,7 +62,7 @@ pratos.forEach(prato => {
 
 x.addEventListener("mousedown", fecharPopup)
 
-carrinhobtn.addEventListener("mousedown", abrirfecharCarrinho)
+carrinhobtn.addEventListener("mousedown", abrirCarrinho)
 
 overlayCarrinho.addEventListener("click", fecharCarrinhoFora)
 
