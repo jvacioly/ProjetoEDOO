@@ -286,7 +286,7 @@ h2{
 }
 
 #carrinho{
-    position: fixed;
+    position: absolute;
     top: 0px;
     left: 0px;
     z-index: 20;
@@ -294,21 +294,23 @@ h2{
     width: 324px;
     background-color: white;
     box-shadow: 6px 4px 26.4px 0px rgba(0, 0, 0, 0.25);
-    display: flex;
+    display: flex ;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    min-height: 748px;
 
 }
 
 #carrinhoPratos{
     display: flex;
     flex-direction: column;
+    justify-content: start;
     align-items: center;
     gap: 8px;
-    height: 400px;
 }
 #carrinhoPratos h2{
+    margin-top: 24px;
     font-size: 24px;
     font-weight: 500;
     margin-bottom: 8px;
@@ -322,6 +324,7 @@ h2{
     overflow-y: scroll;
     padding-right: 8px;
     margin-right: -17px;
+    height: 35vh;
 }
 
 #scroll::-webkit-scrollbar{
@@ -369,4 +372,121 @@ h2{
     top: 16px;
     cursor: pointer;
     width: 12px;
+}
+
+#carrinho form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    width: 265px;
+}
+
+#pagamento{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+#pagamento h3{
+    font-size: 20px;
+    
+}
+#radio{
+    display: flex;
+    gap: 12px;
+}
+#radio label{
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+#endereco{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+#endereco h3{
+    font-size: 20px;
+}
+#endereco div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 265px;
+    gap: 16px;
+    
+}
+#endereco label{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    gap: 4px;
+
+}
+#endereco label input{
+    border: none;
+    border-radius: 4px;
+    background-color: #eaeaea;
+    padding: 6px 0px;
+
+}
+
+#endereco label:nth-child(1) input{
+    width: 256px;
+}
+#endereco label:nth-child(2) input{
+    width: 83px;
+}
+#endereco label:nth-child(3) input{
+    width: 83px;
+}
+
+
+.local{
+    flex-direction: row !important;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+.local label{
+    flex-direction: row !important;
+    align-items: center;
+    gap: 2px;
+    width: fit-content !important;
+}
+.res{
+    width: fit-content !important;
+}
+.com{
+        width: fit-content !important;
+}
+#carrinho form button{
+    background-color: #388CFF;
+    padding: 12px 0px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    transition: .2s ease;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+}
+#carrinho form button:hover{
+    background-color: #569cfd;
+    
+}
+
+#overlayCarrinho{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    z-index: 30;
 }

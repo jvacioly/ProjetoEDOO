@@ -48,7 +48,7 @@
 
     </div>
 
-    <div id="carrinho">
+    <div id="overlayCarrinho"><div id="carrinho">
         <div id="carrinhoPratos">
             <h2>Carrinho</h2>
             <div id="scroll">
@@ -60,7 +60,7 @@
         </div>
         <form action="">
             <div id="pagamento">
-                <h3>Forma de Pagamento</h3>
+                <h3>Pagamento na Entrega</h3>
                 <div id="radio">
                     <label for="">Dinheiro<input type="radio" name="pagamento" value="Dinheiro"></label>
                     <label for="">Pix<input type="radio" name="pagamento" value="Pix"></label>
@@ -74,8 +74,10 @@
                     <label for="">Endereço <input type="text" name="endereco" id="end"></label>
                     <label for="">Número <input type="text" name="numero" id="num"></label>
                     <label for="">CEP <input type="text" name="CEP" id="cep"></label>
-                    <label for="">Residencial <input type="radio" name="local" id="res"></label>
-                    <label for="">Comercial <input type="radio" name="local" id="com"></label>
+                    <div class="local">
+                        <label for="">Residencial <input type="radio" name="local" class="res"></label>
+                        <label for="">Comercial <input type="radio" name="local" class="com"></label>
+                    </div>
                 </div>
 
             </div>
@@ -83,7 +85,7 @@
 
         </form>
         
-    </div>
+    </div></div>
 
     <main>
 
