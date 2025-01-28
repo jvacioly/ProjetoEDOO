@@ -57,15 +57,26 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
         }
         else if (request.find("editar") != string::npos) {
             json jsonInfos = json::parse(request);
-            string acao = jsonInfos.value("add/rem", "");
+            string nome = jsonInfos.value("nome", "");
+            string categoria = jsonInfos.value("categoria", "");
+            string medida = jsonInfos.value("medida", "");
             int codigoProduto = jsonInfos.contains("codigo") ? stoi(jsonInfos["codigo"].get<string>()) : 0;
+            string acao;
+            try {
+                acao = jsonInfos.value("add/rem", "");
+            } catch (const json::exception &e) {
+                acao = "";
+            }
             if (acao == "adicionar") {
                 double quantidade =  jsonInfos.contains("quantAdicionada") ? stod(jsonInfos["quantAdicionada"].get<string>()) : 0.0;
-                restaurante->editEstoque(codigoProduto, quantidade);
+                restaurante->editEstoque(codigoProduto, nome, categoria, medida, quantidade, false);
+            }
+            else if (acao == "remover") {
+                double quantidade =  jsonInfos.contains("quantRemover") ? stod(jsonInfos["quantRemover"].get<string>()) : 0.0;
+                restaurante->editEstoque(codigoProduto, nome, categoria, medida, quantidade, true);
             }
             else {
-                double quantidade =  jsonInfos.contains("quantRemover") ? stod(jsonInfos["quantRemover"].get<string>()) : 0.0;
-                restaurante->removerEstoque(codigoProduto, quantidade);
+                restaurante->editEstoque(codigoProduto, nome, categoria, medida, 0);
             }
             send_estoque_json(conn);
             send_fluxo_json(conn);
@@ -91,7 +102,8 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
         }
         else if (request.find("remover") != string::npos) {
             json jsonInfos = json::parse(request);
-
+            int codigoProduto = jsonInfos.contains("codigo") ? stoi(jsonInfos["codigo"].get<string>()) : 0;
+            restaurante->apagarItem(codigoProduto);
             send_estoque_json(conn);
         }
     }

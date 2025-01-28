@@ -98,47 +98,42 @@ void Restaurante::addEstoque(const Produto &produto, int quantidade) {
     registrarCompra(valorTotal);
 }
 
-void Restaurante::removerEstoque(int codigoProduto, double quantidade) {
-    for (auto& [produto, dados] : estoque.items()) {
-        if (dados["codigo"] == codigoProduto) {
-            double quantidadeAtual = dados.value("quantidade", 0.0);
-
-            dados["quantidade"] = quantidadeAtual - quantidade;
-
-            salvarEstoque();
-            break;
-        }
-    }
-}
-
-void Restaurante::editEstoque(int codigoProduto, double quantidade) {
+void Restaurante::editEstoque(int codigoProduto, string nome, string categoria, string medida, double quantidade, bool remover) {
     for (auto& [produto, dados] : estoque.items()) {
         if (dados["codigo"] == codigoProduto) {
             double quantidadeAtual = dados.value("quantidade", 0.0);
             double preco = dados.value("preco", 0.0);
 
-            dados["quantidade"] = quantidadeAtual + quantidade;
+            dados["nome"] = nome;
+            dados["categoria"] = categoria;
+            dados["medida"] = medida;
 
-            fluxo["Despesas"] = fluxo["Despesas"].get<double>() + (preco * quantidade);
-            fluxo["Lucro"] = fluxo["Receita"].get<double>() - fluxo["Despesas"].get<double>();
+            if (remover == false) {
+                dados["quantidade"] = quantidadeAtual + quantidade;
+                fluxo["Despesas"] = fluxo["Despesas"].get<double>() + (preco * quantidade);
+                fluxo["Lucro"] = fluxo["Receita"].get<double>() - fluxo["Despesas"].get<double>();
+                salvarFluxo();
+            }
+            else {
+                dados["quantidade"] = quantidadeAtual - quantidade;
+            }
 
             salvarEstoque();
-            salvarFluxo();
             break;
         }
     }
 }
 
-bool Restaurante::apagarItem(const Produto &produto) {
-    const string& nome = produto.getNome();
+bool Restaurante::apagarItem(int codigoProduto) {
+    for (auto& [produto, dados] : estoque.items()) {
+        if (dados["codigo"] == codigoProduto) {
+            string nomeProduto = dados["nome"];
+            estoque.erase(nomeProduto);
+            salvarEstoque();
 
-    if (estoque.contains(nome)) {
-        estoque.erase(nome);
-        cout << "Produto " << nome << " apagado do estoque." << endl;
-        salvarEstoque();
-        return true;
+            return true;
+        }
     }
-    cout << "ERRO: Produto não encontrado no estoque." << endl;
     return false;
 }
 
@@ -256,7 +251,7 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
             for (const auto& ingredienteItem : prato.getIngredientes()) {
                 const Produto& ingrediente = ingredienteItem.first;
                 int quantidadeNecessaria = ingredienteItem.second * quantidadePrato;
-                removerEstoque(ingrediente.getCodigo(), quantidadeNecessaria);
+                // removerEstoque(ingrediente.getCodigo(), quantidadeNecessaria); // Alterar para edit estoque
             }
         }
         const json novoPedido = {
