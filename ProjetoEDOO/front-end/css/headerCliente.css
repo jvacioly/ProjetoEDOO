@@ -13,7 +13,7 @@ header {
 header div{
     display: flex;
     row-gap: 12px;
-    gap: 16px;
+    gap: 24px;
 }
 
 header div img{

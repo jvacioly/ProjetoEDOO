@@ -11,6 +11,7 @@ let sobremesasbtn = document.querySelector(".sobremesas")
 let acompanhamentosbtn = document.querySelector(".acompanhamentos")
 let bebidasbtn = document.querySelector(".bebidas")
 let pratosPrincipaisbtn = document.querySelector(".pratosPrincipais")
+let navBotoes = document.querySelectorAll("#nav button")
 
 
 
@@ -22,7 +23,11 @@ function fecharPopup() {
     
 }
 
-function abrirPopup() {
+function abrirPopup(prato) {
+    document.querySelector("#textosPopup h3").innerHTML = prato.nome
+    document.querySelector("#textosPopup p").innerHTML = prato.descricao
+    document.querySelector("#adicionar p").innerHTML = "A partir de R$ " + prato.preco
+    document.getElementById("pratoPopupImg").src = prato.URL
     overlay.style.display = "flex"
     
 }
@@ -49,11 +54,9 @@ function abrirCarrinho() {
     
 }
 
-function mudarCardapio(categoria){
-    console.log(categoria)
+function mudarCardapio(categoria, botao){
     cardapio.innerHTML = ""
     categoria.forEach(prato =>{
-        console.log(prato)
         const divPrato = document.createElement("div")
         divPrato.classList.add("prato")
 
@@ -67,10 +70,18 @@ function mudarCardapio(categoria){
         `
         cardapio.appendChild(divPrato)
 
-        divPrato.addEventListener("mousedown", abrirPopup)
+        divPrato.addEventListener("mousedown", ()=> abrirPopup(prato))
     })
+    navBotoes.forEach(nav =>{
+        if (nav.classList.contains("ativo")){
+            nav.classList.remove("ativo")
+        }
+    })
+    botao.classList.add("ativo")
+
 
 }
+
 
 
 
@@ -94,51 +105,54 @@ carrinhobtn.addEventListener("mousedown", abrirCarrinho)
 overlayCarrinho.addEventListener("click", fecharCarrinhoFora)
 
 //Eventlisteners nav
-entradabtn.addEventListener("click", () =>{mudarCardapio(entradas)})
-pratosPrincipaisbtn.addEventListener("click", () =>{mudarCardapio(pratosPrincipais)})
-sobremesasbtn.addEventListener("click", () =>{mudarCardapio(sobremesas)})
-acompanhamentosbtn.addEventListener("click", () =>{mudarCardapio(acompanhamentos)})
-bebidasbtn.addEventListener("click", () =>{mudarCardapio(bebidas)})
+entradabtn.addEventListener("click", () =>{mudarCardapio(entradas, entradabtn)})
+pratosPrincipaisbtn.addEventListener("click", () =>{mudarCardapio(pratosPrincipais, pratosPrincipaisbtn)})
+sobremesasbtn.addEventListener("click", () =>{mudarCardapio(sobremesas, sobremesasbtn)})
+acompanhamentosbtn.addEventListener("click", () =>{mudarCardapio(acompanhamentos, acompanhamentosbtn)})
+bebidasbtn.addEventListener("click", () =>{mudarCardapio(bebidas, bebidasbtn)})
 
 
 //POO Cardápio
 
 const entradas = [
-    { id: 1, nome: "Bruschetta", descricao: "Pão italiano crocante com tomate, manjericão e azeite de oliva.", preco: 18.90, URL: "imagens/Pizza.jpg" },
-    { id: 2, nome: "Pão de Alho", descricao: "Pão recheado com creme de alho e queijo derretido.", preco: 15.00, URL: "imagens/Pizza.jpg"  },
-    { id: 3, nome: "Queijo Coalho", descricao: "Espetinhos de queijo coalho grelhados, servidos com melado de cana.", preco: 22.00, URL: "imagens/Pizza.jpg"  },
-    { id: 4, nome: "Bolinho de Bacalhau", descricao: "Bolinho crocante de bacalhau com temperos especiais.", preco: 28.50, URL: "imagens/Pizza.jpg"  },
-    { id: 5, nome: "Tábua de Frios", descricao: "Seleção de queijos, presuntos e azeitonas.", preco: 35.00, URL: "imagens/Pizza.jpg"  }
+    { id: 1, nome: "Bruschetta", descricao: "Fatias de pão italiano crocantes, cobertas com tomate fresco, manjericão e azeite de oliva, criando uma combinação leve e deliciosa para abrir o apetite.", preco: 18.99, URL: "imagens/cardapio/Bruschetta.jpg" },
+    { id: 2, nome: "Pão de Alho", descricao: "Pão macio recheado com um creme saboroso de alho e queijo derretido, assado até atingir a perfeição dourada.", preco: 15.99, URL: "imagens/cardapio/Pão de Alho.jpg"  },
+    { id: 3, nome: "Queijo Coalho", descricao: "Espetinhos de queijo coalho grelhados até ficarem dourados, servidos com um toque doce de melado de cana.", preco: 22.99, URL: "imagens/cardapio/Queijo Coalho.jpg"  },
+    { id: 4, nome: "Bolinho de Bacalhau", descricao: "Crocantes por fora e macios por dentro, esses bolinhos são feitos com bacalhau de qualidade e temperos especiais.", preco: 28.99, URL: "imagens/cardapio/Bolinho de Bacalhau.jpg"  },
+    { id: 5, nome: "Tábua de Frios", descricao: "Uma seleção refinada de queijos, presuntos, azeitonas e acompanhamentos, perfeita para compartilhar.", preco: 35.99, URL: "imagens/cardapio/Tábua de Frios.jpg"  }
   ];
   
   const pratosPrincipais = [
-    { id: 1, nome: "Pizza Margherita", descricao: "Molho de tomate, muçarela, manjericão e azeite.", preco: 49.90, URL: "imagens/Pizza.jpg"  },
-    { id: 2, nome: "Pizza Calabresa", descricao: "Calabresa fatiada, cebola e queijo muçarela.", preco: 52.00, URL: "imagens/Pizza.jpg"  },
-    { id: 3, nome: "Pizza Quatro Queijos", descricao: "Muçarela, gorgonzola, parmesão e provolone.", preco: 58.00, URL: "imagens/Pizza.jpg"  },
-    { id: 4, nome: "Pizza Portuguesa", descricao: "Presunto, ovo, cebola, pimentão e azeitonas.", preco: 55.00, URL: "imagens/Pizza.jpg"  },
-    { id: 5, nome: "Pizza Vegetariana", descricao: "Tomate, champignon, pimentão e muçarela.", preco: 50.00, URL: "imagens/Pizza.jpg"  }
+    { id: 1, nome: "Pizza Margherita", descricao: "Clássica e saborosa, com molho de tomate, queijo muçarela, manjericão fresco e um toque de azeite de oliva.", preco: 49.99, URL: "imagens/Pizza.jpg"  },
+    { id: 2, nome: "Pizza Calabresa", descricao: "Coberta com fatias de calabresa, cebola e queijo muçarela derretido, oferecendo um sabor marcante.", preco: 52.99, URL: "imagens/Pizza.jpg"  },
+    { id: 3, nome: "Pizza Quatro Queijos", descricao: "Uma combinação cremosa e intensa de muçarela, gorgonzola, parmesão e provolone.", preco: 58.99, URL: "imagens/Pizza.jpg"  },
+    { id: 4, nome: "Pizza Portuguesa", descricao: "Uma explosão de sabores com presunto, ovo, cebola, pimentão e azeitonas sobre uma base de queijo.", preco: 55.99, URL: "imagens/Pizza.jpg"  },
+    { id: 5, nome: "Pizza Vegetariana", descricao: "Deliciosa mistura de tomate, champignon, pimentão e muçarela, ideal para quem busca uma opção leve.", preco: 50.99, URL: "imagens/Pizza.jpg"  }
   ];
   
   const sobremesas = [
-    { id: 1, nome: "Pizza de Chocolate", descricao: "Chocolate derretido com morangos e castanhas.", preco: 39.00, URL: "imagens/Pizza.jpg"  },
-    { id: 2, nome: "Tiramisu", descricao: "Camadas de biscoito, café e creme mascarpone.", preco: 30.00, URL: "imagens/Pizza.jpg"  },
-    { id: 3, nome: "Pudim de Leite", descricao: "Pudim cremoso com calda de caramelo.", preco: 25.00, URL: "imagens/Pizza.jpg"  },
-    { id: 4, nome: "Petit Gateau", descricao: "Bolo de chocolate com recheio cremoso e sorvete.", preco: 33.00, URL: "imagens/Pizza.jpg"  },
-    { id: 5, nome: "Brownie", descricao: "Brownie de chocolate com castanhas e sorvete.", preco: 29.00, URL: "imagens/Pizza.jpg"  }
+    { id: 1, nome: "Pizza de Chocolate", descricao: "Massa fina coberta com chocolate derretido, pedaços de morango e castanhas crocantes.", preco: 39.99, URL: "imagens/Pizza.jpg"  },
+    { id: 2, nome: "Tiramisu", descricao: "Camadas delicadas de biscoito embebido em café, intercaladas com um creme suave de mascarpone.", preco: 30.99, URL: "imagens/Pizza.jpg"  },
+    { id: 3, nome: "Pudim de Leite", descricao: "Pudim tradicional, cremoso e envolto em uma calda dourada e irresistível de caramelo.", preco: 25.99, URL: "imagens/Pizza.jpg"  },
+    { id: 4, nome: "Petit Gateau", descricao: "Pequeno bolo de chocolate com recheio cremoso, acompanhado de uma bola de sorvete de creme.", preco: 33.99, URL: "imagens/Pizza.jpg"  },
+    { id: 5, nome: "Brownie", descricao: "Brownie úmido com pedaços de castanha e servido com uma bola de sorvete para completar o sabor.", preco: 29.99, URL: "imagens/Pizza.jpg"  }
   ];
   
   const acompanhamentos = [
-    { id: 1, nome: "Batata Frita", descricao: "Porção de batatas fritas crocantes.", preco: 22.00, URL: "imagens/Pizza.jpg"  },
-    { id: 2, nome: "Onion Rings", descricao: "Anéis de cebola empanados e crocantes.", preco: 20.00, URL: "imagens/Pizza.jpg"  },
-    { id: 3, nome: "Salada Caesar", descricao: "Alface, frango grelhado, croutons e molho especial.", preco: 28.00, URL: "imagens/Pizza.jpg"  },
-    { id: 4, nome: "Palitos de Muçarela", descricao: "Palitos de queijo muçarela empanados e fritos.", preco: 27.00, URL: "imagens/Pizza.jpg"  },
-    { id: 5, nome: "Arancini", descricao: "Bolinho de arroz italiano recheado com queijo.", preco: 30.00, URL: "imagens/Pizza.jpg"  }
+    { id: 1, nome: "Batata Frita", descricao: "Porção generosa de batatas fritas crocantes, salgadas na medida certa.", preco: 22.99, URL: "imagens/Pizza.jpg"  },
+    { id: 2, nome: "Onion Rings", descricao: "AAnéis de cebola empanados e fritos até ficarem dourados e crocantes.", preco: 20.99, URL: "imagens/Pizza.jpg"  },
+    { id: 3, nome: "Salada Caesar", descricao: "Alface fresca com frango grelhado, croutons crocantes e molho Caesar caseiro.", preco: 28.99, URL: "imagens/Pizza.jpg"  },
+    { id: 4, nome: "Palitos de Muçarela", descricao: "Queijo muçarela empanado e frito até atingir uma crocância irresistível.", preco: 27.99, URL: "imagens/Pizza.jpg"  },
+    { id: 5, nome: "Arancini", descricao: "Bolinhos de arroz italiano recheados com queijo, fritos até ficarem dourados.", preco: 30.99, URL: "imagens/Pizza.jpg"  }
   ];
   
   const bebidas = [
-    { id: 1, nome: "Refrigerante", descricao: "Lata 350ml (Coca-Cola, Guaraná, Fanta).", preco: 7.00, URL: "imagens/Pizza.jpg"  },
-    { id: 2, nome: "Suco Natural", descricao: "Sabores: laranja, limão, maracujá.", preco: 10.00, URL: "imagens/Pizza.jpg"  },
-    { id: 3, nome: "Água Mineral", descricao: "Com ou sem gás.", preco: 5.00, URL: "imagens/Pizza.jpg" },
-    { id: 4, nome: "Cerveja", descricao: "Long neck (Heineken, Budweiser, Stella Artois).", preco: 12.00, URL: "imagens/Pizza.jpg"  },
-    { id: 5, nome: "Vinho Tinto", descricao: "Taça de vinho tinto seco ou suave.", preco: 20.00, URL: "imagens/Pizza.jpg"  }
+    { id: 1, nome: "Refrigerante", descricao: "Lata de 350ml disponível em sabores clássicos como Coca-Cola, Guaraná e Fanta.", preco: 7.99, URL: "imagens/Pizza.jpg"  },
+    { id: 2, nome: "Suco Natural", descricao: "Suco fresco e saboroso disponível nos sabores laranja, limão e maracujá.", preco: 10.99, URL: "imagens/Pizza.jpg"  },
+    { id: 3, nome: "Água Mineral", descricao: " Opção de água com ou sem gás, ideal para refrescar e hidratar.", preco: 5.99, URL: "imagens/Pizza.jpg" },
+    { id: 4, nome: "Cerveja", descricao: "Long necks geladas das marcas Heineken, Budweiser e Stella Artois.", preco: 12.99, URL: "imagens/Pizza.jpg"  },
+    { id: 5, nome: "Vinho Tinto", descricao: "Taça de vinho tinto seco ou suave, perfeito para acompanhar pratos mais elaborados.", preco: 20.99, URL: "imagens/Pizza.jpg"  }
   ];
+
+
+  mudarCardapio(entradas, entradabtn)
