@@ -61,9 +61,10 @@ int main() {
     string login;
     string senha;
     char input;
-    Pedido pedidoCliente({}, "");
+    Pedido pedidoCliente({{pizzaMarguerita, 1}, {pizzaMussarela, 2}, {pizzaCalabresa, 3}}, "");
+    restaurante.registrarPedido(pedidoCliente);
 
-    cout << "__________ BEM VINDO AO RESTAURANTE " << restaurante.getNome() << " __________" << endl;
+    /*cout << "__________ BEM VINDO AO RESTAURANTE " << restaurante.getNome() << " __________" << endl;
     cout << "Log in (email):"; cin >> login;
     cout << "Senha: "; cin >> senha;
     cout << "Deseja registrar mais dados? (CPF e Endereco) (s/n): "; cin >> input;
@@ -183,6 +184,6 @@ int main() {
                 }
             }
         }
-    }
+    }*/
     return 0;
 }

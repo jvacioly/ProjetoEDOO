@@ -4,62 +4,62 @@
         "codigo": 8,
         "descricao": "",
         "preco": 15.0,
-        "quantidade": 748
+        "quantidade": 898
     },
     "Calabresa": {
         "categoria": "",
         "codigo": 4,
         "descricao": "",
         "preco": 15.0,
-        "quantidade": 996
+        "quantidade": 1143
     },
     "Catupiry": {
         "categoria": "",
         "codigo": 9,
         "descricao": "",
         "preco": 15.0,
-        "quantidade": 750
+        "quantidade": 900
     },
     "Cebola": {
         "categoria": "",
         "codigo": 6,
         "descricao": "",
         "preco": 15.0,
-        "quantidade": 750
+        "quantidade": 897
     },
     "Farinha": {
         "categoria": "",
         "codigo": 1,
         "descricao": "",
         "preco": 5.0,
-        "quantidade": 749
+        "quantidade": 893
     },
     "Frango": {
         "categoria": "",
         "codigo": 7,
         "descricao": "",
         "preco": 15.0,
-        "quantidade": 748
+        "quantidade": 898
     },
     "Oregano": {
         "categoria": "",
         "codigo": 4,
         "descricao": "",
         "preco": 10.0,
-        "quantidade": 748
+        "quantidade": 892
     },
     "Queijo": {
         "categoria": "",
         "codigo": 2,
         "descricao": "",
         "preco": 10.0,
-        "quantidade": 944
+        "quantidade": 1062
     },
     "Tomate": {
         "categoria": "",
         "codigo": 3,
         "descricao": "",
         "preco": 5.5,
-        "quantidade": 792
+        "quantidade": 941
     }
 }

@@ -1,0 +1,25 @@
+{
+    "48541544": {
+        "horario_pedido": "09:15:11",
+        "itens_do_pedido": [
+            {
+                "prato_nome": "Pizza Marguerita",
+                "preco_unitario": 56.9,
+                "quantidade": 1
+            },
+            {
+                "prato_nome": "Pizza Mussarela",
+                "preco_unitario": 56.9,
+                "quantidade": 2
+            },
+            {
+                "prato_nome": "Pizza de Calabresa",
+                "preco_unitario": 60.9,
+                "quantidade": 3
+            }
+        ],
+        "observacao": "",
+        "preco total": 353.4,
+        "status": "Nao finalizado"
+    }
+}

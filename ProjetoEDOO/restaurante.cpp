@@ -12,7 +12,7 @@ Restaurante::Restaurante(const string &nome, const vector<string> &endereco, con
     : nome(nome), endereco(endereco), contato(contato), descricao(descricao), menu(menuInicial), caixa(caixa) {
     carregarEstoque();
     carregarPedidos();
-    carregarEstoque();
+    // carregarFluxo();
 }
 
 Restaurante::Restaurante(const string& nome, const vector<Prato>& menuInicial)
@@ -90,10 +90,11 @@ void Restaurante::addEstoque(const Produto &produto, int quantidade) {
     }
 
     cout << "Adicionado " << quantidade << " unidade(s) do produto " << nome << " ao estoque." << endl;
-    bool compraPossivel = registrarCompra(valorTotal);
-    if (compraPossivel) {
+    // bool compraPossivel = registrarCompra(valorTotal);
+    /*if (compraPossivel) {
         salvarEstoque();
-    }
+    }*/
+    salvarEstoque();
 }
 
 bool Restaurante::removerEstoque(const Produto& produto, int quantidade) {
@@ -255,8 +256,6 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
         cout << "Pedido não registrado" << endl;
     }
 }
-
-void registrarPedido(double pedido);
 
 void Restaurante::finalizarPedido(Pedido &pedido) {
     pedido.setStatus(true);
