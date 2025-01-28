@@ -20,11 +20,18 @@
         "preco": 5.99,
         "quantidade": 5
     },
+    "fruta": {
+        "categoria": "Frutas",
+        "codigo": 4899,
+        "medida": "Un",
+        "preco": 1.0,
+        "quantidade": 1
+    },
     "skol beats": {
         "categoria": "Bebidas Alcoólicas",
         "codigo": 4966,
         "medida": "Un",
         "preco": 4.99,
-        "quantidade": 5
+        "quantidade": 505.0
     }
 }

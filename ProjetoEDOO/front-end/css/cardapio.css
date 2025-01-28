@@ -17,6 +17,7 @@ main {
     display: flex;
     background-color: white;
     border-radius: 4px;
+    box-shadow: 0px 9px 20.4px 2px rgba(0, 16, 37, 0.10);
 }
 
 #restaurante img{
@@ -62,6 +63,8 @@ main {
 }
 
 #container1 h3 p{
+    font-size: 14px;
+    word-spacing: 1px;
     font-weight: 400;
 
 }
@@ -90,6 +93,7 @@ h2{
     z-index: 10;
     height: 64px;
     gap: 12px;
+    box-shadow: 0px 9px 20.4px 2px rgba(0, 16, 37, 0.10);
 }
 
 #nav button{
@@ -106,6 +110,9 @@ h2{
 
 #nav button:hover{
     background-color: #9f9f9f;
+}
+.ativo{
+    background-color: #9f9f9f !important;
 }
 
 #cardapio{
@@ -124,6 +131,7 @@ h2{
     border-radius: 4px;
     cursor: pointer;
     transition: .5s ease;
+    box-shadow: 0px 9px 20.4px 2px rgba(0, 16, 37, 0.10);
 }
 
 .prato:hover{
@@ -354,7 +362,7 @@ h2{
 
 }
 #scroll::-webkit-scrollbar-thumb{
-    background-color: #777777;
+    background-color: #bababa;
     width: 9px;
     border-radius: 16px;
     border: none;
