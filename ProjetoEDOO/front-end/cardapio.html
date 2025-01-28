@@ -59,11 +59,11 @@
             </div>
             <div id="valorTotal"><h3>Valor Total:</h3><p>R$0</p></div>
         </div>
-        <form action="">
+        <form action="" id="formCarrinho">
             <div id="pagamento">
                 <h3>Pagamento na Entrega</h3>
                 <div id="radio">
-                    <label for="">Dinheiro<input type="radio" name="pagamento" value="Dinheiro"></label>
+                    <label for="">Dinheiro<input type="radio" name="pagamento" value="Dinheiro" required></label>
                     <label for="">Pix<input type="radio" name="pagamento" value="Pix"></label>
                     <label for="">Crédito/Débito<input type="radio" name="pagamento" value="Cartao"></label>
                 </div>
@@ -72,17 +72,17 @@
             <div id="endereco">
                 <h3>Endereço</h3>
                 <div>
-                    <label for="">Endereço <input type="text" name="endereco" id="end"></label>
-                    <label for="">Número <input type="text" name="numero" id="num"></label>
-                    <label for="">CEP <input type="text" name="CEP" id="cep"></label>
+                    <label for="">Endereço <input type="text" name="endereco" id="end" required></label>
+                    <label for="">Número <input type="number" name="numero" id="num" min="0" required></label>
+                    <label for="">CEP <input type="number" name="CEP" id="cep" min="0" required></label>
                     <div class="local">
-                        <label for="">Residencial <input type="radio" name="local" class="res"></label>
-                        <label for="">Comercial <input type="radio" name="local" class="com"></label>
+                        <label for="">Residencial <input type="radio" name="local" class="res" value="residencia"required></label>
+                        <label for="">Comercial <input type="radio" name="local" class="com" value="comercial"></label>
                     </div>
                 </div>
 
             </div>
-            <button>Pedir</button>
+            <button type="button" id="pedir">Pedir</button>
 
         </form>
         

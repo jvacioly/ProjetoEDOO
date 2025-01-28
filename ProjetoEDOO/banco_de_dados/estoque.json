@@ -3,15 +3,17 @@
         "categoria": "Frutas",
         "codigo": 7150,
         "medida": "Un",
+        "nome": "Azeitona",
         "preco": 2.0,
-        "quantidade": 20
+        "quantidade": 20.0
     },
     "Calabresa": {
         "categoria": "Carnes",
         "codigo": 1138,
         "medida": "Kg",
+        "nome": "Calabresa",
         "preco": 50.0,
-        "quantidade": 10
+        "quantidade": 10.0
     },
     "Pitu": {
         "categoria": "Bebidas Alcoólicas",
@@ -20,17 +22,11 @@
         "preco": 5.99,
         "quantidade": 5
     },
-    "fruta": {
-        "categoria": "Frutas",
-        "codigo": 4899,
-        "medida": "Un",
-        "preco": 1.0,
-        "quantidade": 1
-    },
     "skol beats": {
-        "categoria": "Bebidas Alcoólicas",
+        "categoria": "Bebidas Não alcoólicas",
         "codigo": 4966,
         "medida": "Un",
+        "nome": "skol beats",
         "preco": 4.99,
         "quantidade": 505.0
     }

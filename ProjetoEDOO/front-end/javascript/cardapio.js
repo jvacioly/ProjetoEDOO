@@ -15,8 +15,8 @@ let navBotoes = document.querySelectorAll("#nav button")
 let addCarrinhobtn = document.getElementById("addCarrinhobtn")
 let popupForm = document.getElementById("textosPopup")
 let carrinhoScroll = document.getElementById("scroll")
-
-
+let pedirbtn = document.getElementById("pedir")
+let formCarrinho = document.getElementById("formCarrinho")
 
 
 // funções
@@ -155,6 +155,7 @@ function mudarCardapio(categoria, botao){
     botao.classList.add("ativo")
 
 
+
 }
 
 
@@ -186,6 +187,51 @@ sobremesasbtn.addEventListener("click", () =>{mudarCardapio(sobremesas, sobremes
 acompanhamentosbtn.addEventListener("click", () =>{mudarCardapio(acompanhamentos, acompanhamentosbtn)})
 bebidasbtn.addEventListener("click", () =>{mudarCardapio(bebidas, bebidasbtn)})
 
+//Eventlistener Carrinho Pedir
+pedirbtn.addEventListener("mousedown", () =>{
+    if (!formCarrinho.checkValidity()) {
+        alert("Preencha todos os campos!");
+        return;
+    }
+    if (carrinhoScroll.childElementCount === 0) {
+        alert("Não há itens adicionados ao carrinho!");
+        return;
+    }
+    let formData = new FormData(formCarrinho)
+
+    let formObject = Object.fromEntries(formData.entries())
+
+    let nodeList = document.querySelectorAll(".cardPrato")
+    let cardsPratos = Array.from(nodeList)
+
+    let itens = []
+
+    cardsPratos.forEach(card => {
+        let pedidoIndividual = new Object()
+        pedidoIndividual["nome"] = card.children[1].textContent
+        pedidoIndividual["quantidade"] = parseInt(card.children[0].textContent)
+        pedidoIndividual["observacao"] = card.dataset.observacao
+        itens.push(pedidoIndividual)
+    })
+
+    formObject["itens"] = itens
+    formObject["acao"] = "pedido"
+    
+
+    formCarrinho.reset()
+    carrinhoScroll.innerHTML = ""
+    carregarValorTotal()
+
+    //Enviando pro servidor
+    const jsonData = JSON.stringify(formObject)
+
+    socket.send(jsonData)
+    console.log("Pedido enviado:")
+    console.log(formObject)
+    
+
+    
+})
 
 //POO Cardápio
 
@@ -231,3 +277,13 @@ const entradas = [
 
 
   mudarCardapio(entradas, entradabtn)
+
+
+  // Criando a conexão WebSocket com o servidor C++
+const socket = new WebSocket('ws://localhost:8000/ws');
+
+// Função para quando a conexão for aberta
+socket.onopen = function() {
+    console.log("Conexão WebSocket estabelecida");
+    
+};

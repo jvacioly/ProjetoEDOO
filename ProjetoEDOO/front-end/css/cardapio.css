@@ -508,12 +508,15 @@ span {
 
 #endereco label:nth-child(1) input{
     width: 256px;
+    padding-left: 4px;
 }
 #endereco label:nth-child(2) input{
     width: 83px;
+    padding-left: 4px;
 }
 #endereco label:nth-child(3) input{
     width: 83px;
+    padding-left: 4px;
 }
 
 
@@ -559,4 +562,14 @@ span {
     height: 100vh;
     display: none;
     z-index: 30;
+}
+
+#end:focus{
+    outline: none;
+}
+#num:focus{
+    outline: none;
+}
+#cep:focus{
+    outline: none;
 }

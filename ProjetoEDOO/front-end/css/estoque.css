@@ -207,6 +207,7 @@ main{
     padding: 12px;
     background-color: white;
     border-radius: 4px;
+    opacity: 0;
     animation: fadeIn 1s ease forwards;
 }
 
