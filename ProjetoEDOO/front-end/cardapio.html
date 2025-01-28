@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <a href="login.html"><img src="imagens/Logo.png" alt="Logo" id="logo"></a>
+        <a href="login.html"><img src="imagens/arrow.svg" alt="Logo" id="logo"></a>
         <div>
             <img src="imagens/Carrinho de Compras.svg" alt="carrinho" id="carrinhoIcon">
             <a href=""><img src="imagens/Home.svg" alt="home"></a>
@@ -32,18 +32,17 @@
 
     <div id="overlayPopup">
             <div id="pratoPopup">
-                <div id="textosPopup">
+                <form id="textosPopup">
                     <h3>Prato Nome</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum beatae ducimus, possimus quaerat ratione culpa provident eos alias tempore aperiam cumque dolore, itaque nesciunt odio. Ullam doloribus quibusdam illum porro.</p>
-                    <label for="adicionar">Alguma observação? <textarea name="" id="observacao" rows="5" placeholder="Ex: tirar a cebola, maionese à parte etc."></textarea></label>
+                    <label for="adicionar">Alguma observação? <textarea name="observacao" id="observacao" rows="5" placeholder="Ex: tirar a cebola, maionese à parte etc."></textarea></label>
                     <div id="adicionar">
                         <p>A partir de R$ 29,99</p>
-                        <input type="number" min="0" value="1"> <button>Adicionar</button>
+                        <input name="quantidade" type="number" min="1" value="1"> <button id="addCarrinhobtn" type="button">Adicionar</button>
                     </div>
-
-                </div>
-                <img id= "pratoPopupImg" src="imagens/Pizza.jpg" alt="Prato">
-                <img id="x" src="imagens/xwhite.svg" alt="x">
+                </form>
+                    <img id= "pratoPopupImg" src="imagens/Pizza.jpg" alt="Prato">
+                    <img id="x" src="imagens/xwhite.svg" alt="x">
             </div>
 
     </div>
@@ -52,31 +51,13 @@
         <div id="carrinhoPratos">
             <h2>Carrinho</h2>
             <div id="scroll">
-                <div class="cardPrato">
+                <!--<div class="cardPrato">
+                    <span class="cardQuant">2x</span>
                     <p>Prato</p>
                     <img src="imagens/xwhite.svg" alt="">
-                </div>
-                <div class="cardPrato">
-                    <p>Prato</p>
-                    <img src="imagens/xwhite.svg" alt="">
-                </div>
-                <div class="cardPrato">
-                    <p>Prato</p>
-                    <img src="imagens/xwhite.svg" alt="">
-                </div>
-                <div class="cardPrato">
-                    <p>Prato</p>
-                    <img src="imagens/xwhite.svg" alt="">
-                </div>
-                <div class="cardPrato">
-                    <p>Prato</p>
-                    <img src="imagens/xwhite.svg" alt="">
-                </div>
-                <div class="cardPrato">
-                    <p>Prato</p>
-                    <img src="imagens/xwhite.svg" alt="">
-                </div>
+                </div>-->
             </div>
+            <div id="valorTotal"><h3>Valor Total:</h3><p>R$0</p></div>
         </div>
         <form action="">
             <div id="pagamento">

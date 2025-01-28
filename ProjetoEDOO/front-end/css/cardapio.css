@@ -1,9 +1,16 @@
 body{
     margin-top: 60px;
     overflow-x: hidden;
+    animation: fundo 1s ease forwards;
 }
 
-
+@keyframes fundo {
+    from{
+        background-image: url(../imagens/Fundo.jpg);
+    } to {
+        background-image: url(../imagens/Fundo2.jpg);
+    }
+}
 
 
 main {
@@ -15,7 +22,7 @@ main {
 
 #restaurante{
     display: flex;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 4px;
     box-shadow: 0px 9px 20.4px 2px rgba(0, 16, 37, 0.10);
 }
@@ -84,7 +91,7 @@ h2{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     width: 100%;
     position: absolute;
     padding-left: 10px;
@@ -111,6 +118,10 @@ h2{
 #nav button:hover{
     background-color: #9f9f9f;
 }
+#nav button:focus{
+    outline: none;
+}
+
 .ativo{
     background-color: #9f9f9f !important;
 }
@@ -126,7 +137,7 @@ h2{
 }
 
 .prato{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     display: flex;
     border-radius: 4px;
     cursor: pointer;
@@ -364,7 +375,7 @@ h2{
     overflow-y: scroll;
     padding-right: 8px;
     margin-right: -17px;
-    height: 35vh;
+    height: calc(100vh - 543px);
 }
 
 #scroll::-webkit-scrollbar{
@@ -414,12 +425,31 @@ h2{
     width: 12px;
 }
 
+.cardQuant{
+    position: absolute;
+    left: 12px;
+}
+
+span {
+    color: white;
+}
+
+#valorTotal{
+    display: flex;
+    gap: 8px;
+    margin: 16px 0px;
+
+    
+}
+
 .carrinho form{
     display: flex;
     flex-direction: column;
     margin-bottom: 24px;
     width: 265px;
+    align-items: center;
 }
+
 
 #pagamento{
     display: flex;

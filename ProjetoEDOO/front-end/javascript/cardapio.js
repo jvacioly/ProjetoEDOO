@@ -12,14 +12,86 @@ let acompanhamentosbtn = document.querySelector(".acompanhamentos")
 let bebidasbtn = document.querySelector(".bebidas")
 let pratosPrincipaisbtn = document.querySelector(".pratosPrincipais")
 let navBotoes = document.querySelectorAll("#nav button")
-
+let addCarrinhobtn = document.getElementById("addCarrinhobtn")
+let popupForm = document.getElementById("textosPopup")
+let carrinhoScroll = document.getElementById("scroll")
 
 
 
 
 // funções
+function adicionarCarrinho(prato, preco) {
+    let formData = new FormData(popupForm)
+    let formObject = Object.fromEntries(formData.entries())
+    formObject["nome"] = prato
+    formObject["preco"] = preco
+    console.log("Item adicionado no carrinho:")
+    console.log(formObject)
+    fecharPopup()
+
+    // criação dos cards no carrinho
+    let nodeList = document.querySelectorAll(".cardPrato p")
+    let arrayCardPrato = Array.from(nodeList)
+    let arrayPrato = arrayCardPrato.map((p) => p.textContent)
+    
+    let index = arrayPrato.indexOf(formObject.nome)
+    
+    if (index !== -1) {
+        let divCardAdd = carrinhoScroll.children[index]
+        let num =  divCardAdd.children[0].textContent
+        let sum = parseInt(num) + parseFloat(formObject.quantidade)
+        divCardAdd.children[0].textContent = sum + "x"
+        sumValorTotal = sum * parseFloat(divCardAdd.dataset.preco)
+        divCardAdd.dataset.precototal = sumValorTotal
+
+    } else {
+
+        const divCard = document.createElement("div")
+        divCard.classList.add("cardPrato")
+        let sumValorTotal = parseFloat(formObject.preco) * parseFloat(formObject.quantidade)
+        divCard.dataset.observacao = formObject.observacao
+        divCard.dataset.preco = formObject.preco
+        divCard.dataset.precototal = sumValorTotal
+
+        divCard.innerHTML = `
+            <span class="cardQuant">${formObject.quantidade}x</span>
+            <p>${formObject.nome}</p>
+            <img src="imagens/xwhite.svg" alt="">
+        `
+        carrinhoScroll.appendChild(divCard)
+
+        let xCard = divCard.children[2]
+
+        xCard.addEventListener("mousedown", ()=>{
+            divCard.remove()
+            console.log(`${prato} removido do carrinho`)
+            carregarValorTotal()
+        })
+    }
+
+    carregarValorTotal()
+    abrirCarrinho()
+}
+
+function carregarValorTotal() {
+    let nodeList = document.querySelectorAll(".cardPrato")
+    let arrayCardPrato = Array.from(nodeList)
+    let valorTotal = 0
+    let valorTotalCampo = document.querySelector("#valorTotal p")
+
+    arrayCardPrato.forEach(card => {
+        let valorTotalCard = parseFloat(card.dataset.precototal)
+        valorTotal += valorTotalCard
+
+    })
+
+    valorTotalCampo.innerHTML = `R$${valorTotal.toFixed(2)}`
+
+}
+
 function fecharPopup() {
     overlay.style.display = "none"
+    popupForm.reset()
     
 }
 
@@ -28,12 +100,15 @@ function abrirPopup(prato) {
     document.querySelector("#textosPopup p").innerHTML = prato.descricao
     document.querySelector("#adicionar p").innerHTML = "A partir de R$ " + prato.preco
     document.getElementById("pratoPopupImg").src = prato.URL
+    addCarrinhobtn.addEventListener("click", function addCarrinho() { 
+        adicionarCarrinho(prato.nome, prato.preco)
+        addCarrinhobtn.removeEventListener("click", addCarrinho)
+    })
     overlay.style.display = "flex"
     
 }
 
 function fecharCarrinhoFora(event) {
-    console.log(event.target)
     if (!carrinho.contains(event.target)) {
         carrinho.classList.add("fadeout")
         setTimeout(() => {
