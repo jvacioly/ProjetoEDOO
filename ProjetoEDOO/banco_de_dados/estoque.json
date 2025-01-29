@@ -5,15 +5,7 @@
         "medida": "Un",
         "nome": "Azeitona",
         "preco": 2.0,
-        "quantidade": 20.0
-    },
-    "Calabresa": {
-        "categoria": "Carnes",
-        "codigo": 1138,
-        "medida": "Kg",
-        "nome": "Calabresa",
-        "preco": 50.0,
-        "quantidade": 10.0
+        "quantidade": 16.0
     },
     "Pitu": {
         "categoria": "Bebidas Alcoólicas",

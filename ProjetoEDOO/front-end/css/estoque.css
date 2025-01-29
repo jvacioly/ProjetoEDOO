@@ -48,6 +48,7 @@ body{
     position: absolute;
     right: 16px;
     bottom: 16px;
+    cursor: pointer;
 }
 .icone p{
     font-size: 12px;
@@ -543,3 +544,4 @@ main{
     top: 139px;
     left: 20px;
 }
+

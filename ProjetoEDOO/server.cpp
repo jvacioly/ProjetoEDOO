@@ -24,6 +24,16 @@ optional<Prato> encontrarPrato(const vector<Prato>& menu, const string& nomePrat
     return nullopt;
 }
 
+// Função que envia os dados de pedidos em formato JSON
+void send_pedidos_json(struct mg_connection *conn) {
+    string caminho_arquivo = BASE_DIR + "pedidos.json";
+    ifstream file(caminho_arquivo);
+    json pedidos;
+    file >> pedidos;
+
+    string json_data = pedidos.dump();
+    mg_websocket_write(conn, MG_WEBSOCKET_OPCODE_TEXT, json_data.c_str(), json_data.size());
+}
 // Função que envia os dados de fluxo em formato JSON
 void send_fluxo_json(struct mg_connection *conn) {
     string caminho_arquivo = BASE_DIR + "fluxo.json";
@@ -70,6 +80,10 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
         else if (request == "Solicitar Fluxo") {
             // Envia os dados do fluxo para o cliente
             send_fluxo_json(conn);
+        }
+        else if (request == "Solicitar Pedidos") {
+            // Envia os dados do fluxo para o cliente
+            send_pedidos_json(conn);
         }
         else if (request.find("editar") != string::npos) {
             json jsonInfos = json::parse(request);
@@ -129,7 +143,7 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
             string endereco = jsonInfos.value("endereco", "");
             string numero = jsonInfos.value("numero", "");
             string CEP = jsonInfos.value("CEP", "");
-            string tipoEndereco = jsonInfos.value("endereco", "");
+            string tipoEndereco = jsonInfos.value("local", "");
 
             Pedido pedido({}, tipoEndereco, endereco, numero, CEP, formaPagamento);
             for (const auto &prato : jsonInfos["itens"].items()) {

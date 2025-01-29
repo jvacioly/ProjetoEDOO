@@ -189,6 +189,7 @@ function processarEstoque(dados) {
         return { nome: key, ...dados[key] };
     });
 
+
     // Selecionando o container para exibir o estoque
     const container = document.querySelector('.itens');
     container.innerHTML = '';  // Limpar o conteúdo existente

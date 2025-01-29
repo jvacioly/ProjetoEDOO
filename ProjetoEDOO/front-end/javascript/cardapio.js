@@ -17,6 +17,9 @@ let popupForm = document.getElementById("textosPopup")
 let carrinhoScroll = document.getElementById("scroll")
 let pedirbtn = document.getElementById("pedir")
 let formCarrinho = document.getElementById("formCarrinho")
+let overlayConfirmacao = document.getElementById("overlayConfirmacao")
+let confirmacao = document.getElementById("confirmacao")
+let xConfirmacao = document.getElementById("xConfirmacao")
 
 
 // funções
@@ -95,16 +98,21 @@ function fecharPopup() {
     
 }
 
+
+
 function abrirPopup(prato) {
+
+    
+    
     document.querySelector("#textosPopup h3").innerHTML = prato.nome
     document.querySelector("#textosPopup p").innerHTML = prato.descricao
     document.querySelector("#adicionar p").innerHTML = "A partir de R$ " + prato.preco
     document.getElementById("pratoPopupImg").src = prato.URL
-    addCarrinhobtn.addEventListener("click", function addCarrinho() { 
-        adicionarCarrinho(prato.nome, prato.preco)
-        addCarrinhobtn.removeEventListener("click", addCarrinho)
-    })
-    overlay.style.display = "flex"
+
+    prato_nome = prato.nome
+    prato_preco = prato.preco
+
+    overlay.style.display = "flex" 
     
 }
 
@@ -158,7 +166,14 @@ function mudarCardapio(categoria, botao){
 
 }
 
-
+function fecharPopupConfirmacao() {
+    overlayConfirmacao.style.display = "none"
+    
+}
+function abrirPopupConfirmacao() {
+    overlayConfirmacao.style.display = "flex"
+    
+}
 
 
 
@@ -176,6 +191,20 @@ overlay.addEventListener("mousedown", function (event) {
 
 x.addEventListener("mousedown", fecharPopup)
 
+overlayConfirmacao.addEventListener("mousedown", function (event) {
+    if (event.target === overlayConfirmacao) { 
+        fecharPopupConfirmacao()
+    }
+})
+//botao popup
+let prato_nome = ""
+let prato_preco = ""
+
+addCarrinhobtn.addEventListener("mousedown", function addCarrinho() { 
+    adicionarCarrinho(prato_nome, prato_preco)})
+
+xConfirmacao.addEventListener("mousedown", fecharPopupConfirmacao)
+
 carrinhobtn.addEventListener("mousedown", abrirCarrinho)
 
 overlayCarrinho.addEventListener("click", fecharCarrinhoFora)
@@ -190,7 +219,7 @@ bebidasbtn.addEventListener("click", () =>{mudarCardapio(bebidas, bebidasbtn)})
 //Eventlistener Carrinho Pedir
 pedirbtn.addEventListener("mousedown", () =>{
     if (!formCarrinho.checkValidity()) {
-        alert("Preencha todos os campos!");
+        alert("Preencha todos os campos corretamente!");
         return;
     }
     if (carrinhoScroll.childElementCount === 0) {
@@ -228,6 +257,17 @@ pedirbtn.addEventListener("mousedown", () =>{
     socket.send(jsonData)
     console.log("Pedido enviado:")
     console.log(formObject)
+
+    //fechando aba de carrinho
+    carrinho.classList.add("fadeout")
+        setTimeout(() => {
+            overlayCarrinho.style.display = "none"
+            carrinho.classList.remove("fadeout")
+        }, 400)
+
+    //abrindo confirmação
+    abrirPopupConfirmacao()
+    
     
 
     
@@ -244,11 +284,11 @@ const entradas = [
   ];
   
   const pratosPrincipais = [
-    { id: 1, nome: "Pizza Margherita", descricao: "Clássica e saborosa, com molho de tomate, queijo muçarela, manjericão fresco e um toque de azeite de oliva.", preco: 49.99, URL: "imagens/Pizza.jpg"  },
+    { id: 1, nome: "Pizza Margherita", descricao: "Clássica e saborosa, com molho de tomate, queijo muçarela, manjericão fresco e um toque de azeite de oliva.", preco: 49.99, URL: "imagens/cardapio/Pizza Margherita.jpg"  },
     { id: 2, nome: "Pizza Calabresa", descricao: "Coberta com fatias de calabresa, cebola e queijo muçarela derretido, oferecendo um sabor marcante.", preco: 52.99, URL: "imagens/Pizza.jpg"  },
-    { id: 3, nome: "Pizza Quatro Queijos", descricao: "Uma combinação cremosa e intensa de muçarela, gorgonzola, parmesão e provolone.", preco: 58.99, URL: "imagens/Pizza.jpg"  },
-    { id: 4, nome: "Pizza Portuguesa", descricao: "Uma explosão de sabores com presunto, ovo, cebola, pimentão e azeitonas sobre uma base de queijo.", preco: 55.99, URL: "imagens/Pizza.jpg"  },
-    { id: 5, nome: "Pizza Vegetariana", descricao: "Deliciosa mistura de tomate, champignon, pimentão e muçarela, ideal para quem busca uma opção leve.", preco: 50.99, URL: "imagens/Pizza.jpg"  }
+    { id: 3, nome: "Pizza Quatro Queijos", descricao: "Uma combinação cremosa e intensa de muçarela, gorgonzola, parmesão e provolone.", preco: 58.99, URL: "imagens/cardapio/Pizza Quatro Queijos.jpg"  },
+    { id: 4, nome: "Pizza Portuguesa", descricao: "Uma explosão de sabores com presunto, ovo, cebola, pimentão e azeitonas sobre uma base de queijo.", preco: 55.99, URL: "imagens/cardapio/Pizza Portuguesa.jpg"  },
+    { id: 5, nome: "Pizza Vegetariana", descricao: "Deliciosa mistura de tomate, champignon, pimentão e muçarela, ideal para quem busca uma opção leve.", preco: 50.99, URL: "imagens/cardapio/Pizza Vegetariana.jpg"  }
   ];
   
   const sobremesas = [

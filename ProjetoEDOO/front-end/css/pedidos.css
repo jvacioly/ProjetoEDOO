@@ -66,7 +66,7 @@
 
 }
 
-#scroll{
+.scroll{
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -77,11 +77,11 @@
 }
 
 
-#scroll::-webkit-scrollbar{
+.scroll::-webkit-scrollbar{
     width: 9px;
 
 }
-#scroll::-webkit-scrollbar-thumb{
+.scroll::-webkit-scrollbar-thumb{
     background-color: #777777;
     width: 9px;
     border-radius: 16px;
@@ -89,7 +89,216 @@
 
 }
 
-#scroll::-webkit-scrollbar-track{
+.scroll::-webkit-scrollbar-track{
     background: none;
 
 }
+
+
+#overlayPedidos {
+    position: absolute;  /* Fixa no viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Preto com 60% de opacidade */
+    display: flex; /* Inicialmente escondido */
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+    animation: fadeIn .1s linear forwards;
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+    } to{
+        opacity: 1;
+    }
+    
+}
+
+
+#pedidosPopup{
+    background-color: white;
+    padding: 032px;
+    display: flex;
+    gap: 40px;
+    border-radius: 4px;
+    position: relative;
+}
+
+#xPopup{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 16px;
+}
+
+#pedidosPopup h2{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 500;
+}
+#pedidosPopup h2 span{
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+#container1 {
+    display: flex;
+    flex-direction: column;
+}
+#container1 h2{
+    margin-bottom: 16px;
+    background-color: #9c9c9c;
+    padding: 8px 16px;
+    color: white;
+    border-radius: 16px;
+}
+#container1 p{
+    font-weight: 600;
+    opacity: .75;
+}
+
+#textosInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    background-color: #f0f0f0;
+    padding: 24px 16px;
+    border-radius: 4px;
+}
+
+#endereco{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    row-gap: 16px;
+}
+.enderecos{
+    display: flex;
+    gap: 16px;
+}
+
+#butoes{
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    
+}
+#butoes button{
+    background-color: #388CFF;
+    width: 185px;
+    padding: 12px 0px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 500;
+    transition: .2s ease;
+    cursor: pointer;
+
+}
+
+#butoes button:hover{
+    background-color: #569cfd;
+}
+
+#cancelar{
+    background-color: #DE6264 !important;
+}
+
+#cancelar:hover{
+    background-color: #f16668 !important;
+}
+
+#container2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+#valorTotal{
+    background-color: #9c9c9c;
+    padding: 8px 16px;
+    color: white;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+#aba{
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 4px;
+    padding-right: 12px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    gap: 8px;
+    overflow-y: scroll;
+    height: 292px;
+    overflow-x: hidden;
+   
+
+}
+
+
+#aba::-webkit-scrollbar{
+    width: 9px;
+
+}
+#aba::-webkit-scrollbar-thumb{
+    background-color: #777777;
+    width: 9px;
+    border-radius: 16px;
+    border: none;
+
+}
+
+#aba::-webkit-scrollbar-track{
+    background: none;
+
+}
+
+#aba h2{
+    margin-top: 20px;
+    
+}
+
+.card {
+    background-color: #777777;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 4px;
+    width: 400px;
+    position: relative;
+}
+.card p{
+    color: white;
+}
+
+#quant{
+    position: absolute;
+    left: 12px;
+    color: white;
+}
+#preco{
+    position: absolute;
+    right: 12px;
+    color: white;
+}
+
+#descricao{
+    width: 100%;
+    word-wrap: break-word;
+    
+}
+
+
+

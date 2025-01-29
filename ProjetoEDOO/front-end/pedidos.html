@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/fonte.css">
     <link rel="stylesheet" href="css/pedidos.css">
+    <script src="javascript/pedidos.js" defer></script>
 </head>
 <body>
     <header>
@@ -23,13 +24,48 @@
 
         <a href="login.html" id="x"><img src="imagens/x.svg" alt="" ></a>
     </header>
+
+    <div id="overlayPedidos">
+        <div id="pedidosPopup">
+            <img src="imagens/x.svg" alt="x" id="xPopup">
+            <div id="container1">
+                <h2><span>Confirmar Pedido</span> Id 85017776</h2>
+                <div id="textosInfo">
+                    <p>Horário do Pedido: 09:51:00</p>
+                    <div id="endereco">
+                        <div class="enderecos"><p>Endereço: adsadsadasdasdasda</p><p>numero: 1000</p></div>
+                        <div class="enderecos"><p>Tipo de Endereço: Residencial</p><p>CEP: 421412</p></div>
+                    </div>
+                    <p>Forma de Pagamento: Dinheiro</p>
+                </div>
+                <div id="butoes"><button id="ProxEtapa">Proxima Etapa</button><button id="cancelar">Cancelar Pedido</button></div>
+            </div>
+            <div id="container2">
+                <div id="aba">
+                    <h2>Itens do Pedido</h2>
+                    <div class="card">
+                        <span id="quant">1x</span>
+                        <p>Bruschetta</p>
+                        <span id="preco">R$18,99</span>
+                    </div>
+                    <h2>Observações</h2>
+                    <div class="card">
+                        <p id="descricao">Pizza Margherita: Sem queijo, sem recheio. So pao</p>
+                    </div>
+                    
+                </div>
+                <p id="valorTotal">Valor Total: 221</p>
+            </div>
+        </div>
+    </div>
+
     <div id="pedidos">
             
         <div class="aba">
             <div class="cabecalho">
                 <p>Confirmação de Pedidos</p>
             </div>
-            <div id="scroll">
+            <div class="scroll com">
                 <div class="pedido">
                 <p>id: xxxxxxxxxx</p> <p>15:26</p>  
                 </div>
@@ -57,7 +93,7 @@
             <div class="cabecalho">
                 <p>Preparando</p>
             </div>
-            <div id="scroll">
+            <div class="scroll pre">
                 <div class="pedido">
                 <p>id: xxxxxxxxxx</p> <p>15:26</p>  
                 </div>
@@ -73,7 +109,7 @@
             <div class="cabecalho">
                 <p>A Caminho</p>
             </div>
-            <div id="scroll">
+            <div class="scroll aca">
                 <div class="pedido">
                 <p>id: xxxxxxxxxx</p> <p>15:26</p>  
                 </div>
@@ -89,7 +125,7 @@
             <div class="cabecalho">
                 <p>Confirmados 24h</p>
             </div>
-            <div id="scroll">
+            <div class="scroll fin">
                 <div class="pedido">
                 <p>id: xxxxxxxxxx</p> <p>15:26</p>  
                 </div>
