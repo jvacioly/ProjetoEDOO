@@ -12,7 +12,7 @@ using namespace std;
 
 class Prato : public Produto {
     private:
-        vector<pair<Produto, int>> ingredientes;
+        vector<pair<string, int>> ingredientes;
         string categoria;
         //Dados herdados de produto
         /*
@@ -24,17 +24,17 @@ class Prato : public Produto {
         */
     public:
         //Construtor e Destrutor
-        Prato(const string &nome, double preco, const string& categoria, const vector<pair<Produto, int>> &ingredientes);
+        Prato(const string &nome, double preco, const string& categoria, const vector<pair<string, int>> &ingredientes);
         ~Prato();
 
         //Get Methods
-        [[nodiscard]] vector<pair<Produto, int>> getIngredientes() const {return ingredientes;};
+        [[nodiscard]] vector<pair<string, int>> getIngredientes() const {return ingredientes;};
 
         //Set Methods
-        void setIngredientes(const vector<pair<Produto, int>> &novosIngredientes);
+        void setIngredientes(const vector<pair<string, int>> &novosIngredientes);
 
         //Outros Metodos
-        void print() const;
+        // void print() const;
 
 };
 

@@ -137,7 +137,7 @@ bool Restaurante::apagarItem(int codigoProduto) {
     return false;
 }
 
-bool Restaurante::checarEstoque(const Pedido &pedido) {
+/*bool Restaurante::checarEstoque(const Pedido &pedido) {
     vector<pair<Produto, int>> ingredientesTotais;
 
     for (const auto &itemPedido : pedido.getItens()) {
@@ -178,7 +178,7 @@ bool Restaurante::checarEstoque(const Pedido &pedido) {
         }
     }
     return true;
-}
+}*/
 
 void Restaurante::mostrarEstoque() const {
     cout << "Estoque atual:" << endl;
@@ -232,12 +232,18 @@ void Restaurante::salvarPedidos() const {
 
 //Métodos dos Pedidos
 void Restaurante::registrarPedido(const Pedido &pedido) {
-    if (checarEstoque(pedido)) {
+    // if (checarEstoque(pedido)) {
         const int ID = pedido.getID();
         const string& observacao = pedido.getObservacao();
         const string& horarioPedido = pedido.getHorarioPedido();
+        const string& tipoEndereco = pedido.getTipoEndereco();
+        const string& endereco = pedido.getEndereco();
+        const string& numero = pedido.getNumero();
+        const string& CEP = pedido.getCEP();
+        const string& formaPagamento = pedido.getFormaPagamento();
         double valorTotal = pedido.getValorTotal();
         string status = pedido.getStatus();
+
         json itensJSON = json::array();
         for (const auto& item : pedido.getItens()) {
             const Prato& prato = item.first;
@@ -249,9 +255,16 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
             });
             // Removendo os ingredientes do estoque
             for (const auto& ingredienteItem : prato.getIngredientes()) {
-                const Produto& ingrediente = ingredienteItem.first;
+                int codigoIngrediente = 0;
+                const string ingrediente = ingredienteItem.first;
                 int quantidadeNecessaria = ingredienteItem.second * quantidadePrato;
-                // removerEstoque(ingrediente.getCodigo(), quantidadeNecessaria); // Alterar para edit estoque
+
+                for (const auto& produto : estoque) {
+                    if (produto == ingrediente) {
+                        codigoIngrediente = produto["codigoIngrediente"];
+                    }
+                }
+                editEstoque(codigoIngrediente, "", "", "", quantidadeNecessaria, true); // Alterar para edit estoque
             }
         }
         const json novoPedido = {
@@ -259,26 +272,31 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
             {"preco total", valorTotal},
             {"horario_pedido", horarioPedido},
             {"observacao", observacao},
-            {"status", status}
+            {"status", status},
+            {"tipo_endereco", tipoEndereco},
+            {"endereco", endereco},
+            {"numero", numero},
+            {"CEP", CEP},
+            {"forma_pagamento", formaPagamento}
         };
 
         pedidos[to_string(ID)] = novoPedido;
         cout << "Adicionado pedido ID" << ID << " ao banco de dados." << endl;
         salvarPedidos();
-    }
-    else {
-        cout << "Pedido não registrado" << endl;
-    }
+    // }
+    // else {
+    //     cout << "Pedido não registrado" << endl;
+    // }
 }
 
 void registrarPedido(double pedido);
 
 void Restaurante::finalizarPedido(Pedido &pedido) {
-    pedido.setStatus(true);
+    pedido.setStatus("finalizado");
 
     const string id = to_string(pedido.getID());
     if (pedidos.contains(id)) {
-        pedidos[id]["status"] = "Finalizado";
+        pedidos[id]["status"] = "finalizado";
         salvarPedidos();
         cout << "Pedido ID: " << id << " finalizado com sucesso!" << endl;
         registrarVenda(pedido.getValorTotal());

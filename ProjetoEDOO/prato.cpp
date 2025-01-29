@@ -5,7 +5,7 @@
 #include "prato.h"
 
 //Construtor e Destrutor
-Prato::Prato(const string &nome, double preco, const string &categoria, const vector<pair<Produto, int>> &ingredientes)
+Prato::Prato(const string &nome, double preco, const string &categoria, const vector<pair<string, int>> &ingredientes)
     : Produto(nome, preco), ingredientes(ingredientes), categoria(categoria) {}
 
 Prato::~Prato() {
@@ -13,12 +13,12 @@ Prato::~Prato() {
 }
 
 //Set Methods
-void Prato::setIngredientes(const vector<pair<Produto, int>> &novosIngredientes) {
+void Prato::setIngredientes(const vector<pair<string, int>> &novosIngredientes) {
     ingredientes = novosIngredientes;
 }
 
 //Outros Metodos
-void Prato::print() const {
+/*void Prato::print() const {
     cout << "Codigo: " << getCodigo() << endl;
     cout << "Produto: " << getNome() << endl;
     cout << "Categoria: " << getCategoria() << endl;
@@ -32,6 +32,6 @@ void Prato::print() const {
         }
     }
     cout << endl;
-}
+}*/
 
 

@@ -6,9 +6,23 @@
 #include <chrono>
 #include <string>
 #include "globals.h"
+#include "pedido.h"
+#include "prato.h"
 
 using json = nlohmann::json;
 using namespace std;
+
+// Pratos
+// Prato bruschetta("Bruschetta", 18.99, "entrada", {});
+
+optional<Prato> encontrarPrato(const vector<Prato>& menu, const string& nomePrato) {
+    for (const auto& prato : menu) {
+        if (prato.getNome() == nomePrato) {
+            return prato;
+        }
+    }
+    return nullopt;
+}
 
 // Função que envia os dados de fluxo em formato JSON
 void send_fluxo_json(struct mg_connection *conn) {
@@ -47,6 +61,8 @@ void websocket_ready_handler(struct mg_connection *conn, void *cbdata) {
 int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t data_len, void *cbdata) {
     if (data && data_len > 0) {
         string request(data, data_len);
+
+        // AÇÕES DE ESTOQUE
         if (request == "Solicitar Estoque") {
             // Envia os dados do estoque para o cliente
             send_estoque_json(conn);
@@ -83,7 +99,6 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
         }
         else if (request.find("adicionar") != string::npos) {
             json jsonInfos = json::parse(request);
-
             string nome = jsonInfos.value("nome", "");
             string categoria = jsonInfos.value("categoria", "");
             string medida = jsonInfos.value("medida", "");
@@ -105,6 +120,36 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
             int codigoProduto = jsonInfos.contains("codigo") ? stoi(jsonInfos["codigo"].get<string>()) : 0;
             restaurante->apagarItem(codigoProduto);
             send_estoque_json(conn);
+        }
+
+        // AÇÕES DE PEDIDO
+        else if (request.find("pedido") != string::npos) {
+            json jsonInfos = json::parse(request);
+            string formaPagamento = jsonInfos.value("pagamento", "");
+            string endereco = jsonInfos.value("endereco", "");
+            string numero = jsonInfos.value("numero", "");
+            string CEP = jsonInfos.value("CEP", "");
+            string tipoEndereco = jsonInfos.value("endereco", "");
+
+            Pedido pedido({}, tipoEndereco, endereco, numero, CEP, formaPagamento);
+            for (const auto &prato : jsonInfos["itens"].items()) {
+                const json &dados = prato.value();
+
+                string nome = dados["nome"].get<string>();
+                int  quantidade = dados["quantidade"].get<int>();
+                string pratoObs = dados["observacao"].get<string>();
+
+                optional<Prato> pratoOpt = encontrarPrato(restaurante->getMenu(), nome);
+                if (pratoOpt) {
+                    const Prato &dadosPrato = pratoOpt.value();
+                    pedido.addPrato(dadosPrato, quantidade);
+                }
+                if (!pratoObs.empty()) {
+                    pratoObs = nome + ": " + pratoObs;
+                    pedido.addObservacao(pratoObs);
+                }
+            }
+            restaurante->registrarPedido(pedido);
         }
     }
     return 1;  // Retorna 1 para continuar a comunicação

@@ -34,6 +34,7 @@ class Restaurante {
 
         //Get Methods
         [[nodiscard]] string getNome() const {return nome;}
+        [[nodiscard]] vector<Prato> getMenu() const { return menu; }
 
         //Métodos do Estoque
         void carregarEstoque();
