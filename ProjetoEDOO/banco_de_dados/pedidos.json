@@ -1,0 +1,38 @@
+{
+    "43618622": {
+        "CEP": "45678910",
+        "endereco": "abc",
+        "forma_pagamento": "Dinheiro",
+        "horario_pedido": "06:59:11",
+        "itens_do_pedido": [
+            {
+                "prato_nome": "Bruschetta",
+                "preco_unitario": 18.99,
+                "quantidade": 1
+            }
+        ],
+        "numero": "123",
+        "observacao": "",
+        "preco total": 18.99,
+        "status": "preparando",
+        "tipo_endereco": "abc"
+    },
+    "57940268": {
+        "CEP": "1747285936",
+        "endereco": "rua rua",
+        "forma_pagamento": "Cartao",
+        "horario_pedido": "07:13:22",
+        "itens_do_pedido": [
+            {
+                "prato_nome": "Bruschetta",
+                "preco_unitario": 18.99,
+                "quantidade": 1
+            }
+        ],
+        "numero": "542",
+        "observacao": "",
+        "preco total": 18.99,
+        "status": "preparando",
+        "tipo_endereco": "rua rua"
+    }
+}

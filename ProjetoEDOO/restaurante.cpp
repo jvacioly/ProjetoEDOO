@@ -104,9 +104,15 @@ void Restaurante::editEstoque(int codigoProduto, string nome, string categoria, 
             double quantidadeAtual = dados.value("quantidade", 0.0);
             double preco = dados.value("preco", 0.0);
 
-            dados["nome"] = nome;
-            dados["categoria"] = categoria;
-            dados["medida"] = medida;
+            if (!nome.empty()) {
+                dados["nome"] = nome;
+            }
+            if (!categoria.empty()) {
+                dados["categoria"] = categoria;
+            }
+            if (!medida.empty()) {
+                dados["medida"] = medida;
+            }
 
             if (remover == false) {
                 dados["quantidade"] = quantidadeAtual + quantidade;
@@ -137,48 +143,46 @@ bool Restaurante::apagarItem(int codigoProduto) {
     return false;
 }
 
-/*bool Restaurante::checarEstoque(const Pedido &pedido) {
-    vector<pair<Produto, int>> ingredientesTotais;
+bool Restaurante::checarEstoque(const Pedido &pedido) {
+    unordered_map<string, int> ingredientesTotais;
 
     for (const auto &itemPedido : pedido.getItens()) {
-        const Prato& prato = itemPedido.first;
+        Prato prato = itemPedido.first;
         int quantidadePratos = itemPedido.second;
 
-        for (const auto &ingredienteItem : prato.getIngredientes()) {
-            const Produto& ingrediente = ingredienteItem.first;
+        const vector<pair<string, int>>& ingredientes = prato.getIngredientes();
+
+        for (const auto &ingredienteItem : ingredientes) {
+            const string& nomeIngrediente = ingredienteItem.first;
             int quantidadeIngredientesPorPrato = ingredienteItem.second;
             int quantidadeIngredientesTotal = quantidadeIngredientesPorPrato * quantidadePratos;
 
-            bool encontrado = false;
-            for (auto &itemTotal : ingredientesTotais) {
-                if (itemTotal.first.getNome() == ingrediente.getNome()) {
-                    itemTotal.second += quantidadeIngredientesTotal;
-                    encontrado = true;
-                    break;
-                }
-            }
-            if (!encontrado) {
-                ingredientesTotais.emplace_back(ingrediente, quantidadeIngredientesTotal);
-            }
+            ingredientesTotais[nomeIngrediente] += quantidadeIngredientesTotal;
         }
     }
 
-    // Verificar no estoque a lista ingredientesTotais
+    // Verificar no estoque se os ingredientes necessários estão disponíveis
     for (const auto &ingredienteItem : ingredientesTotais) {
-        const Produto& ingrediente = ingredienteItem.first;
+        const string& nomeIngrediente = ingredienteItem.first;
         int quantidadeIngredientesTotal = ingredienteItem.second;
-        if (!estoque.contains(ingrediente.getNome()) || !estoque[ingrediente.getNome()].is_object()) {
-            cout << "Ingrediente " << ingrediente.getNome() << " nao encontrado no estoque." << endl;
+
+        // Verifica se o ingrediente existe no estoque
+        if (!estoque.contains(nomeIngrediente) || !estoque[nomeIngrediente].is_object()) {
+            cout << "Ingrediente " << nomeIngrediente << " não encontrado no estoque." << endl;
             return false;
         }
-        int quantidadeDisponivel = estoque[ingrediente.getNome()]["quantidade"];
+
+        // Obtém a quantidade disponível no estoque
+        int quantidadeDisponivel = estoque[nomeIngrediente]["quantidade"];
+
+        // Verifica se há quantidade suficiente
         if (quantidadeIngredientesTotal > quantidadeDisponivel) {
-            cout << "Quantidade insuficiente de " << ingrediente.getNome() << endl;
+            cout << "Quantidade insuficiente de " << nomeIngrediente << endl;
             return false;
         }
     }
     return true;
-}*/
+}
 
 void Restaurante::mostrarEstoque() const {
     cout << "Estoque atual:" << endl;
@@ -232,7 +236,7 @@ void Restaurante::salvarPedidos() const {
 
 //Métodos dos Pedidos
 void Restaurante::registrarPedido(const Pedido &pedido) {
-    // if (checarEstoque(pedido)) {
+    if (checarEstoque(pedido)) {
         const int ID = pedido.getID();
         const string& observacao = pedido.getObservacao();
         const string& horarioPedido = pedido.getHorarioPedido();
@@ -260,8 +264,9 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
                 int quantidadeNecessaria = ingredienteItem.second * quantidadePrato;
 
                 for (const auto& produto : estoque) {
-                    if (produto == ingrediente) {
-                        codigoIngrediente = produto["codigoIngrediente"];
+                    if (produto["nome"] == ingrediente) {
+                        codigoIngrediente = produto["codigo"];
+                        break;
                     }
                 }
                 editEstoque(codigoIngrediente, "", "", "", quantidadeNecessaria, true); // Alterar para edit estoque
@@ -283,13 +288,11 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
         pedidos[to_string(ID)] = novoPedido;
         cout << "Adicionado pedido ID" << ID << " ao banco de dados." << endl;
         salvarPedidos();
-    // }
-    // else {
-    //     cout << "Pedido não registrado" << endl;
-    // }
+    }
+    else {
+        cout << "Pedido não registrado" << endl;
+    }
 }
-
-void registrarPedido(double pedido);
 
 void Restaurante::finalizarPedido(Pedido &pedido) {
     pedido.setStatus("finalizado");

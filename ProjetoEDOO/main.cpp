@@ -12,7 +12,7 @@
 using namespace std;
 
 // Entradas
-Prato bruschetta("Bruschetta", 18.99, "entradas", {});
+Prato bruschetta("Bruschetta", 18.99, "entradas", {{"Azeitona", 2}});
 Prato paoDeAlho("Pão de Alho", 15.99, "entradas", {});
 Prato queijoCoalho("Queijo Qualho", 22.99, "entradas", {});
 Prato bolinhoDeBacalhau("Bolinho de Bacalhau", 28.99, "entradas", {});
