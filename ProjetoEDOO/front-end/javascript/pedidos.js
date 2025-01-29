@@ -40,7 +40,7 @@ function processarPedidos(dados) {
     })
 
     pedidosArray.forEach(pedido => {
-        if (pedido.status === "preparando") {
+        if (pedido.status === "confirmar") {
             let divPedido = document.createElement("div")
             divPedido.classList.add("pedido")
             const formatado = pedido.horario_pedido.substring(0, 5);

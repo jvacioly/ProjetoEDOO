@@ -42,7 +42,11 @@ Prato arancini("Arancini", 30.99, "acompanhamentos", {});
 // Bebidas
 
 
-shared_ptr<Restaurante> restaurante = make_shared<Restaurante>(vector<Prato>{bruschetta});
+shared_ptr<Restaurante> restaurante = make_shared<Restaurante>(vector<Prato>{
+    bruschetta, paoDeAlho,queijoCoalho, bolinhoDeBacalhau, tabuaFrios,
+    pizzaMargherita, pizzaCalabresa, pizzaQuatroQueijos, pizzaPortuguesa, pizzaVegetariana,
+    pizzaChocolate, tiramisu, pudimDeLeite, petitGateau, brownie,
+    batataFrita, onionRings, saladaCaesar, palitosDeMucarela, arancini});
 
 int main() {
     setup_websocket_server();

@@ -22,7 +22,7 @@ class Pedido {
         string CEP;
         string formaPagamento;
         double valorTotal;
-        string status="preparando";
+        string status="confirmar";
         double atualizarValorTotal();
     public:
         //Construtor
