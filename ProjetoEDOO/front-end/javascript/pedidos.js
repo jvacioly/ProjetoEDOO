@@ -21,17 +21,37 @@ function processarPedidos(dados) {
     const pedidosArray = Object.keys(dados).map(key => {
         return { id : key, ...dados[key] };
     });
+
+    pedidosArray.sort((a, b) => {
+        const horaA = new Date(`1970-01-01T${a.horario_pedido}Z`);
+        const horaB = new Date(`1970-01-01T${b.horario_pedido}Z`);
+        return horaA - horaB;
+    });
+
     console.log(pedidosArray)
 
-    let nodeList = document.querySelectorAll("scroll")
+    let nodeList = document.querySelectorAll(".scroll")
     containers = Array.from(nodeList)
+
+    
     
     containers.forEach(container => {
         container.innerHTML = ""
     })
 
     pedidosArray.forEach(pedido => {
-        if (pedido.status ===)
+        if (pedido.status === "preparando") {
+            let divPedido = document.createElement("div")
+            divPedido.classList.add("pedido")
+            const formatado = pedido.horario_pedido.substring(0, 5);
+            divPedido.innerHTML = `
+                <p>id: ${pedido.id}</p> <p>${formatado}</p>
+            `
+
+            containers[0].appendChild(divPedido)
+            divPedido.addEventListener("mousedown", abrirPopup)
+            
+        }
     })
 }
 
