@@ -162,8 +162,11 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
                     pratoObs = nome + ": " + pratoObs;
                     pedido.addObservacao(pratoObs);
                 }
+
             }
             restaurante->registrarPedido(pedido);
+            send_pedidos_json(conn);//erro não ta chegando em tempo real
+
         }
     }
     return 1;  // Retorna 1 para continuar a comunicação

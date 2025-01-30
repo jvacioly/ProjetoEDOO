@@ -50,7 +50,7 @@ function abrirPopup(pedido) {
         document.getElementById("obsH2").innerHTML = ""
     }
 
-    valorTotal.innerHTML = `Valor Total R$${pedido.preco_total}`
+    valorTotal.innerHTML = `Valor Total R$${pedido.preco_total.toFixed(2)}`
 
     if (pedido.status === "Pedido Finalizado") {
         document.getElementById("butoes").style.display = "none"
@@ -165,9 +165,10 @@ function proxEtapa(etapa, id) {
     mensagem["pedido_id"] = id
     mensagem["novo_status"] = etapa
 
-    socket.send(mensagem)
 
-    
+    const jsonData = JSON.stringify(mensagem)
+
+    socket.send(jsonData)
     console.log(`Status de pedido Id: ${id} alterado para: ${etapa}`)
     console.log(mensagem)
 }

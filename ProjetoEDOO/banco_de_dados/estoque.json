@@ -14,6 +14,13 @@
         "preco": 5.99,
         "quantidade": 5
     },
+    "pao": {
+        "categoria": "Pães e Massas Frescas",
+        "codigo": 7934,
+        "medida": "Kg",
+        "preco": 12.0,
+        "quantidade": 2
+    },
     "skol beats": {
         "categoria": "Bebidas Não alcoólicas",
         "codigo": 4966,
