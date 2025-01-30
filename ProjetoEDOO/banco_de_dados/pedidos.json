@@ -35,6 +35,29 @@
         "status": "preparando",
         "tipo_endereco": "abc"
     },
+    "47695259": {
+        "CEP": "31312321412",
+        "endereco": "dasdasdaasdadas",
+        "forma_pagamento": "Dinheiro",
+        "horario_pedido": "10:14:17",
+        "itens_do_pedido": [
+            {
+                "prato_nome": "Bruschetta",
+                "preco_unitario": 18.99,
+                "quantidade": 1
+            },
+            {
+                "prato_nome": "Pão de Alho",
+                "preco_unitario": 15.99,
+                "quantidade": 1
+            }
+        ],
+        "numero": "12121",
+        "observacao": "Bruschetta: sem pao so azeite - Pão de Alho: sem pao so alho",
+        "preco total": 53.97,
+        "status": "confirmar",
+        "tipo_endereco": "residencia"
+    },
     "57940268": {
         "CEP": "1747285936",
         "endereco": "rua rua",

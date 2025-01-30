@@ -274,7 +274,7 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
         }
         const json novoPedido = {
             {"itens_do_pedido", itensJSON},
-            {"preco total", valorTotal},
+            {"preco_total", valorTotal},
             {"horario_pedido", horarioPedido},
             {"observacao", observacao},
             {"status", status},

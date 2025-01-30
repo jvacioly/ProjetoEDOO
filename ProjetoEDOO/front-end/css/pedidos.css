@@ -53,6 +53,7 @@
     border-radius: 4px;
     transition: .2s ease;
     cursor: pointer;
+    animation: fadeIn .5s ease forwards;
     
 }
 
@@ -142,6 +143,7 @@
     justify-content: space-between;
     font-size: 20px;
     font-weight: 500;
+    min-width: 386px;
 }
 #pedidosPopup h2 span{
     font-size: 20px;
@@ -155,7 +157,7 @@
 }
 #container1 h2{
     margin-bottom: 16px;
-    background-color: #9c9c9c;
+    background-color: #777777;
     padding: 8px 16px;
     color: white;
     border-radius: 16px;
@@ -163,6 +165,7 @@
 #container1 p{
     font-weight: 600;
     opacity: .75;
+
 }
 
 #textosInfo{
@@ -223,8 +226,8 @@
     gap: 16px;
 }
 #valorTotal{
-    background-color: #9c9c9c;
-    padding: 8px 16px;
+    background-color: #777777;
+    padding: 12px 16px;
     color: white;
     border-radius: 4px;
     font-weight: 500;
@@ -270,6 +273,17 @@
     
 }
 
+.scrollPedidos{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.scrollObs{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .card {
     background-color: #777777;
     display: flex;
@@ -298,6 +312,7 @@
 #descricao{
     width: 100%;
     word-wrap: break-word;
+    text-align: center;
     
 }
 

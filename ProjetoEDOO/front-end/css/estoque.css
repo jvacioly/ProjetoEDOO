@@ -36,8 +36,8 @@ body{
     font-weight: 800;
     color: #333333;
     opacity: 0;
-    animation: fadeIn 1.2s linear forwards;
-    animation-delay: 500ms;
+    animation: fadeIn 1s linear forwards;
+    animation-delay: 300ms;
 }
 
 .icone{

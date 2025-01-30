@@ -1,14 +1,81 @@
 //Variaveis
 let overlayPopup = document.getElementById("overlayPedidos")
 let xPopup = document.getElementById("xPopup")
-
+let popupTitulo = document.querySelector("#container1 h2")
+let popupTextosInfo = document.querySelector("#textosInfo")
+let scrollPedidos = document.querySelector(".scrollPedidos")
+let scrollObs = document.querySelector(".scrollObs")
+let valorTotal = document.getElementById("valorTotal")
+let proxEtapabtn = document.getElementById("proxEtapa")
+let cancelarbtn = document.getElementById("cancelar")
 
 
 //Funções
 
-function abrirPopup() {
+function abrirPopup(pedido) {
+    popupTitulo.innerHTML = `<span>${pedido.status}</span> Id: ${pedido.id}`
+    popupTextosInfo.innerHTML =  `
+                    <p>Horário do Pedido: ${pedido.horario_pedido}</p>
+                    <div id="endereco">
+                        <div class="enderecos"><p>Endereço: ${pedido.endereco}</p><p>numero: ${pedido.numero}</p></div>
+                        <div class="enderecos"><p>Tipo de Endereço: ${pedido.tipo_endereco}</p><p>CEP: ${pedido.CEP}</p></div>
+                    </div>
+                    <p>Forma de Pagamento: ${pedido.forma_pagamento}</p>
+                    `
+
+    scrollPedidos.innerHTML = ""
+    pedido.itens_do_pedido.forEach(item => {
+        let card = document.createElement("div")
+        card.classList.add("card")
+        card.innerHTML = `
+                <span id="quant">${item.quantidade}x</span>
+                <p>${item.prato_nome}</p>
+                <span id="preco">R$${item.preco_unitario}</span>
+        `
+        scrollPedidos.appendChild(card)
+    })
+    document.getElementById("obsH2").innerHTML = "Observações"
+    scrollObs.innerHTML = ""
+    if (pedido.observacao !== "") {
+    let obsArray = pedido.observacao.split(" - ")
+    obsArray.forEach(Obs => {
+        let card = document.createElement("div")
+        card.classList.add("card")
+        card.innerHTML = `
+                <p id="descricao">${Obs}</p>
+        `
+        scrollObs.appendChild(card)
+
+    })} else {
+        document.getElementById("obsH2").innerHTML = ""
+    }
+
+    valorTotal.innerHTML = `Valor Total R$${pedido.preco_total}`
+
+    if (pedido.status === "Pedido Finalizado") {
+        document.getElementById("butoes").style.display = "none"
+    } else {
+        document.getElementById("butoes").style.display = "flex"
+    }
+
+
+    
+    if (pedido.status === "Confirmar Pedido") {
+        etapa_seguinte = "preparando"
+    } else if (pedido.status === "Preparando Pedido") {
+        etapa_seguinte = "caminho"
+    } else if (pedido.status === "Pedido a Caminho") {
+        etapa_seguinte = "finalizado"
+    } else {
+        etapa_seguinte = "sem etapas seguintes"
+    }
+
+    pedido_id = pedido.id 
+
     overlayPopup.style.display = "flex"
 }
+
+
 function fecharPopup() {
     overlayPopup.style.display = "none"
 }
@@ -45,14 +112,64 @@ function processarPedidos(dados) {
             divPedido.classList.add("pedido")
             const formatado = pedido.horario_pedido.substring(0, 5);
             divPedido.innerHTML = `
-                <p>id: ${pedido.id}</p> <p>${formatado}</p>
+                <p>Id: ${pedido.id}</p> <p>${formatado}</p>
             `
+            pedido.status = "Confirmar Pedido"
 
             containers[0].appendChild(divPedido)
-            divPedido.addEventListener("mousedown", abrirPopup)
+            divPedido.addEventListener("mousedown", () => abrirPopup(pedido))
             
+        } else if (pedido.status === "preparando") {
+            let divPedido = document.createElement("div")
+            divPedido.classList.add("pedido")
+            const formatado = pedido.horario_pedido.substring(0, 5);
+            divPedido.innerHTML = `
+                <p>Id: ${pedido.id}</p> <p>${formatado}</p>
+            `
+            pedido.status = "Preparando Pedido"
+
+            containers[1].appendChild(divPedido)
+            divPedido.addEventListener("mousedown", () => abrirPopup(pedido))
+
+        } else if (pedido.status === "caminho") {
+            let divPedido = document.createElement("div")
+            divPedido.classList.add("pedido")
+            const formatado = pedido.horario_pedido.substring(0, 5);
+            divPedido.innerHTML = `
+                <p>Id: ${pedido.id}</p> <p>${formatado}</p>
+            `
+            pedido.status = "Pedido a Caminho"
+
+            containers[2].appendChild(divPedido)
+            divPedido.addEventListener("mousedown", () => abrirPopup(pedido))
+
+        } else if (pedido.status === "finalizado") {
+            let divPedido = document.createElement("div")
+            divPedido.classList.add("pedido")
+            const formatado = pedido.horario_pedido.substring(0, 5);
+            divPedido.innerHTML = `
+                <p>Id: ${pedido.id}</p> <p>${formatado}</p>
+            `
+            pedido.status = "Pedido Finalizado"
+
+            containers[3].appendChild(divPedido)
+            divPedido.addEventListener("mousedown", () => abrirPopup(pedido))
+
         }
     })
+}
+
+function proxEtapa(etapa, id) {
+    let mensagem = new Object()
+    mensagem["acao"] = "alterar_status"
+    mensagem["pedido_id"] = id
+    mensagem["novo_status"] = etapa
+
+    socket.send(mensagem)
+
+    
+    console.log(`Status de pedido Id: ${id} alterado para: ${etapa}`)
+    console.log(mensagem)
 }
 
 //EventListeners
@@ -65,6 +182,18 @@ overlayPopup.addEventListener("mousedown", (event)=>{
 
 xPopup.addEventListener("mousedown", fecharPopup)
 
+let etapa_seguinte = ""
+let pedido_id = ""
+proxEtapabtn.addEventListener("mousedown", ()=> {
+    proxEtapa(etapa_seguinte, pedido_id)
+})
+
+cancelarbtn.addEventListener("mousedown", ()=> {
+    if (confirm("Tem certeza que deseja cancelar este pedido?")){
+       proxEtapa("cancelado", pedido_id) 
+    }
+    
+})
 
 //Servidor
 
