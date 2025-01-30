@@ -30,7 +30,7 @@ Restaurante::~Restaurante() {
 
 //Métodos do Estoque
 void Restaurante::carregarEstoque() {
-    string caminho_estoque = BASE_DIR + "estoque.json";
+    string caminho_estoque = BASE_DIR + "/estoque.json";
     ifstream estoqueFile(caminho_estoque);
     estoque = json::object();  // Inicializa como objeto vazio
 
@@ -60,7 +60,7 @@ void Restaurante::carregarEstoque() {
 }
 
 void Restaurante::salvarEstoque() const {
-    string caminho_estoque = BASE_DIR + "estoque.json";
+    string caminho_estoque = BASE_DIR + "/estoque.json";
     ofstream estoqueFile(caminho_estoque);
     if (estoqueFile.is_open()) {
         estoqueFile << estoque.dump(4);  // Grava o conteúdo do JSON com formatação
@@ -192,7 +192,7 @@ void Restaurante::mostrarEstoque() const {
 }
 
 void Restaurante::carregarPedidos() {
-    string caminho_arquivo = BASE_DIR + "pedidos.json";
+    string caminho_arquivo = BASE_DIR + "/pedidos.json";
     ifstream pedidosFile(caminho_arquivo);
     pedidos = json::object();  // Inicializa como objeto vazio
 
@@ -222,7 +222,7 @@ void Restaurante::carregarPedidos() {
 }
 
 void Restaurante::salvarPedidos() const {
-    string caminho_arquivo = BASE_DIR + "pedidos.json";
+    string caminho_arquivo = BASE_DIR + "/pedidos.json";
     ofstream pedidosFile(caminho_arquivo);
     if (pedidosFile.is_open()) {
         pedidosFile << pedidos.dump(4);  // Grava o conteúdo do JSON com formatação
@@ -342,7 +342,7 @@ void Restaurante::finalizarPedido(const string& IDpedido) {
 
 //Métodos do Fluxo
 void Restaurante::carregarFluxo() {
-    string caminho_arquivo = BASE_DIR + "fluxo.json";
+    string caminho_arquivo = BASE_DIR + "/fluxo.json";
     ifstream fluxoFile(caminho_arquivo);
     fluxo = json::object();  // Inicializa como objeto vazio
 
@@ -389,7 +389,7 @@ void Restaurante::carregarFluxo() {
 }
 
 void Restaurante::salvarFluxo() const {
-    string caminho_arquivo = BASE_DIR + "fluxo.json";
+    string caminho_arquivo = BASE_DIR + "/fluxo.json";
     ofstream fluxoFile(caminho_arquivo);
     if (fluxoFile.is_open()) {
         fluxoFile << fluxo.dump(4);  // Grava o conteúdo do JSON com formatação

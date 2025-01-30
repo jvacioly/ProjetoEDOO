@@ -22,7 +22,7 @@ Produto::Produto(const string& nome, double preco, const string& categoria, cons
     bool codigoUnico = false;
 
     json pedidosExistentes;
-    string caminhoArquivo = BASE_DIR + "estoque.json";
+    string caminhoArquivo = BASE_DIR + "/estoque.json";
     ifstream pedidosFile(caminhoArquivo);
     if (pedidosFile.is_open()) {
         pedidosFile >> pedidosExistentes;
