@@ -166,7 +166,23 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
             }
             restaurante->registrarPedido(pedido);
             send_pedidos_json(conn);//erro não ta chegando em tempo real
-
+        }
+        else if (request.find("alterar_status") != string::npos) {
+            json jsonInfos = json::parse(request);
+            string novoStatus = jsonInfos.value("novo_status", "");
+            string IDpedido = jsonInfos.value("pedido_id", "");
+            if (novoStatus == "preparar") {
+                restaurante->prepararPedido(IDpedido);
+            }
+            else if (novoStatus == "caminho") {
+                restaurante->enviarPedido(IDpedido);
+            }
+            else if (novoStatus == "cancelado") {
+                restaurante->cancelarPedido(IDpedido);
+            }
+            else if (novoStatus == "finalizado") {
+                restaurante->finalizarPedido(IDpedido);
+            }
         }
     }
     return 1;  // Retorna 1 para continuar a comunicação

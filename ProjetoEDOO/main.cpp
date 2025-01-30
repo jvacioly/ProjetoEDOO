@@ -1,6 +1,7 @@
 
 #include <string>
 #include <memory>
+#include <cstdlib>
 #include "json.hpp"
 #include "produto.h"
 #include "prato.h"
@@ -49,6 +50,15 @@ shared_ptr<Restaurante> restaurante = make_shared<Restaurante>(vector<Prato>{
     batataFrita, onionRings, saladaCaesar, palitosDeMucarela, arancini});
 
 int main() {
+    const char* htmlPath = "C:/Users/kddu4/OneDrive/Documentos/GitHub/ProjetoEDOO/ProjetoEDOO/front-end/login.html"; // Escreva o caminho do absoluto do arquivo
+
+    string command = "start " + string(htmlPath); // Windows
+    // string command = "xdg-open " + string(htmlPath); // Linux
+    // string command = "open " + string(htmlPath); // Mac
+
+    system(command.c_str());
+
     setup_websocket_server();
+
     return 0;
 }

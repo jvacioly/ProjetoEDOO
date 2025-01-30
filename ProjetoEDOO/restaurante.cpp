@@ -294,18 +294,49 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
     }
 }
 
-void Restaurante::finalizarPedido(Pedido &pedido) {
-    pedido.setStatus("finalizado");
-
-    const string id = to_string(pedido.getID());
-    if (pedidos.contains(id)) {
-        pedidos[id]["status"] = "finalizado";
-        salvarPedidos();
-        cout << "Pedido ID: " << id << " finalizado com sucesso!" << endl;
-        registrarVenda(pedido.getValorTotal());
+void Restaurante::prepararPedido(const string &IDpedido) {
+    for (const auto& pedido : pedidos) {
+        if (IDpedido == pedido.key()) {
+            pedido.setStatus("preparando");
+            pedidos[id]["status"] = "preparando";
+            salvarPedidos();
+            break;
+        }
     }
-    else {
-        cout << "Pedido ID:" << id << " não encontrado." << endl;
+}
+
+void Restaurante::enviarPedido(const string &IDpedido) {
+    for (const auto& pedido : pedidos) {
+        if (IDpedido == pedido.key()) {
+            pedido.setStatus("caminho");
+            pedidos[id]["status"] = "caminho";
+            salvarPedidos();
+            break;
+        }
+    }
+}
+
+void Restaurante::cancelarPedido(const string &IDpedido) {
+    for (const auto& pedido : pedidos) {
+        if (IDpedido == pedido.key()) {
+            pedido.setStatus("cancelado");
+            pedidos[id]["status"] = "cancelado";
+            salvarPedidos();
+            break;
+        }
+    }
+}
+
+void Restaurante::finalizarPedido(const string& IDpedido) {
+    for (const auto& pedido : pedidos) {
+        if (IDpedido == pedido.key()) {
+            pedido.setStatus("finalizado");
+            pedidos[id]["status"] = "finalizado";
+            salvarPedidos();
+            cout << "Pedido ID: " << id << " finalizado com sucesso!" << endl;
+            registrarVenda(pedido.getValorTotal());
+            break;
+        }
     }
 }
 

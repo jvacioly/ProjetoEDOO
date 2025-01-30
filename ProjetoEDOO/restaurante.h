@@ -49,8 +49,10 @@ class Restaurante {
         void carregarPedidos();
         void salvarPedidos() const;
         void registrarPedido(const Pedido& pedido);
-        // bool removerPedido();
-        void finalizarPedido(Pedido& pedido);
+        void prepararPedido(const string& IDpedido);
+        void enviarPedido(const string& IDpedido);
+        void cancelarPedido(const string& IDpedido);
+        void finalizarPedido(const string& IDpedido);
         // void mostrarPedidos() const;
 
         //Métodos do Fluxo

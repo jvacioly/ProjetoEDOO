@@ -1,0 +1,155 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 64px;
+    background-image: url(../imagens/Fundo2.jpg);
+    overflow: hidden;
+    animation: fadeIn 1s ease forwards;
+    
+}
+
+@keyframes fadeIn {
+    to{
+        background-image: url(../imagens/Fundo.jpg);
+    }
+}
+
+header div{
+    transform: translateX(-20px);
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 64px;
+}
+
+#cabecalho{
+    display: flex;
+    align-items: center;
+    width: 597px;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#seletor{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 10;
+    padding: 12px;
+    background-color: #777777;
+    border-radius: 4px;
+    box-shadow: 0px 9px 20.4px 2px rgba(0, 16, 37, 0.10);
+}
+#seletor p{
+    font-weight: 500;
+    z-index: 10;
+}
+.andamento {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+}
+.historico {
+    width: 139px;
+    display: flex;
+    justify-content: center;
+}
+
+#seletorbtn{
+    width: 143px;
+    position: absolute;
+    left: 6px;
+    height: 32px;
+    z-index: 0;
+    border: none;
+    border-radius: 16px;
+    background-color: white;
+}
+
+.inativo{
+    color:white;
+    cursor: pointer;
+}
+
+#pedidos {
+    display: flex;
+    flex-direction: column;
+    width: 597px;
+    background-color: white;
+    padding: 24px;
+    padding-bottom: 0px;
+    height: calc(100vh - 220px);
+    border-radius: 4px;
+    box-shadow: 0px 9px 20.4px 2px rgba(0, 16, 37, 0.10);
+   
+}
+
+.pedido{
+    display: flex;
+    flex-direction: column;
+    background-color: #EAEAEA;
+    border-radius: 4px;
+}
+
+.pedidoCabecalho{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 2px white solid;
+}
+
+.pedidoCabecalho span{
+    background-color: white;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-weight: 500;
+}
+.pedidoCabecalho p{
+    font-weight: 500;
+}
+
+.pedidoConteudo{
+    display: flex;
+    padding: 12px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.pedidoConteudo p{
+   font-weight: 500;
+   opacity: .9;
+}
+
+.endereco{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.itens{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+h3{
+    font-weight: 600;
+    display: flex;
+    gap: 4px;
+    opacity: .95;
+}
+.valor{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+}
