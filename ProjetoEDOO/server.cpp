@@ -171,7 +171,7 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
             json jsonInfos = json::parse(request);
             string novoStatus = jsonInfos.value("novo_status", "");
             string IDpedido = jsonInfos.value("pedido_id", "");
-            if (novoStatus == "preparar") {
+            if (novoStatus == "preparando") {
                 restaurante->prepararPedido(IDpedido);
             }
             else if (novoStatus == "caminho") {

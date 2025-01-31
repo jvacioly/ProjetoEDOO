@@ -1,1 +1,20 @@
-{}
+{
+    "34177299": {
+        "CEP": "2",
+        "endereco": "a",
+        "forma_pagamento": "Pix",
+        "horario_pedido": "23:02:33",
+        "itens_do_pedido": [
+            {
+                "prato_nome": "Bruschetta",
+                "preco_unitario": 18.99,
+                "quantidade": 1
+            }
+        ],
+        "numero": "1",
+        "observacao": "",
+        "preco_total": 18.99,
+        "status": "confirmar",
+        "tipo_endereco": "residencia"
+    }
+}

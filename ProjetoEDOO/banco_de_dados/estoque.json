@@ -1,53 +1,30 @@
 {
     "Azeite": {
-        "categoria": "Temperos e Especiarias",
-        "codigo": 5824,
+        "categoria": "Enlatados e Conservas",
+        "codigo": 5067,
         "medida": "L",
-        "preco": 12.0,
-        "quantidade": 12
+        "preco": 0.5,
+        "quantidade": 20
     },
-    "Azeitona": {
-        "categoria": "Frutas",
-        "codigo": 7150,
+    "Manjericão": {
+        "categoria": "Temperos e Especiarias",
+        "codigo": 4599,
         "medida": "Un",
-        "nome": "Azeitona",
-        "preco": 2.0,
-        "quantidade": 14.0
+        "preco": 0.15,
+        "quantidade": 100
     },
-    "Farinha de Trigo": {
-        "categoria": "Farinhas e Açúcares",
-        "codigo": 5727,
-        "medida": "g",
-        "preco": 1.5,
-        "quantidade": 10000
-    },
-    "Pitu": {
-        "categoria": "Bebidas Alcoólicas",
-        "codigo": 6224,
-        "medida": "Un",
-        "preco": 5.99,
-        "quantidade": 5
-    },
-    "Refrigerante": {
-        "categoria": "Bebidas Não alcoólicas",
-        "codigo": 8577,
-        "medida": "Un",
-        "preco": 3.99,
-        "quantidade": 1000
-    },
-    "pao": {
+    "Pão": {
         "categoria": "Pães e Massas Frescas",
-        "codigo": 7934,
-        "medida": "Kg",
-        "preco": 12.0,
-        "quantidade": 2
-    },
-    "skol beats": {
-        "categoria": "Bebidas Não alcoólicas",
-        "codigo": 4966,
+        "codigo": 9155,
         "medida": "Un",
-        "nome": "skol beats",
-        "preco": 4.99,
-        "quantidade": 505.0
+        "preco": 0.2,
+        "quantidade": 100
+    },
+    "Tomate": {
+        "categoria": "Legumes e Verduras",
+        "codigo": 3427,
+        "medida": "Un",
+        "preco": 0.4,
+        "quantidade": 500
     }
 }

@@ -262,9 +262,8 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
                 int codigoIngrediente = 0;
                 const string ingrediente = ingredienteItem.first;
                 int quantidadeNecessaria = ingredienteItem.second * quantidadePrato;
-
                 for (const auto& produto : estoque) {
-                    if (produto["nome"] == ingrediente) {
+                    if (produto.begin().key() == ingrediente) {
                         codigoIngrediente = produto["codigo"];
                         break;
                     }
@@ -298,41 +297,41 @@ void Restaurante::prepararPedido(const string &IDpedido) {
     for (const auto& pedido : pedidos) {
         if (IDpedido == pedido.begin().key()) {
             pedidos[IDpedido]["status"] = "preparando";
-            salvarPedidos();
             break;
         }
     }
+    salvarPedidos();
 }
 
 void Restaurante::enviarPedido(const string &IDpedido) {
     for (const auto& pedido : pedidos) {
         if (IDpedido == pedido.begin().key()) {
             pedidos[IDpedido]["status"] = "caminho";
-            salvarPedidos();
             break;
         }
     }
+    salvarPedidos();
 }
 
 void Restaurante::cancelarPedido(const string &IDpedido) {
     for (const auto& pedido : pedidos) {
         if (IDpedido == pedido.begin().key()) {
             pedidos[IDpedido]["status"] = "cancelado";
-            salvarPedidos();
             break;
         }
     }
+    salvarPedidos();
 }
 
 void Restaurante::finalizarPedido(const string& IDpedido) {
     for (const auto& pedido : pedidos) {
         if (IDpedido == pedido.begin().key()) {
             pedidos[IDpedido]["status"] = "finalizado";
-            salvarPedidos();
             registrarVenda(pedido["preco_total"]);
             break;
         }
     }
+    salvarPedidos();
 }
 
 //Métodos do Fluxo

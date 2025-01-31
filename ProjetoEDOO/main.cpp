@@ -24,17 +24,17 @@ Prato pizzaVegetariana("Pizza Vegetariana", 50.99, "pratos principais", {{"Farin
 
 // Sobremesas
 Prato pizzaChocolate("Pizza de Chocolate", 39.99, "sobremesas", {{"Farinha de Trigo", 1000}, {"Chocolate", 400}, {"Morango", 10}, {"Castanha", 300}});
-Prato tiramisu("Tiramisu", 30.99, "sobremesas", {});
-Prato pudimDeLeite("Pudim de Leite", 25.99, "sobremesas", {});
-Prato petitGateau("Petit Gateau", 33.99, "sobremesas", {});
-Prato brownie("Brownie", 29.99, "sobremesas", {});
+Prato tiramisu("Tiramisu", 30.99, "sobremesas", {{"Queijo", 50}, {"Biscoito", 2}, {"Leite", 50}, {"Chocolate", 50}, {"Café", 10}});
+Prato pudimDeLeite("Pudim de Leite", 25.99, "sobremesas", {{"Leite", 250}, {"Ovo", 1}});
+Prato petitGateau("Petit Gateau", 33.99, "sobremesas", {{"Chocolate", 50}, {"Manteiga", 25}, {"Farinha de Trigo", 100}, {"Ovo", 1}});
+Prato brownie("Brownie", 29.99, "sobremesas", {{"Farinha de Trigo", 50}, {"Ovo", 1}, {"Manteiga", 50}, {"Chocolate", 50}});
 
 // Acompanhamentos
-Prato batataFrita("Batata Frita", 22.99, "acompanhamentos", {});
-Prato onionRings("Onion Rings", 20.99, "acompanhamentos", {});
-Prato saladaCaesar("Salada Caesar", 28.99, "acompanhamentos", {});
-Prato palitosDeMucarela("Palitos de Muçarela", 27.99, "acompanhamentos", {});
-Prato arancini("Arancini", 30.99, "acompanhamentos", {});
+Prato batataFrita("Batata Frita", 22.99, "acompanhamentos", {{"Batata", 10}});
+Prato onionRings("Onion Rings", 20.99, "acompanhamentos", {{"Cebola", 4}});
+Prato saladaCaesar("Salada Caesar", 28.99, "acompanhamentos", {{"Alface", 250}, {"Frango", 0.2}});
+Prato palitosDeMucarela("Palitos de Muçarela", 27.99, "acompanhamentos", {{"Queijo", 250}});
+Prato arancini("Arancini", 30.99, "acompanhamentos", {{"Arroz", 400}, {"Queijo", 250}});
 
 // Bebidas
 Prato refrigerante("Refrigerante", 7.99, "bebidas", {{"Refrigerante", 1}});
