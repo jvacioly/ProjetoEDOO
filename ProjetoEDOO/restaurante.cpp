@@ -262,11 +262,8 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
                 int codigoIngrediente = 0;
                 const string ingrediente = ingredienteItem.first;
                 int quantidadeNecessaria = ingredienteItem.second * quantidadePrato;
-                for (const auto& produto : estoque) {
-                    if (produto.begin().key() == ingrediente) {
-                        codigoIngrediente = produto["codigo"];
-                        break;
-                    }
+                if (estoque.contains(ingrediente)) {
+                    codigoIngrediente = estoque[ingrediente]["codigo"];
                 }
                 editEstoque(codigoIngrediente, "", "", "", quantidadeNecessaria, true); // Alterar para edit estoque
             }

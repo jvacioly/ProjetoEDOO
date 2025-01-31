@@ -1,30 +1,184 @@
 {
+    "Alface": {
+        "categoria": "Legumes e Verduras",
+        "codigo": 1526,
+        "medida": "g",
+        "preco": 0.04,
+        "quantidade": 1000
+    },
+    "Alho": {
+        "categoria": "Temperos e Especiarias",
+        "codigo": 1692,
+        "medida": "Un",
+        "preco": 0.2,
+        "quantidade": 60
+    },
+    "Arroz": {
+        "categoria": "Grãos",
+        "codigo": 2304,
+        "medida": "g",
+        "preco": 0.07,
+        "quantidade": 4000
+    },
     "Azeite": {
         "categoria": "Enlatados e Conservas",
         "codigo": 5067,
         "medida": "L",
         "preco": 0.5,
+        "quantidade": 20.0
+    },
+    "Azeitona": {
+        "categoria": "Enlatados e Conservas",
+        "codigo": 3522,
+        "medida": "Un",
+        "preco": 0.1,
+        "quantidade": 100
+    },
+    "Batata": {
+        "categoria": "Legumes e Verduras",
+        "codigo": 4950,
+        "medida": "Un",
+        "preco": 0.07,
+        "quantidade": 100
+    },
+    "Biscoito": {
+        "categoria": "Laticínios",
+        "codigo": 6252,
+        "medida": "Un",
+        "preco": 0.2,
         "quantidade": 20
+    },
+    "Café": {
+        "categoria": "Farinhas e Açúcares",
+        "codigo": 7630,
+        "medida": "g",
+        "preco": 0.2,
+        "quantidade": 100
+    },
+    "Calabresa": {
+        "categoria": "Carnes",
+        "codigo": 6569,
+        "medida": "Un",
+        "preco": 1.5,
+        "quantidade": 50
+    },
+    "Castanha": {
+        "categoria": "Grãos",
+        "codigo": 9032,
+        "medida": "g",
+        "preco": 0.3,
+        "quantidade": 300
+    },
+    "Cebola": {
+        "categoria": "Legumes e Verduras",
+        "codigo": 2901,
+        "medida": "Un",
+        "preco": 0.5,
+        "quantidade": 100
+    },
+    "Champignon": {
+        "categoria": "Legumes e Verduras",
+        "codigo": 6574,
+        "medida": "Un",
+        "preco": 1.0,
+        "quantidade": 160
+    },
+    "Chocolate": {
+        "categoria": "Laticínios",
+        "codigo": 9754,
+        "medida": "g",
+        "preco": 0.4,
+        "quantidade": 5000
+    },
+    "Farinha de Trigo": {
+        "categoria": "Farinhas e Açúcares",
+        "codigo": 7161,
+        "medida": "g",
+        "preco": 0.5,
+        "quantidade": 10000
+    },
+    "Frango": {
+        "categoria": "Carnes",
+        "codigo": 6696,
+        "medida": "Kg",
+        "preco": 16.3,
+        "quantidade": 10
+    },
+    "Leite": {
+        "categoria": "Laticínios",
+        "codigo": 8510,
+        "medida": "ml",
+        "preco": 0.3,
+        "quantidade": 1500
     },
     "Manjericão": {
         "categoria": "Temperos e Especiarias",
         "codigo": 4599,
         "medida": "Un",
         "preco": 0.15,
+        "quantidade": 99.0
+    },
+    "Manteiga": {
+        "categoria": "Laticínios",
+        "codigo": 9155,
+        "medida": "g",
+        "preco": 0.08,
+        "quantidade": 1000
+    },
+    "Morango": {
+        "categoria": "Frutas",
+        "codigo": 9722,
+        "medida": "Un",
+        "preco": 0.2,
         "quantidade": 100
+    },
+    "Ovo": {
+        "categoria": "Carnes",
+        "codigo": 3404,
+        "medida": "Un",
+        "preco": 0.6,
+        "quantidade": 120
+    },
+    "Pimentão": {
+        "categoria": "Legumes e Verduras",
+        "codigo": 5917,
+        "medida": "Un",
+        "preco": 0.2,
+        "quantidade": 50
+    },
+    "Presunto": {
+        "categoria": "Carnes",
+        "codigo": 8857,
+        "medida": "g",
+        "preco": 0.3,
+        "quantidade": 1000
     },
     "Pão": {
         "categoria": "Pães e Massas Frescas",
         "codigo": 9155,
         "medida": "Un",
         "preco": 0.2,
-        "quantidade": 100
+        "quantidade": 99.0
+    },
+    "Queijo": {
+        "categoria": "Laticínios",
+        "codigo": 8859,
+        "medida": "g",
+        "preco": 0.7,
+        "quantidade": 5000
+    },
+    "Queijo Coalho": {
+        "categoria": "Laticínios",
+        "codigo": 2058,
+        "medida": "g",
+        "preco": 0.75,
+        "quantidade": 2000
     },
     "Tomate": {
         "categoria": "Legumes e Verduras",
         "codigo": 3427,
         "medida": "Un",
         "preco": 0.4,
-        "quantidade": 500
+        "quantidade": 499.0
     }
 }
