@@ -187,11 +187,13 @@ let etapa_seguinte = ""
 let pedido_id = ""
 proxEtapabtn.addEventListener("mousedown", ()=> {
     proxEtapa(etapa_seguinte, pedido_id)
+    fecharPopup()
 })
 
 cancelarbtn.addEventListener("mousedown", ()=> {
     if (confirm("Tem certeza que deseja cancelar este pedido?")){
-       proxEtapa("cancelado", pedido_id) 
+       proxEtapa("cancelado", pedido_id)
+       fecharPopup() 
     }
     
 })

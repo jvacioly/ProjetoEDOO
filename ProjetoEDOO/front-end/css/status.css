@@ -5,11 +5,15 @@ body {
     margin-top: 64px;
     background-image: url(../imagens/Fundo2.jpg);
     overflow: hidden;
-    animation: fadeIn 1s ease forwards;
+    animation: fundo 2s ease forwards;
     
 }
 
-@keyframes fadeIn {
+@keyframes fundo {
+    from{
+        background-image: url(../imagens/Fundo2.jpg);
+    }
+
     to{
         background-image: url(../imagens/Fundo.jpg);
     }
@@ -57,11 +61,13 @@ h2 {
     width: fit-content;
     display: flex;
     justify-content: center;
+    cursor: default;
 }
 .historico {
     width: 139px;
     display: flex;
     justify-content: center;
+    cursor: default;
 }
 
 #seletorbtn{
@@ -73,6 +79,7 @@ h2 {
     border: none;
     border-radius: 16px;
     background-color: white;
+    transition: .2s ease;
 }
 
 .inativo{
@@ -119,7 +126,17 @@ h2 {
     border-radius: 4px;
     transition: .2s ease;
     cursor: pointer;
+    animation: fadeIn 1s ease forwards;
 }
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
 .pedido:hover{
     background-color: #dcdcdc;
     
