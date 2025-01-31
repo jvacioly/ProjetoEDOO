@@ -1,1 +1,25 @@
-{}
+{
+    "70193839": {
+        "CEP": "20202020",
+        "endereco": "rua vinte",
+        "forma_pagamento": "Dinheiro",
+        "horario_pedido": "23:51:54",
+        "itens_do_pedido": [
+            {
+                "prato_nome": "Bruschetta",
+                "preco_unitario": 18.99,
+                "quantidade": 1
+            },
+            {
+                "prato_nome": "Pizza Margherita",
+                "preco_unitario": 49.99,
+                "quantidade": 1
+            }
+        ],
+        "numero": "201",
+        "observacao": "",
+        "preco_total": 87.97,
+        "status": "finalizado",
+        "tipo_endereco": "residencia"
+    }
+}
