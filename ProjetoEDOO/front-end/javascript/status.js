@@ -32,7 +32,8 @@ function processarPedidosAndamento(dados) {
     });
 
     console.log(pedidosArray)
-
+    abaPedidos.innerHTML = ""
+    
     pedidosArray.forEach(pedido => {
 
         if (pedido.status === "confirmar") {
@@ -46,7 +47,7 @@ function processarPedidosAndamento(dados) {
         }
 
         const horaformatado = pedido.horario_pedido.substring(0, 5);
-        abaPedidos.innerHTML = ""
+        
         if (pedido.status !== "Pedido Finalizado") {
             let divPedido = document.createElement("div")
             divPedido.classList.add("pedido")

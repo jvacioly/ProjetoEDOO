@@ -165,7 +165,7 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
 
             }
             restaurante->registrarPedido(pedido);
-            send_pedidos_json(conn);//erro não ta chegando em tempo real
+            send_pedidos_json(conn);
         }
         else if (request.find("alterar_status") != string::npos) {
             json jsonInfos = json::parse(request);
