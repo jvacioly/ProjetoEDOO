@@ -51,13 +51,13 @@ shared_ptr<Restaurante> restaurante = make_shared<Restaurante>(vector<Prato>{
     refrigerante, sucoNatural, aguaMineral, cerveja, vinhoTinto});
 
 int main() {
-    const char* htmlPath = "C:/Eu/Faculdade/ProjetoEDOO/ProjetoEDOO/ProjetoEDOO/front-end/login.html"; // Escreva o caminho do absoluto do arquivo
+    //const char* htmlPath = "C:/Eu/Faculdade/ProjetoEDOO/ProjetoEDOO/ProjetoEDOO/front-end/login.html"; // Escreva o caminho do absoluto do arquivo
 
-    string command = "start " + string(htmlPath); // Windows
+   // string command = "start " + string(htmlPath); // Windows
     // string command = "xdg-open " + string(htmlPath); // Linux
     // string command = "open " + string(htmlPath); // Mac
 
-    system(command.c_str());
+   // system(command.c_str());
 
     setup_websocket_server();
 

@@ -137,7 +137,7 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
         }
 
         // AÇÕES DE PEDIDO
-        else if (request.find("pedido") != string::npos) {
+        else if (request.find("pedido") != std::string::npos) {
             json jsonInfos = json::parse(request);
             string formaPagamento = jsonInfos.value("pagamento", "");
             string endereco = jsonInfos.value("endereco", "");

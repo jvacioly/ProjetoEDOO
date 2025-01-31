@@ -22,6 +22,7 @@ let confirmacao = document.getElementById("confirmacao")
 let xConfirmacao = document.getElementById("xConfirmacao")
 
 
+
 // funções
 function adicionarCarrinho(prato, preco) {
     let formData = new FormData(popupForm)
@@ -253,6 +254,7 @@ pedirbtn.addEventListener("mousedown", () =>{
 
     //Enviando pro servidor
     const jsonData = JSON.stringify(formObject)
+    
 
     socket.send(jsonData)
     console.log("Pedido enviado:")

@@ -1,4 +1,11 @@
 {
+    "Azeite": {
+        "categoria": "Temperos e Especiarias",
+        "codigo": 5824,
+        "medida": "L",
+        "preco": 12.0,
+        "quantidade": 12
+    },
     "Azeitona": {
         "categoria": "Frutas",
         "codigo": 7150,

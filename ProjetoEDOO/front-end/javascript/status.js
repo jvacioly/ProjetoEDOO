@@ -1,14 +1,25 @@
 let pedido = document.querySelector(".pedido")
 let pedidoConteudo = document.querySelector(".pedidoConteudo")
-
+let condicaoAbrir = false
 
 //Funções
 function abrirPedido(){
-    pedidoConteudo.style.display = "flex"
+    condicaoAbrir = !condicaoAbrir
+    if (condicaoAbrir == true){
+        pedidoConteudo.style.display = "flex"
+    } else {
+        pedidoConteudo.style.display = "none"
+    }
+    
+}
+function fecharPedido(){
+    
 }
 
 //EventListeners
 pedido.addEventListener("click", abrirPedido)
+    
+
 
 //Servidor
 

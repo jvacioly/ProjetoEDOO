@@ -153,7 +153,6 @@ h2 {
     flex-wrap: wrap;
     justify-content: space-between;
     overflow: hidden;
-    transition: 5s ease;
 }
 .pedidoConteudo p{
    font-weight: 500;

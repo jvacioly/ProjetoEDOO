@@ -162,7 +162,7 @@ function processarPedidos(dados) {
 function proxEtapa(etapa, id) {
     let mensagem = new Object()
     mensagem["acao"] = "alterar_status"
-    mensagem["pedido_id"] = id
+    mensagem["id"] = id
     mensagem["novo_status"] = etapa
 
 
