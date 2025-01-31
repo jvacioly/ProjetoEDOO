@@ -33,9 +33,9 @@ const char* htmlPath = "C:/Eu/Faculdade/ProjetoEDOO/ProjetoEDOO/ProjetoEDOO/fron
 
 # Fotos do Sistema em uso
 
-![Tela principal do Restaurante](ProjetoEDOO/front-end/imagens/tela_Principal.png)
+![Tela principal do Restaurante](ProjetoEDOO/front-end/imagens/tela_Principal.jpg)
 
-![Tela de Estoque](ProjetoEDOO/front-end/imagens/tela_Estoque.png)
+![Tela de Estoque](ProjetoEDOO/front-end/imagens/tela_Estoque.jpg)
 
-![Tela de Status de Pedidos](front-end/imagens/tla_Status.png)
+![Tela de Status de Pedidos](front-end/imagens/tla_Status.jpg)
 
