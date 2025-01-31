@@ -33,7 +33,7 @@ function processarPedidosAndamento(dados) {
 
     console.log(pedidosArray)
     abaPedidos.innerHTML = ""
-    
+
     pedidosArray.forEach(pedido => {
 
         if (pedido.status === "confirmar") {
@@ -100,7 +100,7 @@ function processarPedidosFinalizados(dados) {
     });
 
     console.log(pedidosArray)
-
+    abaPedidos.innerHTML = ""
     pedidosArray.forEach(pedido => {
 
         if (pedido.status === "confirmar") {
@@ -109,13 +109,15 @@ function processarPedidosFinalizados(dados) {
             pedido.status = "Preparando Pedido"
         } else if (pedido.status === "caminho") {
             epedido.status = "Pedido a Caminho"
-        } else {
+        } else if (pedido.status === "finalizado"){
             pedido.status = "Pedido Finalizado"
+        } else {
+            pedido.status = "Cancelado"
         }
 
         const horaformatado = pedido.horario_pedido.substring(0, 5);
-        abaPedidos.innerHTML = ""
-        if (pedido.status === "Pedido Finalizado") {
+        
+        if (pedido.status === "Pedido Finalizado" || pedido.status === "Cancelado") {
             let divPedido = document.createElement("div")
             divPedido.classList.add("pedido")
             divPedido.innerHTML = `
