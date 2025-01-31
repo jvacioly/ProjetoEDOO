@@ -607,7 +607,11 @@ span {
     gap: 4px;
 }
 
-
+#confirmacao a{
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+}
 #confirmacao button{
     background-color: #388CFF;
     padding: 12px 0px;
