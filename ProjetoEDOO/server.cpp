@@ -183,6 +183,7 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
             else if (novoStatus == "finalizado") {
                 restaurante->finalizarPedido(IDpedido);
             }
+            send_pedidos_json(conn);
         }
     }
     return 1;  // Retorna 1 para continuar a comunicação

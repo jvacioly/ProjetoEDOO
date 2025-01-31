@@ -296,9 +296,8 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
 
 void Restaurante::prepararPedido(const string &IDpedido) {
     for (const auto& pedido : pedidos) {
-        if (IDpedido == pedido.key()) {
-            pedido.setStatus("preparando");
-            pedidos[id]["status"] = "preparando";
+        if (IDpedido == pedido.begin().key()) {
+            pedidos[IDpedido]["status"] = "preparando";
             salvarPedidos();
             break;
         }
@@ -307,9 +306,8 @@ void Restaurante::prepararPedido(const string &IDpedido) {
 
 void Restaurante::enviarPedido(const string &IDpedido) {
     for (const auto& pedido : pedidos) {
-        if (IDpedido == pedido.key()) {
-            pedido.setStatus("caminho");
-            pedidos[id]["status"] = "caminho";
+        if (IDpedido == pedido.begin().key()) {
+            pedidos[IDpedido]["status"] = "caminho";
             salvarPedidos();
             break;
         }
@@ -318,9 +316,8 @@ void Restaurante::enviarPedido(const string &IDpedido) {
 
 void Restaurante::cancelarPedido(const string &IDpedido) {
     for (const auto& pedido : pedidos) {
-        if (IDpedido == pedido.key()) {
-            pedido.setStatus("cancelado");
-            pedidos[id]["status"] = "cancelado";
+        if (IDpedido == pedido.begin().key()) {
+            pedidos[IDpedido]["status"] = "cancelado";
             salvarPedidos();
             break;
         }
@@ -329,12 +326,10 @@ void Restaurante::cancelarPedido(const string &IDpedido) {
 
 void Restaurante::finalizarPedido(const string& IDpedido) {
     for (const auto& pedido : pedidos) {
-        if (IDpedido == pedido.key()) {
-            pedido.setStatus("finalizado");
-            pedidos[id]["status"] = "finalizado";
+        if (IDpedido == pedido.begin().key()) {
+            pedidos[IDpedido]["status"] = "finalizado";
             salvarPedidos();
-            cout << "Pedido ID: " << id << " finalizado com sucesso!" << endl;
-            registrarVenda(pedido.getValorTotal());
+            registrarVenda(pedido["preco_total"]);
             break;
         }
     }

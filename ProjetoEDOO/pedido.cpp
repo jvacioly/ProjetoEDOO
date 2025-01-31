@@ -55,52 +55,6 @@ Pedido::Pedido(const vector<pair<Prato, int>> &itens, const string &tipoEndereco
 
     horarioPedido = oss.str();
 }
-/*Pedido::Pedido(const vector<pair<Prato, int>> &itens, const string& observacao)
-    : itens(itens), observacao(observacao), valorTotal(atualizarValorTotal()){
-    // Gerar ID do pedido
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<> distrib(10000000, 99999999);
-
-    int novoID;
-    bool IDUnico = false;
-
-    json pedidosExistentes;
-    string caminhoArquivo = BASE_DIR + "estoque.json";
-    ifstream pedidosFile(caminhoArquivo);
-    if (pedidosFile.is_open()) {
-        pedidosFile >> pedidosExistentes;
-        pedidosFile.close();
-    }
-    else {
-        pedidosExistentes = json::array();
-    }
-    do {
-        novoID = distrib(gen);
-        IDUnico = true;
-        for (const auto& pedido : pedidosExistentes) {
-            if (pedido.contains("ID") && pedido["ID"] == novoID) {
-                IDUnico = false;
-                break;
-            }
-        }
-    }while (!IDUnico);
-
-    ID = distrib(gen);
-
-    // Horário do Pedido
-    auto agora = chrono::system_clock::now();
-    time_t horaAtual = chrono::system_clock::to_time_t(agora);
-
-    tm horaLocal = *localtime(&horaAtual);
-    ostringstream oss;
-    oss << put_time(&horaLocal, "%H:%M:%S");
-
-    horarioPedido = oss.str();
-}
-
-Pedido::Pedido(const vector<pair<Prato, int>>& itens)
-    : Pedido(itens, "") {}*/
 
 //Set Methods
 void Pedido::setStatus(const string& status) {
