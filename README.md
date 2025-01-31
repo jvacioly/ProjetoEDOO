@@ -17,14 +17,25 @@ const std::string BASE_DIR = "C:/Users/kddu4/ProjetoEDOO/ProjetoEDOO/banco_de_da
 Exemplo:
 
 ```
-escrever exemplo
+const char* htmlPath = "C:/Eu/Faculdade/ProjetoEDOO/ProjetoEDOO/ProjetoEDOO/front-end/login.html";
 ```
 
 3- No main.cpp selecione o sistema operacional do seu computador:
 ```
-mostrar codigo
+   
+
+    // string command = "start " + string(htmlPath); // Windows
+    // string command = "xdg-open " + string(htmlPath); // Linux
+    // string command = "open " + string(htmlPath); // Mac
 ```
 
 4- Tudo pronto, pode rodar o main.cpp e testar o sistema!
 
 # Fotos do Sistema em uso
+
+![Tela principal do Restaurante](ProjetoEDOO/front-end/imagens/tela_Principal.png)
+
+![Tela de Estoque](ProjetoEDOO/front-end/imagens/tela_Estoque.png)
+
+![Tela de Status de Pedidos](front-end/imagens/tla_Status.png)
+
