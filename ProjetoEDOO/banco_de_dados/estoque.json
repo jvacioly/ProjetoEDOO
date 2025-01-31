@@ -7,12 +7,26 @@
         "preco": 2.0,
         "quantidade": 14.0
     },
+    "Farinha de Trigo": {
+        "categoria": "Farinhas e Açúcares",
+        "codigo": 5727,
+        "medida": "g",
+        "preco": 1.5,
+        "quantidade": 10000
+    },
     "Pitu": {
         "categoria": "Bebidas Alcoólicas",
         "codigo": 6224,
         "medida": "Un",
         "preco": 5.99,
         "quantidade": 5
+    },
+    "Refrigerante": {
+        "categoria": "Bebidas Não alcoólicas",
+        "codigo": 8577,
+        "medida": "Un",
+        "preco": 3.99,
+        "quantidade": 1000
     },
     "pao": {
         "categoria": "Pães e Massas Frescas",

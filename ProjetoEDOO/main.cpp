@@ -23,7 +23,7 @@ Prato pizzaPortuguesa("Pizza Portuguesa", 55.99, "pratos principais", {{"Farinha
 Prato pizzaVegetariana("Pizza Vegetariana", 50.99, "pratos principais", {{"Farinha de Trigo", 1000}, {"Tomate", 4}, {"Queijo", 400}, {"Champignon", 16}, {"Pimentão", 0.5}, {"Azeite", 0.25}});
 
 // Sobremesas
-Prato pizzaChocolate("Pizza de Chocolate", 39.99, "sobremesas", {});
+Prato pizzaChocolate("Pizza de Chocolate", 39.99, "sobremesas", {{"Farinha de Trigo", 1000}, {"Chocolate", 400}, {"Morango", 10}, {"Castanha", 300}});
 Prato tiramisu("Tiramisu", 30.99, "sobremesas", {});
 Prato pudimDeLeite("Pudim de Leite", 25.99, "sobremesas", {});
 Prato petitGateau("Petit Gateau", 33.99, "sobremesas", {});
@@ -51,7 +51,7 @@ shared_ptr<Restaurante> restaurante = make_shared<Restaurante>(vector<Prato>{
     refrigerante, sucoNatural, aguaMineral, cerveja, vinhoTinto});
 
 int main() {
-    const char* htmlPath = "C:/Users/kddu4/OneDrive/Documentos/GitHub/ProjetoEDOO/ProjetoEDOO/front-end/login.html"; // Escreva o caminho do absoluto do arquivo
+    const char* htmlPath = "C:/Eu/Faculdade/ProjetoEDOO/ProjetoEDOO/ProjetoEDOO/front-end/login.html"; // Escreva o caminho do absoluto do arquivo
 
     string command = "start " + string(htmlPath); // Windows
     // string command = "xdg-open " + string(htmlPath); // Linux

@@ -23,7 +23,7 @@ Pedido::Pedido(const vector<pair<Prato, int>> &itens, const string &tipoEndereco
     bool IDUnico = false;
 
     json pedidosExistentes;
-    string caminhoArquivo = BASE_DIR + "/estoque.json";
+    string caminhoArquivo = BASE_DIR + "estoque.json";
     ifstream pedidosFile(caminhoArquivo);
     if (pedidosFile.is_open()) {
         pedidosFile >> pedidosExistentes;

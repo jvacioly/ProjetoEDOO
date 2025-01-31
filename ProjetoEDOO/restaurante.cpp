@@ -30,7 +30,7 @@ Restaurante::~Restaurante() {
 
 //Métodos do Estoque
 void Restaurante::carregarEstoque() {
-    string caminho_estoque = BASE_DIR + "/estoque.json";
+    string caminho_estoque = BASE_DIR + "estoque.json";
     ifstream estoqueFile(caminho_estoque);
     estoque = json::object();  // Inicializa como objeto vazio
 
@@ -60,7 +60,7 @@ void Restaurante::carregarEstoque() {
 }
 
 void Restaurante::salvarEstoque() const {
-    string caminho_estoque = BASE_DIR + "/estoque.json";
+    string caminho_estoque = BASE_DIR + "estoque.json";
     ofstream estoqueFile(caminho_estoque);
     if (estoqueFile.is_open()) {
         estoqueFile << estoque.dump(4);  // Grava o conteúdo do JSON com formatação
@@ -192,7 +192,7 @@ void Restaurante::mostrarEstoque() const {
 }
 
 void Restaurante::carregarPedidos() {
-    string caminho_arquivo = BASE_DIR + "/pedidos.json";
+    string caminho_arquivo = BASE_DIR + "pedidos.json";
     ifstream pedidosFile(caminho_arquivo);
     pedidos = json::object();  // Inicializa como objeto vazio
 
@@ -222,7 +222,7 @@ void Restaurante::carregarPedidos() {
 }
 
 void Restaurante::salvarPedidos() const {
-    string caminho_arquivo = BASE_DIR + "/pedidos.json";
+    string caminho_arquivo = BASE_DIR + "pedidos.json";
     ofstream pedidosFile(caminho_arquivo);
     if (pedidosFile.is_open()) {
         pedidosFile << pedidos.dump(4);  // Grava o conteúdo do JSON com formatação
@@ -296,9 +296,8 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
 
 void Restaurante::prepararPedido(const string &IDpedido) {
     for (const auto& pedido : pedidos) {
-        if (IDpedido == pedido.key()) {
-            pedido.setStatus("preparando");
-            pedidos[id]["status"] = "preparando";
+        if (IDpedido == pedido.begin().key()) {
+            pedidos[IDpedido]["status"] = "preparando";
             salvarPedidos();
             break;
         }
@@ -307,9 +306,8 @@ void Restaurante::prepararPedido(const string &IDpedido) {
 
 void Restaurante::enviarPedido(const string &IDpedido) {
     for (const auto& pedido : pedidos) {
-        if (IDpedido == pedido.key()) {
-            pedido.setStatus("caminho");
-            pedidos[id]["status"] = "caminho";
+        if (IDpedido == pedido.begin().key()) {
+            pedidos[IDpedido]["status"] = "caminho";
             salvarPedidos();
             break;
         }
@@ -318,9 +316,8 @@ void Restaurante::enviarPedido(const string &IDpedido) {
 
 void Restaurante::cancelarPedido(const string &IDpedido) {
     for (const auto& pedido : pedidos) {
-        if (IDpedido == pedido.key()) {
-            pedido.setStatus("cancelado");
-            pedidos[id]["status"] = "cancelado";
+        if (IDpedido == pedido.begin().key()) {
+            pedidos[IDpedido]["status"] = "cancelado";
             salvarPedidos();
             break;
         }
@@ -329,12 +326,10 @@ void Restaurante::cancelarPedido(const string &IDpedido) {
 
 void Restaurante::finalizarPedido(const string& IDpedido) {
     for (const auto& pedido : pedidos) {
-        if (IDpedido == pedido.key()) {
-            pedido.setStatus("finalizado");
-            pedidos[id]["status"] = "finalizado";
+        if (IDpedido == pedido.begin().key()) {
+            pedidos[IDpedido]["status"] = "finalizado";
             salvarPedidos();
-            cout << "Pedido ID: " << id << " finalizado com sucesso!" << endl;
-            registrarVenda(pedido.getValorTotal());
+            registrarVenda(pedido["preco_total"]);
             break;
         }
     }
@@ -342,7 +337,7 @@ void Restaurante::finalizarPedido(const string& IDpedido) {
 
 //Métodos do Fluxo
 void Restaurante::carregarFluxo() {
-    string caminho_arquivo = BASE_DIR + "/fluxo.json";
+    string caminho_arquivo = BASE_DIR + "fluxo.json";
     ifstream fluxoFile(caminho_arquivo);
     fluxo = json::object();  // Inicializa como objeto vazio
 
@@ -389,7 +384,7 @@ void Restaurante::carregarFluxo() {
 }
 
 void Restaurante::salvarFluxo() const {
-    string caminho_arquivo = BASE_DIR + "/fluxo.json";
+    string caminho_arquivo = BASE_DIR + "fluxo.json";
     ofstream fluxoFile(caminho_arquivo);
     if (fluxoFile.is_open()) {
         fluxoFile << fluxo.dump(4);  // Grava o conteúdo do JSON com formatação
