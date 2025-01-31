@@ -116,14 +116,14 @@
         "codigo": 4599,
         "medida": "Un",
         "preco": 0.15,
-        "quantidade": 97.0
+        "quantidade": 96.0
     },
     "Manteiga": {
         "categoria": "Laticínios",
         "codigo": 9155,
         "medida": "g",
         "preco": 0.08,
-        "quantidade": 999.0
+        "quantidade": 998.0
     },
     "Morango": {
         "categoria": "Frutas",
@@ -179,6 +179,13 @@
         "codigo": 3427,
         "medida": "Un",
         "preco": 0.4,
-        "quantidade": 494.0
+        "quantidade": 493.0
+    },
+    "Água Mineral": {
+        "categoria": "Bebidas Não alcoólicas",
+        "codigo": 6692,
+        "medida": "L",
+        "preco": 2.0,
+        "quantidade": 39.0
     }
 }

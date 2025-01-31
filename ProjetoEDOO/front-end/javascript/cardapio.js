@@ -294,27 +294,27 @@ const entradas = [
   ];
   
   const sobremesas = [
-    { id: 1, nome: "Pizza de Chocolate", descricao: "Massa fina coberta com chocolate derretido, pedaços de morango e castanhas crocantes.", preco: 39.99, URL: "imagens/Pizza.jpg"  },
-    { id: 2, nome: "Tiramisu", descricao: "Camadas delicadas de biscoito embebido em café, intercaladas com um creme suave de mascarpone.", preco: 30.99, URL: "imagens/Pizza.jpg"  },
-    { id: 3, nome: "Pudim de Leite", descricao: "Pudim tradicional, cremoso e envolto em uma calda dourada e irresistível de caramelo.", preco: 25.99, URL: "imagens/Pizza.jpg"  },
-    { id: 4, nome: "Petit Gateau", descricao: "Pequeno bolo de chocolate com recheio cremoso, acompanhado de uma bola de sorvete de creme.", preco: 33.99, URL: "imagens/Pizza.jpg"  },
-    { id: 5, nome: "Brownie", descricao: "Brownie úmido com pedaços de castanha e servido com uma bola de sorvete para completar o sabor.", preco: 29.99, URL: "imagens/Pizza.jpg"  }
+    { id: 1, nome: "Pizza de Chocolate", descricao: "Massa fina coberta com chocolate derretido, pedaços de morango e castanhas crocantes.", preco: 39.99, URL: "imagens/cardapio/Pizza de Chocolate.jpg"  },
+    { id: 2, nome: "Tiramisu", descricao: "Camadas delicadas de biscoito embebido em café, intercaladas com um creme suave de mascarpone.", preco: 30.99, URL: "imagens/cardapio/Tiramisu.jpg"  },
+    { id: 3, nome: "Pudim de Leite", descricao: "Pudim tradicional, cremoso e envolto em uma calda dourada e irresistível de caramelo.", preco: 25.99, URL: "imagens/cardapio/Pudim de Leite.jpg"  },
+    { id: 4, nome: "Petit Gateau", descricao: "Pequeno bolo de chocolate com recheio cremoso, acompanhado de uma bola de sorvete de creme.", preco: 33.99, URL: "imagens/cardapio/Petit Gateau.jpg"  },
+    { id: 5, nome: "Brownie", descricao: "Brownie úmido com pedaços de castanha e servido com uma bola de sorvete para completar o sabor.", preco: 29.99, URL: "imagens/cardapio/Brownie.jpg"  }
   ];
   
   const acompanhamentos = [
-    { id: 1, nome: "Batata Frita", descricao: "Porção generosa de batatas fritas crocantes, salgadas na medida certa.", preco: 22.99, URL: "imagens/Pizza.jpg"  },
-    { id: 2, nome: "Onion Rings", descricao: "AAnéis de cebola empanados e fritos até ficarem dourados e crocantes.", preco: 20.99, URL: "imagens/Pizza.jpg"  },
-    { id: 3, nome: "Salada Caesar", descricao: "Alface fresca com frango grelhado, croutons crocantes e molho Caesar caseiro.", preco: 28.99, URL: "imagens/Pizza.jpg"  },
-    { id: 4, nome: "Palitos de Muçarela", descricao: "Queijo muçarela empanado e frito até atingir uma crocância irresistível.", preco: 27.99, URL: "imagens/Pizza.jpg"  },
-    { id: 5, nome: "Arancini", descricao: "Bolinhos de arroz italiano recheados com queijo, fritos até ficarem dourados.", preco: 30.99, URL: "imagens/Pizza.jpg"  }
+    { id: 1, nome: "Batata Frita", descricao: "Porção generosa de batatas fritas crocantes, salgadas na medida certa.", preco: 22.99, URL: "imagens/cardapio/Batata Frita.jpg"  },
+    { id: 2, nome: "Onion Rings", descricao: "AAnéis de cebola empanados e fritos até ficarem dourados e crocantes.", preco: 20.99, URL: "imagens/cardapio/Onion Rings.jpg"  },
+    { id: 3, nome: "Salada Caesar", descricao: "Alface fresca com frango grelhado, croutons crocantes e molho Caesar caseiro.", preco: 28.99, URL: "imagens/cardapio/Salada Caesar.jpg"  },
+    { id: 4, nome: "Palitos de Muçarela", descricao: "Queijo muçarela empanado e frito até atingir uma crocância irresistível.", preco: 27.99, URL: "imagens/cardapio/Palitos de Muçarela.jpg"  },
+    { id: 5, nome: "Arancini", descricao: "Bolinhos de arroz italiano recheados com queijo, fritos até ficarem dourados.", preco: 30.99, URL: "imagens/cardapio/Arancini.jpg"  }
   ];
   
   const bebidas = [
-    { id: 1, nome: "Refrigerante", descricao: "Lata de 350ml disponível em sabores clássicos como Coca-Cola, Guaraná e Fanta.", preco: 7.99, URL: "imagens/Pizza.jpg"  },
-    { id: 2, nome: "Suco Natural", descricao: "Suco fresco e saboroso disponível nos sabores laranja, limão e maracujá.", preco: 10.99, URL: "imagens/Pizza.jpg"  },
-    { id: 3, nome: "Água Mineral", descricao: " Opção de água com ou sem gás, ideal para refrescar e hidratar.", preco: 5.99, URL: "imagens/Pizza.jpg" },
-    { id: 4, nome: "Cerveja", descricao: "Long necks geladas das marcas Heineken, Budweiser e Stella Artois.", preco: 12.99, URL: "imagens/Pizza.jpg"  },
-    { id: 5, nome: "Vinho Tinto", descricao: "Taça de vinho tinto seco ou suave, perfeito para acompanhar pratos mais elaborados.", preco: 20.99, URL: "imagens/Pizza.jpg"  }
+    { id: 1, nome: "Refrigerante", descricao: "Lata de 350ml disponível em sabores clássicos como Coca-Cola, Guaraná e Fanta.", preco: 7.99, URL: "imagens/cardapio/Refrigerante.jpg"  },
+    { id: 2, nome: "Suco Natural", descricao: "Suco fresco e saboroso disponível nos sabores laranja, limão e maracujá.", preco: 10.99, URL: "imagens/cardapio/Suco Natural.jpg"  },
+    { id: 3, nome: "Água Mineral", descricao: " Opção de água com ou sem gás, ideal para refrescar e hidratar.", preco: 5.99, URL: "imagens/cardapio/Água Mineral.jpg" },
+    { id: 4, nome: "Cerveja", descricao: "Long necks geladas das marcas Heineken, Budweiser e Stella Artois.", preco: 12.99, URL: "imagens/cardapio/Cerveja.jpg"  },
+    { id: 5, nome: "Vinho Tinto", descricao: "Taça de vinho tinto seco ou suave, perfeito para acompanhar pratos mais elaborados.", preco: 20.99, URL: "imagens/cardapio/Vinho Tinto.jpg"  }
   ];
 
 

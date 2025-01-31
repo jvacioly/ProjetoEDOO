@@ -37,9 +37,9 @@ function processarPedidosAndamento(dados) {
     pedidosArray.forEach(pedido => {
 
         if (pedido.status === "confirmar") {
-            pedido.status = "Confirmar Pedido"
+            pedido.status = "Esperando Confirmação"
         } else if (pedido.status === "preparando") {
-            pedido.status = "Preparando Pedido"
+            pedido.status = "Pedido Sendo Preparado"
         } else if (pedido.status === "caminho") {
             epedido.status = "Pedido a Caminho"
         } else {
