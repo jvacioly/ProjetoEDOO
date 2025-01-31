@@ -95,7 +95,7 @@
         "codigo": 7161,
         "medida": "g",
         "preco": 0.5,
-        "quantidade": 10000
+        "quantidade": 9000.0
     },
     "Frango": {
         "categoria": "Carnes",
@@ -116,14 +116,14 @@
         "codigo": 4599,
         "medida": "Un",
         "preco": 0.15,
-        "quantidade": 99.0
+        "quantidade": 97.0
     },
     "Manteiga": {
         "categoria": "Laticínios",
         "codigo": 9155,
         "medida": "g",
         "preco": 0.08,
-        "quantidade": 1000
+        "quantidade": 999.0
     },
     "Morango": {
         "categoria": "Frutas",
@@ -165,7 +165,7 @@
         "codigo": 8859,
         "medida": "g",
         "preco": 0.7,
-        "quantidade": 5000
+        "quantidade": 4500.0
     },
     "Queijo Coalho": {
         "categoria": "Laticínios",
@@ -179,6 +179,6 @@
         "codigo": 3427,
         "medida": "Un",
         "preco": 0.4,
-        "quantidade": 499.0
+        "quantidade": 494.0
     }
 }
