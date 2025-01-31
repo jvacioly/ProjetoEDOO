@@ -294,44 +294,32 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
 }
 
 void Restaurante::prepararPedido(const string &IDpedido) {
-    for (const auto& pedido : pedidos) {
-        if (IDpedido == pedido.begin().key()) {
-            pedidos[IDpedido]["status"] = "preparando";
-            break;
-        }
+    if (pedidos.contains(IDpedido)) {
+        pedidos[IDpedido]["status"] = "preparando";
+        salvarPedidos();
     }
-    salvarPedidos();
 }
 
 void Restaurante::enviarPedido(const string &IDpedido) {
-    for (const auto& pedido : pedidos) {
-        if (IDpedido == pedido.begin().key()) {
-            pedidos[IDpedido]["status"] = "caminho";
-            break;
-        }
+    if (pedidos.contains(IDpedido)) {
+        pedidos[IDpedido]["status"] = "caminho";
+        salvarPedidos();
     }
-    salvarPedidos();
 }
 
 void Restaurante::cancelarPedido(const string &IDpedido) {
-    for (const auto& pedido : pedidos) {
-        if (IDpedido == pedido.begin().key()) {
-            pedidos[IDpedido]["status"] = "cancelado";
-            break;
-        }
+    if (pedidos.contains(IDpedido)) {
+        pedidos[IDpedido]["status"] = "cancelado";
+        salvarPedidos();
     }
-    salvarPedidos();
 }
 
 void Restaurante::finalizarPedido(const string& IDpedido) {
-    for (const auto& pedido : pedidos) {
-        if (IDpedido == pedido.begin().key()) {
-            pedidos[IDpedido]["status"] = "finalizado";
-            registrarVenda(pedido["preco_total"]);
-            break;
-        }
+    if (pedidos.contains(IDpedido)) {
+        pedidos[IDpedido]["status"] = "finalizado";
+        registrarVenda(pedidos[IDpedido]["preco_total"]);
+        salvarPedidos();
     }
-    salvarPedidos();
 }
 
 //Métodos do Fluxo

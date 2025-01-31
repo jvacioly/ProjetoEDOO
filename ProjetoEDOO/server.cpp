@@ -170,7 +170,7 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
         else if (request.find("alterar_status") != string::npos) {
             json jsonInfos = json::parse(request);
             string novoStatus = jsonInfos.value("novo_status", "");
-            string IDpedido = jsonInfos.value("pedido_id", "");
+            string IDpedido = jsonInfos.value("id", "");
             if (novoStatus == "preparando") {
                 restaurante->prepararPedido(IDpedido);
             }
