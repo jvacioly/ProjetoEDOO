@@ -90,7 +90,26 @@ h2 {
     height: calc(100vh - 220px);
     border-radius: 4px;
     box-shadow: 0px 9px 20.4px 2px rgba(0, 16, 37, 0.10);
+    gap: 4px;
+    overflow-y: scroll;
    
+}
+
+#pedidos::-webkit-scrollbar{
+    width: 9px;
+
+}
+#pedidos::-webkit-scrollbar-thumb{
+    background-color: #777777;
+    width: 16px;
+    border-radius: 16px;
+    border: none;
+
+}
+
+#pedidos::-webkit-scrollbar-track{
+    background: none;
+
 }
 
 .pedido{
@@ -98,6 +117,12 @@ h2 {
     flex-direction: column;
     background-color: #EAEAEA;
     border-radius: 4px;
+    transition: .2s ease;
+    cursor: pointer;
+}
+.pedido:hover{
+    background-color: #dcdcdc;
+    
 }
 
 .pedidoCabecalho{
@@ -105,24 +130,30 @@ h2 {
     justify-content: space-between;
     align-items: center;
     padding: 12px;
-    border-bottom: 2px white solid;
+    border-bottom: 3px white solid;
+    border-radius: 4px;
 }
 
 .pedidoCabecalho span{
-    background-color: white;
+    background-color: #777777;
     border-radius: 8px;
     padding: 8px 12px;
     font-weight: 500;
+    color: white;
+    
 }
 .pedidoCabecalho p{
-    font-weight: 500;
+    font-weight: 600;
+    opacity: .95;
 }
 
 .pedidoConteudo{
-    display: flex;
+    display: none;
     padding: 12px;
     flex-wrap: wrap;
     justify-content: space-between;
+    overflow: hidden;
+    transition: 5s ease;
 }
 .pedidoConteudo p{
    font-weight: 500;
@@ -153,3 +184,4 @@ h3{
     justify-content: space-between;
     align-items: end;
 }
+
