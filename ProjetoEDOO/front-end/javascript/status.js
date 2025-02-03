@@ -41,7 +41,7 @@ function processarPedidosAndamento(dados) {
         } else if (pedido.status === "preparando") {
             pedido.status = "Pedido Sendo Preparado"
         } else if (pedido.status === "caminho") {
-            epedido.status = "Pedido a Caminho"
+            pedido.status = "Pedido a Caminho"
         } else {
             pedido.status = "Pedido Finalizado"
         }
@@ -108,7 +108,7 @@ function processarPedidosFinalizados(dados) {
         } else if (pedido.status === "preparando") {
             pedido.status = "Preparando Pedido"
         } else if (pedido.status === "caminho") {
-            epedido.status = "Pedido a Caminho"
+            pedido.status = "Pedido a Caminho"
         } else if (pedido.status === "finalizado"){
             pedido.status = "Pedido Finalizado"
         } else {

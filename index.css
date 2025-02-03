@@ -76,14 +76,14 @@ h1{
     margin-top: 24px;
 }
 #heroBtns button{
-    padding: 16px 64px;
+    padding: 24px 64px;
     border: none;
     border-radius: 16px;
     background-color: #777777;
     color: white;
     font-weight: 500;
     cursor: pointer;
-    min-width: 201px;
+    min-width: 280px;
     transition: .2s ease;
 }
 #heroBtns button:hover{
@@ -103,8 +103,9 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 124px;
-    gap: 48px;
+    margin-top: 200px;
+    gap: 100px;
+    z-index: 1;
 }
 
 #visaoGeral h2{
@@ -116,11 +117,15 @@ h1{
 .container {
     display: flex;
     padding: 0px 32px;
-    gap: 20px;
+    gap: 32px;
+    z-index: 1;
 }
+
 .container img{
-    width: 46.7vw;
+    width: 52.5vw;
     border-radius: 1.5vw;
+    box-shadow: 5px 13px 45px -10px rgba(0, 0, 0, 0.51);
+    z-index: 1;
 }
 
 .containerText{
@@ -128,16 +133,20 @@ h1{
     flex-direction: column;
     justify-content: center;
     gap: 12px;
+    width: 40vw;
+    z-index: 1;
 }
 .containerText h3{
     font-size: 1.8vw;
     font-weight: 700;
     opacity: .85;
+    z-index: 1;
 }
 .containerText p{
     font-weight: 500;
     opacity: .75;
     line-height: 1.7vw;
+    z-index: 1;
     
     
 }
@@ -145,8 +154,47 @@ h1{
 #elipse{
     position: absolute;
     z-index: 0;
-    right: 0;
-    top: 0;
-    
+    right: -200px;
+    top: 00px;
+    transform: scale(1.4);
+    filter: blur(226.1999969482422px);
+    opacity: .8;
+       
+}
+#elipse2{
+    position: absolute;
+    z-index: 0;
+    left: -300px;
+    top: 850px;
+    transform: scale(1.2);
+    filter: blur(300px);
+    opacity: .8;
+       
 }
 
+.reverse {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 1500px) {
+    #elipse{
+        transform: scale(1);
+        opacity: .6;
+    }
+    #elipse2{
+        transform: scale(1);
+        top: 700px;
+    }
+
+}
+@media (max-width: 1024px) {
+    #elipse{
+        top: -200px;
+        transform: scale(.8);
+    }
+    #elipse2{
+        transform: scale(.6);
+        top: 550px;
+    }
+
+}
