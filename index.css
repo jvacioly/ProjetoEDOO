@@ -40,6 +40,8 @@ header h2{
     padding: 0px 3.3vw;
     gap: 1.6vw;
     z-index: 1;
+    height: calc(80vh - 156px);
+    align-items: center;
 }
 #heroBanner img{
     width: 36vw;
@@ -52,12 +54,13 @@ header h2{
     flex-direction: column;
     justify-content: space-around;
     width: fit-content;
+    height: 55vh;
 }
 
 h1{
-    font-size: 2.4vw;
+    font-size: 3.8vw;
     font-weight: 700;
-    opacity: .95;
+    opacity: .9;
 }
 #heroContent p{
     font-size: 1.1vw;
@@ -85,7 +88,7 @@ h1{
     cursor: pointer;
     min-width: 280px;
     transition: .2s ease;
-    font-size: 20px;
+    font-size: 18px;
 }
 #heroBtns button:hover{
     background-color: #989898;
@@ -104,7 +107,7 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 200px;
+    margin-top: 100px;
     gap: 100px;
     z-index: 1;
 }
@@ -118,7 +121,7 @@ h1{
 .container {
     display: flex;
     padding: 0px 3.3vw;
-    gap: 1.6vw;
+    gap: 2vw;
     z-index: 1;
 }
 
@@ -136,6 +139,8 @@ h1{
     gap: 12px;
     width: 50%;
     z-index: 1;
+    text-align: justify;
+    hyphens: auto;
 }
 .containerText h3{
     font-size: 1.8vw;
@@ -196,6 +201,165 @@ h1{
     #elipse2{
         transform: scale(.6);
         top: 550px;
+    }
+
+}
+
+@media (max-width: 724px) {
+
+    header{
+        padding: 24px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    header h2{
+        font-size: 24px;
+        font-weight: 700;
+        opacity: .90;
+    }
+    
+    #autores{
+        display: flex;
+        gap: 8px;
+    }
+    
+    #autores a{
+        font-size: 14px;
+        opacity: .8;
+    }
+
+    #heroBanner {
+        flex-direction: column-reverse;
+        max-width: 100%;
+        padding: 0px 20px;
+        gap: 24px;
+        height: calc(95vh - 126px);
+    }
+
+    #heroBanner img{
+        width: 100%;
+        box-shadow: 5px 13px 45px -10px rgba(0, 0, 0, 0.51);
+        border-radius: 5vw;
+    }
+    
+    #heroContent{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 100%;
+        
+    }
+    
+    h1{
+        font-size: 6vw; 
+        font-weight: 700;
+        opacity: .95;
+    }
+    #heroContent p{
+        font-size: 14px;
+        font-weight: 500;
+        opacity: .8;   
+        line-height: 20px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        width: 100%;
+        text-align: justify;
+        hyphens: auto;
+        
+    }
+    
+    #heroBtns{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 0px;
+        max-width: 100%;
+        padding: 0px;
+    }
+    #heroBtns button{
+        padding: 16px 0px;
+        min-width: calc(50% - 4px);
+        border: none;
+        border-radius: 16px;
+        background-color: #777777;
+        color: white;
+        font-weight: 500;
+        cursor: pointer;
+        transition: .2s ease;
+        font-size: 16px;
+    }
+
+    #visaoGeral{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 48px;
+        z-index: 1;
+    }
+    
+    #visaoGeral h2{
+        font-size: 24px;
+        opacity: .95;
+        font-weight: 700;
+        margin-bottom: -24px;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding: 0px 20px;
+        gap: 20px;
+        z-index: 1;
+    }
+    
+    .container img{
+        width: 100%;
+        border-radius: 5vw;
+        box-shadow: 5px 13px 45px -10px rgba(0, 0, 0, 0.51);
+        z-index: 1;
+    }
+    
+    .containerText{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+        z-index: 1;
+    }
+    .containerText h3{
+        align-self: center;
+        font-size: 20px;
+        font-weight: 700;
+        opacity: .85;
+        z-index: 1;
+    }
+    .containerText p{
+        font-weight: 500;
+        opacity: .75;
+        line-height: 20px;
+        z-index: 1;
+        font-size: 14px;
+        text-align: justify;
+        
+    }
+    
+    #elipse{
+        position: absolute;
+        z-index: 0;
+        right: -160px;
+        top: -300px;
+        transform: scale(.6);
+        filter: blur(226.1999969482422px);
+        opacity: .3;
+        -webkit-filter: blur(50px);
+        z-index: -1;
+    }
+    #elipse2{
+        display: none;
+           
     }
 
 }
