@@ -13,7 +13,7 @@ body {
 }
 
 header{
-    padding: 48px 32px;
+    padding: 48px 3.3vw;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -37,12 +37,12 @@ header h2{
 
 #heroBanner{
     display: flex;
-    padding: 0px 32px;
-    gap: 32px;
+    padding: 0px 3.3vw;
+    gap: 1.6vw;
     z-index: 1;
 }
 #heroBanner img{
-    width: 38.3vw;
+    width: 36vw;
     box-shadow: 5px 13px 45px -10px rgba(0, 0, 0, 0.51);
     border-radius: 2.5vw;
 }
@@ -76,7 +76,7 @@ h1{
     margin-top: 24px;
 }
 #heroBtns button{
-    padding: 24px 64px;
+    padding: 20px 64px;
     border: none;
     border-radius: 16px;
     background-color: #777777;
@@ -85,6 +85,7 @@ h1{
     cursor: pointer;
     min-width: 280px;
     transition: .2s ease;
+    font-size: 20px;
 }
 #heroBtns button:hover{
     background-color: #989898;
@@ -116,13 +117,13 @@ h1{
 
 .container {
     display: flex;
-    padding: 0px 32px;
-    gap: 32px;
+    padding: 0px 3.3vw;
+    gap: 1.6vw;
     z-index: 1;
 }
 
 .container img{
-    width: 52.5vw;
+    width: 50%;
     border-radius: 1.5vw;
     box-shadow: 5px 13px 45px -10px rgba(0, 0, 0, 0.51);
     z-index: 1;
@@ -133,7 +134,7 @@ h1{
     flex-direction: column;
     justify-content: center;
     gap: 12px;
-    width: 40vw;
+    width: 50%;
     z-index: 1;
 }
 .containerText h3{
