@@ -1,0 +1,152 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F1F1F4;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+
+header{
+    padding: 48px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+header h2{
+    font-size: 2.0vw;
+    font-weight: 600;
+    opacity: .90;
+}
+
+#autores{
+    display: flex;
+    gap: 8px;
+}
+
+#autores a{
+    font-size: 14px;
+    opacity: .8;
+}
+
+#heroBanner{
+    display: flex;
+    padding: 0px 32px;
+    gap: 32px;
+    z-index: 1;
+}
+#heroBanner img{
+    width: 38.3vw;
+    box-shadow: 5px 13px 45px -10px rgba(0, 0, 0, 0.51);
+    border-radius: 2.5vw;
+}
+
+#heroContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: fit-content;
+}
+
+h1{
+    font-size: 2.4vw;
+    font-weight: 700;
+    opacity: .95;
+}
+#heroContent p{
+    font-size: 1.1vw;
+    font-weight: 500;
+    opacity: .8;   
+    line-height: 1.7vw;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    
+    
+}
+
+#heroBtns{
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+#heroBtns button{
+    padding: 16px 64px;
+    border: none;
+    border-radius: 16px;
+    background-color: #777777;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    min-width: 201px;
+    transition: .2s ease;
+}
+#heroBtns button:hover{
+    background-color: #989898;
+    
+}
+#heroBtns button:first-child{
+    background-color: #388CFF;
+    
+}
+#heroBtns button:first-child:hover{
+    background-color: #79b1ff;
+    
+}
+
+#visaoGeral{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 124px;
+    gap: 48px;
+}
+
+#visaoGeral h2{
+    font-size: 2.4vw;
+    opacity: .95;
+    font-weight: 600;
+}
+
+.container {
+    display: flex;
+    padding: 0px 32px;
+    gap: 20px;
+}
+.container img{
+    width: 46.7vw;
+    border-radius: 1.5vw;
+}
+
+.containerText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+.containerText h3{
+    font-size: 1.8vw;
+    font-weight: 700;
+    opacity: .85;
+}
+.containerText p{
+    font-weight: 500;
+    opacity: .75;
+    line-height: 1.7vw;
+    
+    
+}
+
+#elipse{
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    top: 0;
+    
+}
+
