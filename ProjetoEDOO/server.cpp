@@ -139,7 +139,11 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
         else if (request.find("remover") != string::npos) {
             // Remover item do estoque
             json jsonInfos = json::parse(request);
-            int codigoProduto = jsonInfos.contains("codigo") ? stoi(jsonInfos["codigo"].get<string>()) : 0;
+            int codigoProduto = 0;
+            string codigoTemp = jsonInfos.value("codigo", "");
+
+            codigoProduto = stoi(codigoTemp);
+
             restaurante->apagarItem(codigoProduto);
             send_estoque_json(conn);
         }
