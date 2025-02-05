@@ -52,7 +52,8 @@ header h2{
 #heroContent{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 2.8vw;
     width: fit-content;
     height: 55vh;
 }
@@ -226,6 +227,12 @@ strong {
     color: black!important;
 }
 
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 li {
     font-weight: 500;
     opacity: .75;
@@ -293,8 +300,22 @@ li {
         height: 576px;
         width: 1024px;
     }
-
-
+    #heroContent p{
+        font-size: 16px;
+        
+        
+    }
+    #organizacaoProjeto p{
+        font-size: 16px;
+    }
+    
+    strong {
+        font-size: 16px;
+    }
+    
+    li {
+        font-size: 16px;
+    }
 }
 @media (max-width: 1024px) {
     #elipse{
@@ -343,7 +364,7 @@ li {
         max-width: 100%;
         padding: 0px 20px;
         gap: 24px;
-        height: calc(95vh - 126px);
+        height: calc(80vh - 126px);
     }
 
     #heroBanner img{
@@ -355,7 +376,8 @@ li {
     #heroContent{
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: start;
+        gap: 48px;
         width: 100%;
         
     }
