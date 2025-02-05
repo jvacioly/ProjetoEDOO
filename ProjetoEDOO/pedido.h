@@ -12,11 +12,11 @@ using namespace std;
 
 class Pedido {
     private:
-        int ID; //ID único do pedido
-        vector<pair<Prato, int>> itens;
+        int ID; // ID único do pedido, gerado automaticamente
+        vector<pair<Prato, int>> itens; // Lista de itens do pedido, onde cada item é um par (Prato, quantidade)
         string observacao;
         string horarioPedido;
-        string tipoEndereco;
+        string tipoEndereco; // Tipo de endereço (ex: casa, trabalho)
         string endereco;
         string numero;
         string CEP;
@@ -27,8 +27,6 @@ class Pedido {
     public:
         //Construtor
         Pedido(const vector<pair<Prato, int>>& itens, const string& tipoEndereco, const string& endereco, const string& numero, const string& CEP, const string& formaPagamento);
-        /*Pedido(const vector<pair<Prato, int>>& itens, const string& observacao);
-        explicit Pedido(const vector<pair<Prato, int>>& itens);*/
 
         //Get Methods
         [[nodiscard]] int getID() const {return ID;}
@@ -48,9 +46,9 @@ class Pedido {
         void setObs(const string& observacao);
 
         //Outros Métodos
-        void print() const;
-        void addPrato(const Prato& prato, int quantidade);
-        void removePrato(int codigoProduto);
+        void print() const; // Exibe as informações do pedido
+        void addPrato(const Prato& prato, int quantidade); // Adiciona um prato ao pedido com uma quantidade específica
+        void removePrato(int codigoProduto); // Remove um prato do pedido com base no código do produto
         void addObservacao(const string& observacao);
 
 };

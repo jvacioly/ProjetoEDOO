@@ -10,7 +10,6 @@ add_executable(ProjetoEDOO main.cpp
         json.hpp
         restaurante.cpp
         restaurante.h
-        cliente.cpp
         globals.h
 )
 

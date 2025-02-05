@@ -22,9 +22,6 @@ class Restaurante {
         string contato;
         string descricao;
         vector<Prato> menu;
-        /*double receita;
-        double despesas;
-        double lucro;*/ // Não estão sendo necessarios
     public:
         //Construtor e Destrutor
         Restaurante(const string& nome, const vector<string>& endereco, const string& contato, const string& descricao, const vector<Prato>& menuInicial);
@@ -45,7 +42,7 @@ class Restaurante {
         bool checarEstoque(const Pedido& pedido);
         void mostrarEstoque() const;
 
-        //Métodos dos Pedidos (EM DESENVOLVIMENTO)
+        //Métodos dos Pedidos
         void carregarPedidos();
         void salvarPedidos() const;
         void registrarPedido(const Pedido& pedido);
@@ -53,7 +50,6 @@ class Restaurante {
         void enviarPedido(const string& IDpedido);
         void cancelarPedido(const string& IDpedido);
         void finalizarPedido(const string& IDpedido);
-        // void mostrarPedidos() const;
 
         //Métodos do Fluxo
         void carregarFluxo();
@@ -61,12 +57,9 @@ class Restaurante {
         void registrarCompra(double valor);
         void registrarVenda(double valor);
         void adicionarCaixa(double valor);
-        // void mostrarRanking() const;
 
         //Outros Métodos
         void mostrarMenu() const;
-
-
 };
 
 

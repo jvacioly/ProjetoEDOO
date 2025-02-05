@@ -13,7 +13,7 @@ using json = nlohmann::json;
 //Construtor
 Produto::Produto(const string& nome, double preco, const string& categoria, const string& medida)
     : nome(nome), preco(preco), categoria(categoria), medida(medida) {
-    // Gerar codigo do pedido
+    // Gerar codigo único do pedido
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> distrib(1000, 9999);
@@ -48,6 +48,7 @@ Produto::Produto(const string& nome, double preco, const string& categoria, cons
 Produto::Produto(const string& nome, double preco)
     : Produto(nome, preco, "", "") {}
 
+//Set Methods
 void Produto::setNome(const string &nome) {
     if (nome.empty()) {
             cout << "NOME INVALIDO!" << endl;
@@ -56,7 +57,6 @@ void Produto::setNome(const string &nome) {
     this->nome = nome;
 }
 
-//Set Methods
 void Produto::setPreco(double preco) {
     if (preco <= 0) {
         cout << "VALOR INVALIDO!" << endl;

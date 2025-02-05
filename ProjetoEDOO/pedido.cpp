@@ -15,6 +15,7 @@ using json = nlohmann::json;
 Pedido::Pedido(const vector<pair<Prato, int>> &itens, const string &tipoEndereco, const string &endereco,
     const string &numero, const string &CEP, const string &formaPagamento)
     : itens(itens), tipoEndereco(tipoEndereco), endereco(endereco), numero(numero), CEP(CEP), formaPagamento(formaPagamento), valorTotal(atualizarValorTotal()) {
+    // Geração de um ID único para o pedido
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<> distrib(10000000, 99999999);
@@ -22,6 +23,7 @@ Pedido::Pedido(const vector<pair<Prato, int>> &itens, const string &tipoEndereco
     int novoID;
     bool IDUnico = false;
 
+    // Verifica se o ID já existe no json de pedidos
     json pedidosExistentes;
     string caminhoArquivo = BASE_DIR + "estoque.json";
     ifstream pedidosFile(caminhoArquivo);
@@ -70,9 +72,9 @@ void Pedido::setObs(const string &observacao) {
 //Outros Metodos
 double Pedido::atualizarValorTotal() {
     for (const auto& item : itens) {
-        valorTotal += item.first.getPreco() * item.second;
+        valorTotal += item.first.getPreco() * item.second; // Soma o preço de cada item multiplicado pela quantidade
     }
-    return valorTotal;
+    return valorTotal; // Retorna o valor total atualizado
 }
 
 void Pedido::print() const {
@@ -93,20 +95,20 @@ void Pedido::addPrato(const Prato& prato, int quantidade) {
         return;
     }
     for (auto& item : itens) {
-        if (item.first.getCodigo() == prato.getCodigo()) {
+        if (item.first.getCodigo() == prato.getCodigo()) { // Se o prato já estiver no pedido, aumenta a quantidade
             item.second += quantidade;
             atualizarValorTotal();
             return;
         }
     }
-    itens.emplace_back(prato, quantidade);
+    itens.emplace_back(prato, quantidade); // Se o prato não estiver no pedido, adiciona um novo item
     atualizarValorTotal();
 }
 
 void Pedido::removePrato(int codigoPrato) {
-    for (auto it = itens.begin(); it != itens.end(); ++it) {
+    for (auto it = itens.begin(); it != itens.end(); ++it) { // Procura o prato pelo código
         if (it->first.getCodigo() == codigoPrato) {
-            itens.erase(it);
+            itens.erase(it); // Remove o prato do pedido
             atualizarValorTotal();
             return;
         }
@@ -116,10 +118,10 @@ void Pedido::removePrato(int codigoPrato) {
 
 void Pedido::addObservacao(const string &observacao) {
     if (this->observacao.empty()) {
-        this->observacao = observacao;
+        this->observacao = observacao; // Se não houver observação, define a nova
     }
     else {
-        this->observacao = this->observacao + " - " + observacao;
+        this->observacao = this->observacao + " - " + observacao; // Se já houver, concatena a nova observação
     }
 }
 

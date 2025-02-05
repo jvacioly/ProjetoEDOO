@@ -16,26 +16,20 @@ class Prato : public Produto {
         string categoria;
         //Dados herdados de produto
         /*
-         *int codigo
+         *int codigo // inicializado automaticamente
          *string nome
          *double preco
-
          *string descricao
         */
     public:
         //Construtor e Destrutor
         Prato(const string &nome, double preco, const string& categoria, const vector<pair<string, int>> &ingredientes);
-        ~Prato();
 
         //Get Methods
         [[nodiscard]] vector<pair<string, int>> getIngredientes() const {return ingredientes;};
 
         //Set Methods
         void setIngredientes(const vector<pair<string, int>> &novosIngredientes);
-
-        //Outros Metodos
-        // void print() const;
-
 };
 
 

@@ -67,7 +67,12 @@ void websocket_ready_handler(struct mg_connection *conn, void *cbdata) {
     cout << "WebSocket pronto para comunicacao" << endl;
 }
 
-// Handler para mensagens recebidas via WebSocket
+/////////////////////////////////////////////////////
+// Handler para mensagens recebidas via WebSocket //
+///////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+// Trata os dados e devolve o necessário ao front //
+///////////////////////////////////////////////////
 int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t data_len, void *cbdata) {
     if (data && data_len > 0) {
         string request(data, data_len);
@@ -86,6 +91,7 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
             send_pedidos_json(conn);
         }
         else if (request.find("editar") != string::npos) {
+            // Editar características e remover/adicionar quantidades de produto ao estoque
             json jsonInfos = json::parse(request);
             string nome = jsonInfos.value("nome", "");
             string categoria = jsonInfos.value("categoria", "");
@@ -112,6 +118,7 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
             send_fluxo_json(conn);
         }
         else if (request.find("adicionar") != string::npos) {
+            // Adicionar e inicializar produto no estoque
             json jsonInfos = json::parse(request);
             string nome = jsonInfos.value("nome", "");
             string categoria = jsonInfos.value("categoria", "");
@@ -130,6 +137,7 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
             send_fluxo_json(conn);
         }
         else if (request.find("remover") != string::npos) {
+            // Remover item do estoque
             json jsonInfos = json::parse(request);
             int codigoProduto = jsonInfos.contains("codigo") ? stoi(jsonInfos["codigo"].get<string>()) : 0;
             restaurante->apagarItem(codigoProduto);
@@ -138,6 +146,7 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
 
         // AÇÕES DE PEDIDO
         else if (request.find("pedido") != std::string::npos) {
+            // Adicionar pedido
             json jsonInfos = json::parse(request);
             string formaPagamento = jsonInfos.value("pagamento", "");
             string endereco = jsonInfos.value("endereco", "");
@@ -168,6 +177,7 @@ int websocket_data_handler(mg_connection *conn, int bits, char *data, size_t dat
             send_pedidos_json(conn);
         }
         else if (request.find("alterar_status") != string::npos) {
+            // Editar status do pedido
             json jsonInfos = json::parse(request);
             string novoStatus = jsonInfos.value("novo_status", "");
             string IDpedido = jsonInfos.value("id", "");

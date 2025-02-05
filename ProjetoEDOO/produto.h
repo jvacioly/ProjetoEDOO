@@ -12,7 +12,7 @@ using namespace std;
 
 class Produto {
     private:
-        int codigo;
+        int codigo; // inicializado automaticamente
         string nome;
         double preco;
         string categoria;

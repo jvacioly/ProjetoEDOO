@@ -20,6 +20,13 @@
         "preco": 0.07,
         "quantidade": 4000
     },
+    "Atum": {
+        "categoria": "Carnes",
+        "codigo": 2755,
+        "medida": "Kg",
+        "preco": 10.0,
+        "quantidade": 100
+    },
     "Azeite": {
         "categoria": "Enlatados e Conservas",
         "codigo": 5067,

@@ -43,6 +43,7 @@ Prato aguaMineral("Água Mineral", 5.99, "bebidas", {{"Água Mineral", 1}});
 Prato cerveja("Cerveja", 12.99, "bebidas", {{"Cerveja", 1}});
 Prato vinhoTinto("Vinho Tinto", 20.99, "bebidas", {{"Vinho Tinto", 1}});
 
+// Inicializando o restaurante
 shared_ptr<Restaurante> restaurante = make_shared<Restaurante>(vector<Prato>{
     bruschetta, paoDeAlho,queijoCoalho, bolinhoDeBacalhau, tabuaFrios,
     pizzaMargherita, pizzaCalabresa, pizzaQuatroQueijos, pizzaPortuguesa, pizzaVegetariana,
@@ -51,13 +52,20 @@ shared_ptr<Restaurante> restaurante = make_shared<Restaurante>(vector<Prato>{
     refrigerante, sucoNatural, aguaMineral, cerveja, vinhoTinto});
 
 int main() {
-    //const char* htmlPath = "C:/Eu/Faculdade/ProjetoEDOO/ProjetoEDOO/ProjetoEDOO/front-end/login.html"; // Escreva o caminho do absoluto do arquivo
+    //////////////////////////////////////////////////////////////////
+    // Escreva o caminho absoluto do arquivo /front-end/login.html //
+    /////////////////////////////////////////////////////////////////
+    const char* htmlPath = "C:/Eu/Faculdade/ProjetoEDOO/ProjetoEDOO/ProjetoEDOO/front-end/login.html";
 
-   // string command = "start " + string(htmlPath); // Windows
+    ////////////////////////////////////////
+    // Escolha o seu sistema operacional //
+    //////////////////////////////////////
+
+    string command = "start " + string(htmlPath); // Windows
     // string command = "xdg-open " + string(htmlPath); // Linux
     // string command = "open " + string(htmlPath); // Mac
 
-   // system(command.c_str());
+    system(command.c_str());
 
     setup_websocket_server();
 

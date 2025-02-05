@@ -11,6 +11,7 @@
 Restaurante::Restaurante(const string &nome, const vector<string> &endereco, const string &contato, const string &descricao,
     const vector<Prato> &menuInicial)
     : nome(nome), endereco(endereco), contato(contato), descricao(descricao), menu(menuInicial) {
+    // Carrega os dados presente no banco de dados
     carregarEstoque();
     carregarPedidos();
     carregarFluxo();
@@ -23,6 +24,7 @@ Restaurante::Restaurante(const vector<Prato>& menuInicial)
     : Restaurante("", {"", "", ""}, "", "", menuInicial) {}
 
 Restaurante::~Restaurante() {
+    // Salva os dados após encerrar o programa
     salvarEstoque();
     salvarPedidos();
     salvarFluxo();
@@ -144,6 +146,7 @@ bool Restaurante::apagarItem(int codigoProduto) {
 }
 
 bool Restaurante::checarEstoque(const Pedido &pedido) {
+    // Checa se todos os produtos necessários para um pedido estão presentes no estoque
     unordered_map<string, int> ingredientesTotais;
 
     for (const auto &itemPedido : pedido.getItens()) {
@@ -236,6 +239,7 @@ void Restaurante::salvarPedidos() const {
 
 //Métodos dos Pedidos
 void Restaurante::registrarPedido(const Pedido &pedido) {
+    // Só adiciona o pedido caso os todos os produtos necessários estejam presentes no estoque
     if (checarEstoque(pedido)) {
         const int ID = pedido.getID();
         const string& observacao = pedido.getObservacao();
@@ -291,6 +295,7 @@ void Restaurante::registrarPedido(const Pedido &pedido) {
 }
 
 void Restaurante::prepararPedido(const string &IDpedido) {
+    // Troca o status do pedido para "preparando"
     if (pedidos.contains(IDpedido)) {
         pedidos[IDpedido]["status"] = "preparando";
         salvarPedidos();
@@ -298,6 +303,7 @@ void Restaurante::prepararPedido(const string &IDpedido) {
 }
 
 void Restaurante::enviarPedido(const string &IDpedido) {
+    // Troca o status do pedido para "caminho"
     if (pedidos.contains(IDpedido)) {
         pedidos[IDpedido]["status"] = "caminho";
         salvarPedidos();
@@ -305,6 +311,7 @@ void Restaurante::enviarPedido(const string &IDpedido) {
 }
 
 void Restaurante::cancelarPedido(const string &IDpedido) {
+    // Troca o status do pedido para "cancelado"
     if (pedidos.contains(IDpedido)) {
         pedidos[IDpedido]["status"] = "cancelado";
         salvarPedidos();
@@ -312,8 +319,10 @@ void Restaurante::cancelarPedido(const string &IDpedido) {
 }
 
 void Restaurante::finalizarPedido(const string& IDpedido) {
+    // Troca o status do pedido para "finalizado"
     if (pedidos.contains(IDpedido)) {
         pedidos[IDpedido]["status"] = "finalizado";
+        // Registra a venda, alterando fluxo
         registrarVenda(pedidos[IDpedido]["preco_total"]);
         salvarPedidos();
     }
@@ -332,7 +341,7 @@ void Restaurante::carregarFluxo() {
                 cout << "Formato inválido no arquivo de fluxo. Recriando banco de fluxo." << endl;
                 fluxo = json::object();
             }
-            else { // ALTERAR
+            else {
                 if (!fluxo.contains("Despesas")) {
                     fluxo["Despesas"] = 0.0;
                 }
