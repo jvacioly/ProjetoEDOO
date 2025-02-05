@@ -64,7 +64,7 @@ function processarPedidosAndamento(dados) {
                     </div>
                     <div class="valor">
                         <h3>Pagamento:<p>${pedido.forma_pagamento}</p></h3> 
-                        <h3>Valor Total:<p> R$${pedido.preco_total}</p></h3>
+                        <h3>Valor Total:<p> R$${pedido.preco_total.toFixed(2)}</p></h3>
                     </div>
                 </div>
             `
@@ -133,7 +133,7 @@ function processarPedidosFinalizados(dados) {
                     </div>
                     <div class="valor">
                         <h3>Pagamento:<p>${pedido.forma_pagamento}</p></h3> 
-                        <h3>Valor Total:<p> R$${pedido.preco_total}</p></h3>
+                        <h3>Valor Total:<p> R$${pedido.preco_total.toFixed(2)}</p></h3>
                     </div>
                 </div>
             `

@@ -10,11 +10,13 @@
 <body>
     <div id="elipse"><img src="ProjetoEDOO/front-end/imagens/index_images/Ellipse 6.png" alt=""></div>
     <div id="elipse2"><img src="ProjetoEDOO/front-end/imagens/index_images/Ellipse 6.png" alt=""></div>
+    <div id="gradient"></div>
+    <div id="gradientCel"></div>
     <header>
         <h2>Projeto EDOO</h2>
         <div id="autores">
             <a href="">Carlos Eduardo Teixeira,</a>
-            <a href="">João Victor Accioly</a>
+            <a href="">João Victor Acioly</a>
         </div>
     </header>
     <div id="heroBanner">
@@ -22,8 +24,8 @@
             <h1>Sistema de Gerenciamento de Restaurante</h1>
             <p>Aplicativo exclusivo de pedidos e gestão online para um restaurante, permitindo aos clientes visualizar o cardápio, fazer pedidos, enquanto o restaurante gerencia pedidos, estoque e pagamentos de forma centralizada.</p>
             <div id="heroBtns">
-                <button>Código</button>
-                <button>Relatório</button>
+                <a href="https://github.com/jvacioly/ProjetoEDOO" target="_blank"><button id="button1">Código</button></a>
+                <a href="" target="_blank"><button id="button2">Relatório</button></a>
             </div>
         </div>
         <img src="ProjetoEDOO/front-end/imagens/index_images/heroImage.jpg" alt="Sistema de Gerenciamento de Restaurante">
@@ -61,6 +63,29 @@
                 <h3>Estoque</h3>
                 <p>Nesta área, o restaurante pode cadastrar e gerenciar os itens do estoque, garantindo controle sobre os insumos disponíveis. O sistema também inclui um fluxo de caixa automatizado, onde a receita de cada pedido finalizado é contabilizada automaticamente. Além disso, o estoque exibe as despesas registradas com os insumos utilizados, permitindo o cálculo do lucro real do restaurante.</p>
             </div>
+        </div>
+    </div>
+    <div id="organizacaoProjeto">
+        <h2>Organização do Projeto</h2>
+        <img src="ProjetoEDOO\front-end\imagens\index_images\classes diagram.png" alt="">
+        
+        <div id="POO">
+            <p>O <strong>ProjetoEDOO</strong> utiliza <strong>HTML, CSS e JavaScript</strong> no front-end para criar uma interface intuitiva, enquanto o back-end é desenvolvido em <strong>C++</strong> com armazenamento de dados em <strong>JSON</strong>. Para garantir comunicação em tempo real entre clientes e restaurante, implementamos WebSockets usando <strong>CivetWeb</strong>, permitindo que pedidos, status de entrega e atualizações de estoque sejam transmitidos instantaneamente sem a necessidade de recarregar a página, tornando o sistema mais dinâmico e eficiente.</p>
+            <p>
+                O <strong>ProjetoEDOO</strong> foi desenvolvido seguindo os princípios da <strong>Programação Orientada a Objetos (POO)</strong>, garantindo modularidade, reutilização de código e organização eficiente. O sistema é estruturado em quatro principais classes:
+            </p>
+        
+            <ul>
+                <li><strong>Produto:</strong> Representa os itens do estoque, contendo nome, preço, categoria e medidas.</li>
+                <li><strong>Prato:</strong> Herda a classe Produto, representa os itens do cardápio, adicionando ingredientes e permitindo personalização.</li>
+                <li><strong>Pedido:</strong> Gerencia os pedidos feitos pelos clientes, armazenando itens, status, endereço e forma de pagamento.</li>
+                <li><strong>Restaurante:</strong> Controla toda a operação do sistema, incluindo estoque, pedidos e fluxo financeiro.</li>
+            </ul>
+        </div>
+
+        <div id="video">
+            <h2>Vídeo Apresentando Projeto</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/SEU_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
