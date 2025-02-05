@@ -471,6 +471,7 @@ li {
         font-weight: 700;
         opacity: .85;
         z-index: 1;
+        text-align: center;
     }
     .containerText p{
         font-weight: 500;
@@ -567,13 +568,13 @@ li {
         flex-direction: column;
         align-items: center;
         gap: 24px;
-        padding: 0px 3.3vw;
+        padding: 0px 20pxw;
         width: 100%;
         padding-bottom: 64px;
         margin-top: 64px;
     }
     #video h2{
-        font-size: 5.6vw;
+        font-size: 5.5vw;
         opacity: .95;
         font-weight: 700;
     }
